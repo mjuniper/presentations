@@ -1,0 +1,20 @@
+h1, h2, h3, h4, h5 {
+  text-align: left;
+  text-transform: none;
+}
+
+div.backgrounds > .present:first-child {
+  background-color: #02ABB1 !important;
+  background-image: url(http://localhost:8000/images/title.png), -webkit-linear-gradient(left bottom, #02ABB1 0%, #005659 100%) !important;
+  background-image: url(http://localhost:8000/images/title.png), linear-gradient(to left bottom, #02ABB1 0%, #005659 100%) !important;
+  background-color: #02ABB1 !important;
+}
+
+#slide-footer {
+  color: lightgray;
+  position: absolute;
+  bottom: 0;
+  z-index: 9;
+  font-size: 0.4em;
+  padding: 0 0 10px 15px;
+}
