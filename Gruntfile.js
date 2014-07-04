@@ -80,7 +80,9 @@ module.exports = function(grunt) {
 			server: {
 				options: {
 					port: port,
-					base: '.'
+					base: '.',
+          open: 'http://localhost:8000/UC2014.html',
+          livereload: 35729
 				}
 			}
 		},
@@ -103,8 +105,13 @@ module.exports = function(grunt) {
 			},
 			theme: {
 				files: [ 'css/theme/source/*.scss', 'css/theme/template/*.scss' ],
-				tasks: 'themes'
-			}
+				tasks: 'themes',
+        livereload: true
+			},
+      preso: {
+        files: [ 'css/theme/*.css', '*.html' ],
+        livereload: true
+      }
 		}
 
 	});

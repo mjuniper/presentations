@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
 
-    <title>reveal.js - The HTML Presentation Framework</title>
+    <title>Accessing and Visualizing Esri GeoServices with ArcGIS API for JavaScript, D3, and Node.js</title>
 
     <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
     <meta name="author" content="Hakim El Hattab">
@@ -53,15 +53,61 @@
         </section>
 
         <section>
-          <h2>Heads Up</h2>
+          <h1>koop</h1>
           <p>
-            reveal.js is a framework for easily creating beautiful presentations using HTML. You'll need a browser with
-            support for CSS 3D transforms to see it in its full glory.
+            ...
           </p>
 
           <aside class="notes">
             Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
           </aside>
+        </section>
+
+        <section>
+          <h1>GeoJSON on github</h1>
+          <a class="follow-link" href="https://github.com/colemanm/hurricanes/blob/master/fl_2004_hurricanes.geojson" target="_blank">github.com/colemanm/hurricanes/blob/master/fl_2004_hurricanes.geojson</a>
+        </section>
+
+        <section>
+          <h1>Now it's a feature service!</h1>
+          <a class="follow-link" href="http://koop.dc.esri.com/github/colemanm/hurricanes/fl_2004_hurricanes/FeatureServer" target="_blank">koop.dc.esri.com/github/colemanm/hurricanes/fl_2004_hurricanes/FeatureServer</a>
+        </section>
+
+        <section>
+          <h1>Socrata?</h1>
+          <a class="follow-link" href="http://koop.dc.esri.com/socrata/" target="_blank">koop.dc.esri.com/socrata/</a>
+        </section>
+
+        <section>
+          <h1>Via koop:</h1>
+          <a class="follow-link" href="http://koop.dc.esri.com/socrata/seattle/2tje-83f6" target="_blank">koop.dc.esri.com/socrata/seattle/2tje-83f6</a>
+          
+          <div class="fragment">
+            <h3>In ArcGIS Online map viewer:</h3>
+            <a href="http://www.arcgis.com/home/webmap/viewer.html?url=http://koop.dc.esri.com/socrata/seattle/2tje-83f6/FeatureServer/0" target="_blank">www.arcgis.com/home/webmap/viewer.html?url=http://koop.dc.esri.com/socrata/seattle/2tje-83f6/FeatureServer/0</a>
+          </div>
+
+          <div class="fragment">
+            <h3>Registered as an item in ArcGIS Online:</h3>
+            <a href="http://dcdev.maps.arcgis.com/home/item.html?id=ebf151a0feda4c57ac7422dcd48d87dc" target="_blank">dcdev.maps.arcgis.com/home/item.html?id=ebf151a0feda4c57ac7422dcd48d87dc</a>
+          </div>
+
+          <div class="fragment">
+            <h3>Analysis in ArcGIS Online:</h3>
+            <a href="http://dcdev.maps.arcgis.com/home/webmap/viewer.html?useExisting=1" target="_blank">dcdev.maps.arcgis.com/home/webmap/viewer.html?useExisting=1</a>
+          </div>
+
+        </section>
+
+        <section>
+          <h1>It works in the other direction too...</h1>
+          <a class="follow-link" href="http://dcdev.maps.arcgis.com/home/item.html?id=1dd1c8ccd54347f1bbd966337bde45f7" target="_blank">dcdev.maps.arcgis.com/home/item.html?id=1dd1c8ccd54347f1bbd966337bde45f7</a>
+          
+          <div class="fragment">
+            <h3>ArcGIS Online item via koop:</h3>
+            <a href="http://koop.dc.esri.com/agol/arcgis/1dd1c8ccd54347f1bbd966337bde45f7" target="_blank">koop.dc.esri.com/agol/arcgis/1dd1c8ccd54347f1bbd966337bde45f7</a>
+          </div>
+
         </section>
 
         <section>
@@ -81,7 +127,6 @@
     <script src="js/reveal.min.js"></script>
 
     <script>
-
       // Full list of configuration options available here:
       // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
@@ -91,7 +136,25 @@
         center: true,
 
         theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+        transition: Reveal.getQueryHash().transition || 'fade', // default/cube/page/concave/zoom/linear/fade/none
+        transitionSpeed: 'slow',
+
+        center: false,
+
+        keyboard: {
+          13: function () {
+            var curSlide = Reveal.getCurrentSlide();
+
+            els = curSlide.getElementsByClassName('follow-link');
+
+            if (els && els.length) {
+              var el = els[0];
+              var evObj = document.createEvent('Events');
+              evObj.initEvent('click', true, false);
+              el.dispatchEvent(evObj);
+            } 
+          }
+        },
 
         // Parallax scrolling
         // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
