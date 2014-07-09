@@ -16,7 +16,9 @@ div.backgrounds > .present:first-child {
   bottom: 0;
   z-index: 9;
   font-size: 0.4em;
-  padding: 0 0 10px 15px;
+  padding: 0 10px 10px 15px;
+  left: 0;
+  right: 0;
 }
 
 section iframe {
