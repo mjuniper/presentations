@@ -14,13 +14,13 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <link rel="stylesheet" href="css/reveal.min.css">
-    <link rel="stylesheet" href="css/theme/esri.css" id="theme">
+    <link rel="stylesheet" href="styles/reveal.min.css">
+    <link rel="stylesheet" href="styles/theme/esri.css" id="theme">
 
     <!-- For syntax highlighting -->
     <link rel="stylesheet" href="lib/css/zenburn.css">
 
-    <link rel="stylesheet" href="css/uc2014.css">
+    <link rel="stylesheet" href="styles/uc2014.css">
 
     <!-- If the query includes 'print-pdf', include the PDF print sheet -->
     <script>
@@ -46,7 +46,6 @@
       <div class="slides">
         <section class="title">
           <h2>Accessing and Visualizing Esri GeoServices with ArcGIS API for JavaScript, D3, and Node.js</h2>
-          <!-- <h3>HTML Presentations Made Easy</h3> -->
           <p>
             <h4>Mike Juniper :: Washington DC R&amp;D Center</h4>
           </p>
@@ -107,24 +106,33 @@
             <h3>ArcGIS Online item via koop:</h3>
             <a href="http://koop.dc.esri.com/agol/arcgis/1dd1c8ccd54347f1bbd966337bde45f7" target="_blank">koop.dc.esri.com/agol/arcgis/1dd1c8ccd54347f1bbd966337bde45f7</a>
           </div>
+        </section>
 
+        <section>
+          <h2><a href="http://esri.github.io/wind-js/" class="follow-link" data-preview-link>wind.js</a></h2>
         </section>
 
         <section>
           <h1>Thank you...</h1>
           <h3>Please fill out the session survey:</h3>
-          <h4>Offering ID: XXXXX</h4>
+          <h4>Offering ID: 1461</h4>
+          <h5>Online – <a href="http://www.esri.com/ucsessionsurveys">www.esri.com/ucsessionsurveys</a></h5>
         </section>
 
       </div>
 
       <div id="slide-footer">
-        Esri UC 2014 | Demo Theater | Accessing and Visualizing Esri GeoServices with ArcGIS API for JavaScript, D3, and Node.js
+        <div class="left">
+          Esri UC 2014 | Demo Theater | Accessing and Visualizing Esri GeoServices with ArcGIS API for JavaScript, D3, and Node.js
+        </div>
+        <div class="right">
+          <a href="http://mjuniper.github.io/presentations/UC2014.html">mjuniper.github.io/presentations/UC2014.html</a>
+        </div>
       </div>
     </div>
 
     <script src="lib/js/head.min.js"></script>
-    <script src="js/reveal.min.js"></script>
+    <script src="scripts/reveal.min.js"></script>
 
     <script>
       // Full list of configuration options available here:
@@ -139,7 +147,10 @@
         transition: Reveal.getQueryHash().transition || 'fade', // default/cube/page/concave/zoom/linear/fade/none
         transitionSpeed: 'slow',
 
-        center: false,
+        width: 1600,
+        height: 900,
+        minScale: 0.2,
+        maxScale: 1.0,
 
         keyboard: {
           13: function () {

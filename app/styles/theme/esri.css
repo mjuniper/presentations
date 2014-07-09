@@ -151,3 +151,11 @@ body {
  *********************************************/
 .reveal .slide-number {
   color: #13daec; }
+
+
+.right{
+  float: right;
+}
+.left {
+  float: left;
+}
