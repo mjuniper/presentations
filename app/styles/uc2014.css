@@ -21,8 +21,6 @@ div.backgrounds > .present:first-child {
   right: 0;
 }
 
-section iframe {
-  width: 100%;
-  height: 100%;
-  background-color: lightgray;
+div.fragment {
+  margin-top: 20px;
 }
