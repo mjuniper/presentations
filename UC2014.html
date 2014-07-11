@@ -201,7 +201,7 @@
           13: function () {
             var curSlide = Reveal.getCurrentSlide();
 
-            els = curSlide.querySelectorAll(':scope > a, .fragment.visible a')
+            els = curSlide.querySelectorAll(':scope > a, .fragment.visible > a')
 
             if (els && els.length) {
               var el = els[els.length - 1];
