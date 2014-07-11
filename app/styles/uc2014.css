@@ -10,6 +10,10 @@ div.backgrounds > .present:first-child {
   background-color: #02ABB1 !important;
 }
 
+li.fragment {
+  line-height: 2em;
+}
+
 #slide-footer {
   color: lightgray;
   position: absolute;
