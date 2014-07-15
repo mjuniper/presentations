@@ -101,6 +101,11 @@
           </div>
 
           <div class="fragment">
+            <h3>Tiles (koop-url/{z}/{x}/{y}.png):</h3>
+            <a class="follow-link" href="http://koop.dc.esri.com/github/colemanm/hurricanes/fl_2004_hurricanes/tiles/5/12/14.png" target="_blank">koop.dc.esri.com/github/colemanm/hurricanes/fl_2004_hurricanes/tiles/5/12/14.png</a>
+          </div>
+
+          <div class="fragment">
             <h3>Tiles in Leaflet:</h3>
             <a class="follow-link" href="http://mjuniper.github.io/koop-leaflet/tiles.html" target="_blank">mjuniper.github.io/koop-leaflet/tiles.html</a>
           </div>
@@ -244,7 +249,7 @@
           13: function () {
             var curSlide = Reveal.getCurrentSlide();
 
-            els = curSlide.querySelectorAll(':scope > a, .fragment.visible > a')
+            els = curSlide.querySelectorAll(':scope > a.follow-link, .fragment.visible > a.follow-link')
 
             if (els && els.length) {
               var el = els[els.length - 1];
