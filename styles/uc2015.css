@@ -1,0 +1,24 @@
+
+div.backgrounds > .present:first-child {
+  background-image: url(../images/dev-summit-2015.png) !important;
+  background-image: url(../images/dev-summit-2015.png) !important;
+}
+
+li.fragment {
+  line-height: 2em;
+}
+
+#slide-footer {
+  color: lightgray;
+  position: absolute;
+  bottom: 0;
+  z-index: 9;
+  font-size: 0.4em;
+  padding: 0 10px 10px 15px;
+  left: 0;
+  right: 0;
+}
+
+div.fragment {
+  margin-top: 20px;
+}
