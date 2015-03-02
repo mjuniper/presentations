@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>Developing with ArcGIS Open Data</title>
+
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <meta name="description" content="Get a firsthand look at working with the ArcGIS Open Data API’s, to build your own open data site or next popular dashboard application that propel transparency to the next level. You will also see how to expose your open data catalog as DCAT to promote interoperability with other open platforms, and melt your mind with space cats.">
+    <meta name="author" content="Mike Juniper">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="styles/reveal.min.css">
+    <link rel="stylesheet" href="styles/theme/esri.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <link rel="stylesheet" href="styles/uc2015.css">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+      if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+      }
+    </script>
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section class="title">
+          <h1>Developing with ArcGIS Open Data</h1>
+          <p>
+            <h3>Mike Juniper :: Washington DC R&amp;D Center</h3>
+          </p>
+        </section>
+
+        <section>
+          <h1>ArcGIS Open Data</h1>
+        </section>
+
+        <section >
+          <h1>Interoperability</h1>
+          <ul>
+            <li class="fragment">
+              <a href="https://github.com/Esri/koop">koop</a>
+            </li>
+            <li class="fragment">
+              <a href="http://www.opensearch.org">OpenSearch</a>
+            </li>
+            <li class="fragment">
+              <a href="http://www.w3.org/TR/vocab-dcat/">DCAT</a>
+            </li>
+            <li class="fragment">
+              <a href="https://github.com/ArcGIS/composer-api">OpenData API</a>
+            </li>
+            <li class="fragment">
+              Building against the API
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>koop</h1>
+          <ul>
+            <li class="fragment">
+              Open Source (<a href="https://github.com/Esri/koop">github.com/Esri/koop</a>) R &amp; D
+            </li>
+            <li class="fragment">
+              <a href="http://nodejs.org">node js</a>
+            </li>
+            <li class="fragment">
+              interoperability
+              <ul>
+                <li class="fragment">
+                  geojson (&amp; others) &nbsp;&nbsp;&nbsp;==&gt;&nbsp;&nbsp;&nbsp; feature services
+                </li>
+                <li class="fragment">
+                  feature services &nbsp;&nbsp;&nbsp;==&gt;&nbsp;&nbsp;&nbsp; geojson
+                </li>
+              </ul>
+            </li>
+            <li class="fragment">
+              export as kml, csv, shp
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>Socrata</h1>
+          <a href="http://data.seattle.gov/resource/2tje-83f6.json"></a>
+          <a class="follow-link" href="http://data.seattle.gov/resource/2tje-83f6.json" target="_blank">data.seattle.gov/resource/2tje-83f6.json</a>
+
+          <div class="fragment">
+            <h3>Via koop:</h3>
+            <a class="follow-link" href="http://koop.dc.esri.com/socrata/seattle/2tje-83f6" target="_blank">koop.dc.esri.com/socrata/seattle/2tje-83f6</a>
+          </div>
+
+          <div class="fragment">
+            <h3>Registered as an item in ArcGIS Online:</h3>
+            <a class="follow-link" href="http://dcdev.maps.arcgis.com/home/item.html?id=ebf151a0feda4c57ac7422dcd48d87dc" target="_blank">dcdev.maps.arcgis.com/home/item.html?id=ebf151a0feda4c57ac7422dcd48d87dc</a>
+          </div>
+
+          <div class="fragment">
+            <h3>In Open Data:</h3>
+            <a class="follow-link" href="" target="_blank"></a>
+          </div>
+        </section>
+
+        <section>
+          <h1>Open Data API</h1>
+          Brooks/Alex...
+        </section>
+
+        <section>
+          <h1>What can you do with it?</h1>
+
+          <div id="build-an-app" class="fragment">
+            <h2>Build an app!</h2>
+          </div>
+        </section>
+
+        <section>
+          <img class="screen-shot" src="images/umbrella.png">
+          <h2><a class="follow-link" href="http://opendata.arcgis.com" target="_blank">ArcGIS Open Data</a></h2>
+          <aside class="notes">Open Data is build against the same API</aside>
+        </section>
+
+        <section>
+          <img class="screen-shot" src="images/opendata-backbone.png">
+          <h2><a class="follow-link" href="http://mjuniper.github.io/OpenData-Backbone" target="_blank">mjuniper.github.io/OpenData-Backbone</a></h2>
+        </section>
+
+        <section>
+          <h1>Ok,... how?</h1>
+          <h3 class="fragment">For this you're gonna need a developer.</h3>
+
+          <div class="fragment">
+            Fork it: <a href="https://github.co/mjuniper/OpenData-Backbone" target="_blank">github.co/mjuniper/OpenData-Backbone</a>
+            <div>then:</div>
+          </div>
+          <div class="fragment">
+            <pre class="code">
+              <code class="bash">
+                $ git clone
+                $ cd opendata-backbone
+                $ npm install
+                $ bower install
+                $ gulp serve
+              </code>
+            </pre>
+          </div>
+        </section>
+
+        <section>
+          <h1>Key endpoints:</h1>
+          <div class="fragment">
+            <h3><pre><code class="html">/datasets.json?q=&lt;search string&gt;&page=&lt;page number&gt;</code></pre></h3>
+            <h3><pre><code class="javascript">$.getJson(MyApiUrl + '/datasets.json?q=water&page=1');</code></pre></h3>
+          </div>
+          
+          <div class="fragment">
+            <div>and</div>
+            <h3><pre><code class="html">/datasets/&lt;id&gt;.json</code></pre></h3>
+            <h3><pre><code class="javascript">$.getJson(MyApiUrl + '/datasets/abc123.json');</code></pre></h3>
+          </div>
+
+          <div class="fragment">
+            <div>And maybe:</div>
+            <h3><pre><code class="html">/datasets/autocomplete?query=&lt;search string&gt;</code></pre></h3>
+            <h3><pre><code class="javascript">$.getJson(MyApiUrl + '/datasets/autocomplete?query=wat');</code></pre></h3>
+          </div>
+        </section>
+
+        <section>
+          <h1>In backbone-land...</h1>
+        </section>
+
+        <section>
+          <pre><code class="javascript">
+MyOD.module('Models', function (Models, App, Backbone, Marionette, $, _) {    
+  Models.DatasetCollection = Backbone.Collection.extend({
+    
+    url: function () {
+      //get the params (q=, page=, etc) from somewhere
+      var queryParams = '';
+      return MyOD.config.api + 'datasets.json?' + queryParams;
+    },
+    parse: function (resp) {
+      App.searchModel.set(_.extend(resp.metadata.query_parameters, resp.metadata.stats));
+      return resp.data;
+    }
+
+  });
+});
+          </code></pre>
+          
+          <div class="fragment">
+            <div>and</div>
+            <pre><code class="javascript">
+MyOD.module('Models', function (Models, App, Backbone, Marionette, $, _) {   
+  Models.DatasetModel = Backbone.Model.extend({
+    
+    url: function () {
+      return MyOD.config.api + 'datasets/' + this.get('id') + '.json';
+    },
+    parse: function (response) {
+      var data = response.data || response;
+      return data;
+    }
+    
+  });
+});
+            </code></pre>
+          </div>
+        </section>
+
+        <section>
+          <h1>Technologies</h1>
+          <img class="framework-logo" src="images/backbone.png">
+          <img class="framework-logo" src="images/marionette.svg">
+          <img class="framework-logo" src="images/bootstrap-logo.png">
+        </section>
+
+        <section>
+          <h1>More planned?</h1>
+          <img class="framework-logo" src="images/0cf15665a9146ba852bf042b0652780a.png">
+          <img class="framework-logo" src="images/angularjs-for-header-only.svg">
+          <img class="framework-logo" src="images/react.svg">
+          <img class="framework-logo" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNy4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIyMDEuMSAyNzQuMiAyMTYgMjUxLjciIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMjAxLjEgMjc0LjIgMjE2IDI1MS43IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxnPg0KCQk8cGF0aCBmaWxsPSIjRUIzQjk1IiBkPSJNMzA2LjMsMzg1LjlsNDMuNiw1Mi43bDEuNS0xLjVjNC43LTUsOS4xLTEwLDEzLjMtMTVjNC4xLTUsMTUtMTYuNSwxOC45LTIxLjhsMTcuMSwzMS4yDQoJCQljLTIuOSw0LjEtNi44LDkuMS0xMS41LDE0LjdzLTEwLjMsMTIuMS0xNy4xLDE5LjJsNDUuMSw1NS43aC00NS43bC0yNC4yLTI5LjhjLTIyLjEsMjMtNDUuNCwzNC41LTY5LjIsMzQuNQ0KCQkJYy0yMS41LDAtMzkuOC02LjgtNTQuOC0yMC42Yy0xNC43LTEzLjgtMjIuMS0zMC45LTIyLjEtNTEuM2MwLTI0LjIsMTEuNS00NC41LDM1LjEtNjAuNGwxNS45LTEwLjljMC4zLDAsMC42LTAuMywxLjItMC45DQoJCQljMC42LTAuMywxLjItMC45LDIuMS0xLjhjLTE1LjktMTcuMS0yNC4yLTMzLjktMjQuMi01MC40czUuMy0yOS44LDE1LjktNDAuMWMxMC45LTEwLjMsMjUtMTUuMyw0Mi40LTE1LjNjMTYuOCwwLDMwLjQsNSw0MS4zLDE1DQoJCQlzMTYuNSwyMi43LDE2LjUsMzcuN2MwLDEwLjYtMi45LDIwLTguOCwyOC42QzMzMi4yLDM2My44LDMyMS42LDM3NC4xLDMwNi4zLDM4NS45eiBNMjc3LjEsNDA2LjVsLTIuMSwxLjUNCgkJCWMtMTUsMTAuMy0yNS4zLDE4LjktMzAuNiwyNXMtOCwxMy04LDIwYzAsMTAsNC4xLDE5LjQsMTIuMSwyNy43YzguMyw4LDE3LjcsMTIuMSwyNy43LDEyLjFjMTQuMSwwLDMwLjQtOS4xLDQ4LjktMjcuNw0KCQkJTDI3Ny4xLDQwNi41eiBNMjg1LjEsMzYwLjJsMi45LTIuNGM1LTMuOCw5LjQtNy40LDEyLjctMTBjMy4yLTIuOSw1LjktNS4zLDcuNC03LjRjMy4yLTMuOCw0LjctOC41LDQuNy0xNC40DQoJCQljMC02LjUtMi4xLTExLjUtNi41LTE1LjZzLTEwLTUuOS0xNy40LTUuOWMtNi41LDAtMTIuMSwyLjEtMTYuOCw2LjJjLTQuNCwzLjgtNi44LDguOC02LjgsMTVjMCw3LjEsMi45LDE0LjEsOC41LDIxLjJsOS4xLDEwLjkNCgkJCUMyODMuMywzNTguMiwyODMuOSwzNTksMjg1LjEsMzYwLjJ6Ii8+DQoJPC9nPg0KPC9nPg0KPC9zdmc+DQo=">
+        </section>
+
+
+
+
+        <section>
+          <h1>Rate This Session</h1>
+          <h2><a href="http://www.esri.com/RateMyDevSummitSession">www.esri.com/RateMyDevSummitSession</a></h2>
+        </section>
+
+      </div>
+
+      <div id="slide-footer">
+        <div class="left">
+          Esri UC 2015 | Developing with ArcGIS Open Data
+        </div>
+        <div class="right">
+          <a href="http://mjuniper.github.io/presentations/opendata-api.html">mjuniper.github.io/presentations/opendata-api.html</a>
+        </div>
+      </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="scripts/reveal.min.js"></script>
+
+    <script>
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        history: true,
+        previewLinks: false,
+        transition: 'linear', // default/cube/page/concave/zoom/linear/fade/none
+        width: 1600,
+        height: 900,
+        minScale: 0.2,
+        maxScale: 1.0,
+
+        keyboard: {
+          13: function () {
+            var curSlide = Reveal.getCurrentSlide();
+
+            els = curSlide.querySelectorAll(':scope > a.follow-link, :scope > h1 > a.follow-link, .fragment.visible > a.follow-link')
+
+            if (els && els.length) {
+              var el = els[els.length - 1];
+              var evObj = document.createEvent('Events');
+              evObj.initEvent('click', true, false);
+              el.dispatchEvent(evObj);
+            } 
+          }
+        },
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+    </script>
+
+  </body>
+</html>

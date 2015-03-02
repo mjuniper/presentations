@@ -1,0 +1,57 @@
+
+div.backgrounds > .present:first-child {
+  background-image: url(../images/dev-summit-2015-2.png) !important;
+}
+
+li.fragment {
+  line-height: 2em;
+}
+
+section img.framework-logo {
+  height: 150px;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  margin: 5%;
+}
+
+/*section .image-slanted {
+  position: absolute;
+  top: -250px;
+}
+
+section .image-slanted img {
+  width: 60%;
+  transform: rotate(-15deg);
+}*/
+
+section img.screen-shot {
+  width: 1000px;
+  transform: rotate(5deg);
+  margin-bottom: 60px;
+  margin-top: -60px;
+}
+
+pre.code {
+  background-color: #3F3F3F;
+  font-size: 1em;
+}
+
+pre code {
+  padding: 15px !important;
+}
+
+#slide-footer {
+  color: lightgray;
+  position: absolute;
+  bottom: 0;
+  z-index: 9;
+  font-size: 0.4em;
+  padding: 0 10px 10px 15px;
+  left: 0;
+  right: 0;
+}
+
+div.fragment {
+  margin-top: 0px;
+}

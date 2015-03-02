@@ -15,7 +15,8 @@
  * GLOBAL STYLES
  *********************************************/
 body {
-  background-image: -webkit-gradient(
+  background-color: #064476;
+  /*background-image: -webkit-gradient(
     linear,
     left top,
     left bottom,
@@ -26,7 +27,7 @@ body {
   background-image: -moz-linear-gradient(bottom, #064476 0%, #08C8F3 100%);
   background-image: -webkit-linear-gradient(bottom, #064476 0%, #08C8F3 100%);
   background-image: -ms-linear-gradient(bottom, #064476 0%, #08C8F3 100%);
-  background-image: linear-gradient(to bottom, #064476 0%, #08C8F3 100%);
+  background-image: linear-gradient(to bottom, #064476 0%, #08C8F3 100%);*/
 }
 
 .reveal {
