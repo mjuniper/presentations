@@ -45,15 +45,29 @@
         <section class="title">
           <h1>Developing with ArcGIS Open Data</h1>
           <p>
-            <h3>Mike Juniper :: Washington DC R&amp;D Center</h3>
+            <h4>Mike Juniper :: Washington DC R&amp;D Center</h4>
+            <h4>Brooks Robertson :: Washington DC R&amp;D Center</h4>
+            <h4>Daniel Fenton :: Washington DC R&amp;D Center</h4>
           </p>
         </section>
 
         <section>
           <h1>ArcGIS Open Data</h1>
+          
+          <h3 class="fragment"><a class="follow-link" target="_blank" href="http://clt.charlotte.opendata.arcgis.com">clt.charlotte.opendata.arcgis.com</a></h3>
+
+          <aside class="notes">
+            <ul>
+              <li>You've got an open data site...</li>
+              <li>but what if </li>
+              <li>the site customizations options we provide are not enough</li>
+              <li>or you already have a data portal and want to make the data from your Open Data site available through it</li>
+              <li>or you want to make data in another system available via your Open Data site</li>
+            </ul>
+          </aside>
         </section>
 
-        <section >
+        <section>
           <h1>Interoperability</h1>
           <ul>
             <li class="fragment">
@@ -69,7 +83,7 @@
               <a href="https://github.com/ArcGIS/composer-api">OpenData API</a>
             </li>
             <li class="fragment">
-              Building against the API
+              <a href="https://github.com/mjuniper/OpenData-Backbone">Building an app against the API</a>
             </li>
           </ul>
         </section>
@@ -84,15 +98,10 @@
               <a href="http://nodejs.org">node js</a>
             </li>
             <li class="fragment">
-              interoperability
-              <ul>
-                <li class="fragment">
-                  geojson (&amp; others) &nbsp;&nbsp;&nbsp;==&gt;&nbsp;&nbsp;&nbsp; feature services
-                </li>
-                <li class="fragment">
-                  feature services &nbsp;&nbsp;&nbsp;==&gt;&nbsp;&nbsp;&nbsp; geojson
-                </li>
-              </ul>
+              geojson (&amp; others) &nbsp;&nbsp;&nbsp;==&gt;&nbsp;&nbsp;&nbsp; feature services
+            </li>
+            <li class="fragment">
+              feature services &nbsp;&nbsp;&nbsp;==&gt;&nbsp;&nbsp;&nbsp; geojson
             </li>
             <li class="fragment">
               export as kml, csv, shp
@@ -102,22 +111,23 @@
 
         <section>
           <h1>Socrata</h1>
-          <a href="http://data.seattle.gov/resource/2tje-83f6.json"></a>
-          <a class="follow-link" href="http://data.seattle.gov/resource/2tje-83f6.json" target="_blank">data.seattle.gov/resource/2tje-83f6.json</a>
+
+          <div class="fragment">
+            <a class="follow-link" href="https://data.seattle.gov/Community/Schools/pmap-kbvr" target="_blank">data.seattle.gov/Community/Schools/pmap-kbvr</a>
+          </div>
+
+          <div class="fragment">
+            <a class="follow-link" href="http://data.seattle.gov/resource/2tje-83f6.json" target="_blank">data.seattle.gov/resource/2tje-83f6.json</a>
+          </div>
 
           <div class="fragment">
             <h3>Via koop:</h3>
-            <a class="follow-link" href="http://koop.dc.esri.com/socrata/seattle/2tje-83f6" target="_blank">koop.dc.esri.com/socrata/seattle/2tje-83f6</a>
+            <a class="follow-link" href="http://koop.dc.esri.com/socrata/seattle/2tje-83f6/FeatureServer/0" target="_blank">koop.dc.esri.com/socrata/seattle/2tje-83f6/FeatureServer/0</a>
           </div>
 
           <div class="fragment">
             <h3>Registered as an item in ArcGIS Online:</h3>
             <a class="follow-link" href="http://dcdev.maps.arcgis.com/home/item.html?id=ebf151a0feda4c57ac7422dcd48d87dc" target="_blank">dcdev.maps.arcgis.com/home/item.html?id=ebf151a0feda4c57ac7422dcd48d87dc</a>
-          </div>
-
-          <div class="fragment">
-            <h3>In Open Data:</h3>
-            <a class="follow-link" href="" target="_blank"></a>
           </div>
         </section>
 
@@ -137,6 +147,7 @@
         <section>
           <img class="screen-shot" src="images/umbrella.png">
           <h2><a class="follow-link" href="http://opendata.arcgis.com" target="_blank">ArcGIS Open Data</a></h2>
+
           <aside class="notes">Open Data is build against the same API</aside>
         </section>
 
@@ -146,11 +157,24 @@
         </section>
 
         <section>
-          <h1>Ok,... how?</h1>
-          <h3 class="fragment">For this you're gonna need a developer.</h3>
+          <img class="framework-logo" src="images/backbone.png">
+          <img class="framework-logo" src="images/marionette.svg">
+          <img class="framework-logo" src="images/bootstrap-logo.png">
 
+          <aside class="notes">
+            <ul>
+              <li>Backbone & Marionette because I know them well and could build it quickly</li>
+              <li>Also because even if you don't use them, it's pretty easy to understand</li>
+              <li>Bootstrap because it's widely known, well documented, and extensible</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h1>Ok,... how?</h1>
+          
           <div class="fragment">
-            Fork it: <a href="https://github.co/mjuniper/OpenData-Backbone" target="_blank">github.co/mjuniper/OpenData-Backbone</a>
+            Fork it: <a class="follow-link" href="https://github.com/mjuniper/OpenData-Backbone" target="_blank">github.com/mjuniper/OpenData-Backbone</a>
             <div>then:</div>
           </div>
           <div class="fragment">
@@ -170,19 +194,78 @@
           <h1>Key endpoints:</h1>
           <div class="fragment">
             <h3><pre><code class="html">/datasets.json?q=&lt;search string&gt;&page=&lt;page number&gt;</code></pre></h3>
+            <a class="follow-link" href="http://opendata.arcgis.com/datasets.json?q=water&page=1" target="_blank"></a>
+          </div>
+
+          <div class="fragment">
             <h3><pre><code class="javascript">$.getJson(MyApiUrl + '/datasets.json?q=water&page=1');</code></pre></h3>
           </div>
           
           <div class="fragment">
             <div>and</div>
             <h3><pre><code class="html">/datasets/&lt;id&gt;.json</code></pre></h3>
-            <h3><pre><code class="javascript">$.getJson(MyApiUrl + '/datasets/abc123.json');</code></pre></h3>
+            <a class="follow-link" href="http://opendata.arcgis.com/datasets/354b5206149c4863abf3d77710063489_2.json" target="_blank"></a>
           </div>
 
           <div class="fragment">
-            <div>And maybe:</div>
+            <h3><pre><code class="javascript">$.getJson(MyApiUrl + '/datasets/abc123.json');</code></pre></h3>
+          </div>
+
+          <aside class="notes">
+            <ul>
+              <li>jsonview</li>
+              <li>overall structure of the JSON</li>
+              <li>
+                key attributes:
+                <ul>
+                  <li>id</li>
+                  <li>item_type</li>
+                  <li>type</li>
+                  <li>url</li>
+                </ul>
+              </li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h1>And maybe:</h1>
+
+          <div class="fragment">
+            <h3><pre><code class="html">/datasets/&lt;id&gt;/related.json</code></pre></h3>
+            <a class="follow-link" href="http://opendata.arcgis.com/datasets/354b5206149c4863abf3d77710063489_2/related.json" target="_blank"></a>
+          </div>
+
+          <div class="fragment">
+            <h3><pre><code class="javascript">$.getJson(MyApiUrl + '/datasets/abc123/related.json');</code></pre></h3>
+          </div>
+
+          <div class="fragment">
+            <div>And:</div>
             <h3><pre><code class="html">/datasets/autocomplete?query=&lt;search string&gt;</code></pre></h3>
+            <a class="follow-link" href="http://opendata.arcgis.com/datasets/autocomplete.json?query=wate" target="_blank"></a>
+          </div>
+
+          <div class="fragment">
             <h3><pre><code class="javascript">$.getJson(MyApiUrl + '/datasets/autocomplete?query=wat');</code></pre></h3>
+          </div>
+        </section>
+
+        <section>
+          <h1>Also:</h1>
+          <div class="fragment">
+            <h3><pre><code class="html">/datasets/&lt;id&gt;.csv</code></pre></h3>
+            <a class="follow-link" href="http://opendata.arcgis.com/datasets/354b5206149c4863abf3d77710063489_2.csv" target="_blank"></a>
+          </div>
+          
+          <div class="fragment">
+            <h3><pre><code class="html">/datasets/&lt;id&gt;.kml</code></pre></h3>
+            <a class="follow-link" href="http://opendata.arcgis.com/datasets/354b5206149c4863abf3d77710063489_2.kml" target="_blank"></a>
+          </div>
+
+          <div class="fragment">
+            <h3><pre><code class="html">/datasets/&lt;id&gt;.zip</code></pre></h3>
+            <a class="follow-link" href="http://opendata.arcgis.com/datasets/354b5206149c4863abf3d77710063489_2.zip" target="_blank"></a>
           </div>
         </section>
 
@@ -192,52 +275,42 @@
 
         <section>
           <pre><code class="javascript">
-MyOD.module('Models', function (Models, App, Backbone, Marionette, $, _) {    
-  Models.DatasetCollection = Backbone.Collection.extend({
-    
-    url: function () {
-      //get the params (q=, page=, etc) from somewhere
-      var queryParams = '';
-      return MyOD.config.api + 'datasets.json?' + queryParams;
-    },
-    parse: function (resp) {
-      App.searchModel.set(_.extend(resp.metadata.query_parameters, resp.metadata.stats));
-      return resp.data;
-    }
+DatasetCollection = Backbone.Collection.extend({
+  
+  url: function () {
+    //get the params (q=, page=, etc) from somewhere...
+    var queryParams = '';
+    return MyOD.config.api + 'datasets.json?' + queryParams;
+  },
 
-  });
+  parse: function (resp) {
+    return resp.data;
+  }
+
 });
           </code></pre>
+          <a class="follow-link" target="_blank" href="https://github.com/mjuniper/OpenData-Backbone/blob/master/app/scripts/entities/dataset-collection.js#L13"></a>
           
           <div class="fragment">
             <div>and</div>
             <pre><code class="javascript">
-MyOD.module('Models', function (Models, App, Backbone, Marionette, $, _) {   
-  Models.DatasetModel = Backbone.Model.extend({
-    
-    url: function () {
-      return MyOD.config.api + 'datasets/' + this.get('id') + '.json';
-    },
-    parse: function (response) {
-      var data = response.data || response;
-      return data;
-    }
-    
-  });
+DatasetModel = Backbone.Model.extend({
+  
+  url: function () {
+    return MyOD.config.api + 'datasets/' + this.get('id') + '.json';
+  },
+
+  parse: function (response) {
+    return response.data;
+  }
+  
 });
             </code></pre>
           </div>
         </section>
 
         <section>
-          <h1>Technologies</h1>
-          <img class="framework-logo" src="images/backbone.png">
-          <img class="framework-logo" src="images/marionette.svg">
-          <img class="framework-logo" src="images/bootstrap-logo.png">
-        </section>
-
-        <section>
-          <h1>More planned?</h1>
+          <h1>More to come?</h1>
           <img class="framework-logo" src="images/0cf15665a9146ba852bf042b0652780a.png">
           <img class="framework-logo" src="images/angularjs-for-header-only.svg">
           <img class="framework-logo" src="images/react.svg">
@@ -278,12 +351,13 @@ MyOD.module('Models', function (Models, App, Backbone, Marionette, $, _) {
         height: 900,
         minScale: 0.2,
         maxScale: 1.0,
+        slideNumber: true,
 
         keyboard: {
           13: function () {
             var curSlide = Reveal.getCurrentSlide();
 
-            els = curSlide.querySelectorAll(':scope > a.follow-link, :scope > h1 > a.follow-link, .fragment.visible > a.follow-link')
+            els = curSlide.querySelectorAll(':scope > a.follow-link, :scope > h1 > a.follow-link, :scope > h2 > a.follow-link, .fragment.visible > a.follow-link');
 
             if (els && els.length) {
               var el = els[els.length - 1];
