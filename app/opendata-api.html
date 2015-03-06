@@ -289,6 +289,31 @@ $.getJSON('http://my.api.url')
         </section>
 
         <section>
+          <h2><pre><code class="javascript">
+$.getJSON('http://my.api.url')
+  .done(function (response, status, xhr) { 
+    if (response.error) {
+      /* you don't have to do this! */
+    }
+  })
+  .fail(function (xhr, status, error) {
+    switch (xhr.status) {
+      case 404:
+        /* handle 404 */
+      default:
+        /* handle other errors */
+    }
+  });
+          </code></pre></h2>
+
+          <aside class="notes">
+            <ul>
+              <li>so you can handle errors like you'd expect</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
           <img class="screen-shot" src="images/opendata-backbone.png">
           <h2><a class="follow-link" href="http://mjuniper.github.io/OpenData-Backbone" target="_blank">mjuniper.github.io/OpenData-Backbone</a></h2>
         </section>

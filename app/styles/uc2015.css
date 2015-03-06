@@ -47,8 +47,9 @@ pre.code {
   font-size: 1em;
 }
 
-pre code {
-  padding: 15px !important;
+.reveal section pre code {
+  padding: 15px;
+  max-height: inherit;
 }
 
 #slide-footer {
