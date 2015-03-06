@@ -132,8 +132,13 @@
         </section>
 
         <section>
+          <h1>OpenSearch &amp; DCAT</h1>
+          <h3>Daniel Fenton</h3>
+        </section>
+
+        <section>
           <h1>Open Data API</h1>
-          Brooks/Alex...
+          <h3>Brooks Robertson</h3>
         </section>
 
         <section>
@@ -171,7 +176,26 @@ $.getJSON('http://my.api.url')
     /* do something about the error! */ 
   });
           </code></pre></h2>
-          <div class="fragment capture-event" data-action="strikethrough"><!-- hack so i can listen for the fragmentshown event and strikethrough the code above --></div>
+          
+
+          <aside class="notes">
+            <ul>
+              <li>if you're familiar with jquery, you might do something like this</li>
+              <li>but unless you're building a trivial app, don't do it that way</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section class="strikethrough" data-transition="fade" data-transition-speed="slow">
+          <h2><pre><code class="javascript">
+$.getJSON('http://my.api.url')
+  .done(function (response, status, xhr) { 
+    /* do something with the response! */ 
+  })
+  .fail(function (xhr, status, error) { 
+    /* do something about the error! */ 
+  });
+          </code></pre></h2>
 
           <aside class="notes">
             <ul>
@@ -314,6 +338,16 @@ $.getJSON('http://my.api.url')
         </section>
 
         <section>
+          <h1>Gotcha's:</h1>
+          <ul>
+            <li class="fragment">Currently no JSONP support</li>
+            <li class="fragment">Does support CORS</li>
+            <li class="fragment">But ... IE &lt; 10</li>
+            <li class="fragment">HTTP only</li>
+          </ul>
+        </section>
+
+        <section>
           <img class="screen-shot" src="images/opendata-backbone.png">
           <h2><a class="follow-link" href="http://mjuniper.github.io/OpenData-Backbone" target="_blank">mjuniper.github.io/OpenData-Backbone</a></h2>
         </section>
@@ -325,7 +359,7 @@ $.getJSON('http://my.api.url')
 
           <aside class="notes">
             <ul>
-              <li>Backbone & Marionette because I know them well and could build it quickly</li>
+              <li>Backbone &amp; Marionette because I know them well and could build it quickly</li>
               <li>Also because even if you don't use them, it's pretty easy to understand</li>
               <li>Bootstrap because it's widely known, well documented, and extensible</li>
             </ul>
@@ -466,15 +500,15 @@ DatasetModel = Backbone.Model.extend({
         ]
       });
 
-      Reveal.addEventListener('fragmentshown', function (event) {
-        if (event.fragment.className.indexOf('capture-event') > -1) {
-          window[event.fragment.attributes.getNamedItem('data-action').value](event.fragment.parentElement);
-        }
-      });
+      // Reveal.addEventListener('fragmentshown', function (event) {
+      //   if (event.fragment.className.indexOf('capture-event') > -1) {
+      //     window[event.fragment.attributes.getNamedItem('data-action').value](event.fragment.parentElement);
+      //   }
+      // });
 
-      function strikethrough(el) {
-        el.classList.add('strikethrough');
-      }
+      // function strikethrough(el) {
+      //   el.classList.add('strikethrough');
+      // }
 
     </script>
 
