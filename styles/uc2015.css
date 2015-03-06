@@ -11,6 +11,12 @@ li.fragment {
   line-height: 2em;
 }
 
+.reveal section img {
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
 section img.framework-logo {
   height: 200px;
   background-color: transparent;
