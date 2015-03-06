@@ -152,6 +152,134 @@
         </section>
 
         <section>
+          <img src="images/api-arch.png">
+
+          <aside class="notes">
+            <ul>
+              <li>A static website that makes http requests for data</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h2><pre><code class="javascript">
+$.getJSON('http://my.api.url')
+  .done(function (response, status, xhr) { 
+    /* do something with the response! */ 
+  })
+  .fail(function (xhr, status, error) { 
+    /* do something about the error! */ 
+  });
+          </code></pre></h2>
+          <div class="fragment capture-event" data-action="strikethrough"><!-- hack so i can listen for the fragmentshown event and strikethrough the code above --></div>
+
+          <aside class="notes">
+            <ul>
+              <li>if you're familiar with jquery, you might do something like this</li>
+              <li>but unless you're building a trivial app, don't do it that way</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <img class="framework-logo" src="images/backbone.png">
+          <img class="framework-logo" src="images/marionette.svg">
+          <img class="framework-logo" src="images/0cf15665a9146ba852bf042b0652780a.png">
+          <img class="framework-logo" src="images/angularjs-for-header-only.svg">
+          <img class="framework-logo" src="images/react.svg">
+          <img class="framework-logo" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNy4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIyMDEuMSAyNzQuMiAyMTYgMjUxLjciIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMjAxLjEgMjc0LjIgMjE2IDI1MS43IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxnPg0KCQk8cGF0aCBmaWxsPSIjRUIzQjk1IiBkPSJNMzA2LjMsMzg1LjlsNDMuNiw1Mi43bDEuNS0xLjVjNC43LTUsOS4xLTEwLDEzLjMtMTVjNC4xLTUsMTUtMTYuNSwxOC45LTIxLjhsMTcuMSwzMS4yDQoJCQljLTIuOSw0LjEtNi44LDkuMS0xMS41LDE0LjdzLTEwLjMsMTIuMS0xNy4xLDE5LjJsNDUuMSw1NS43aC00NS43bC0yNC4yLTI5LjhjLTIyLjEsMjMtNDUuNCwzNC41LTY5LjIsMzQuNQ0KCQkJYy0yMS41LDAtMzkuOC02LjgtNTQuOC0yMC42Yy0xNC43LTEzLjgtMjIuMS0zMC45LTIyLjEtNTEuM2MwLTI0LjIsMTEuNS00NC41LDM1LjEtNjAuNGwxNS45LTEwLjljMC4zLDAsMC42LTAuMywxLjItMC45DQoJCQljMC42LTAuMywxLjItMC45LDIuMS0xLjhjLTE1LjktMTcuMS0yNC4yLTMzLjktMjQuMi01MC40czUuMy0yOS44LDE1LjktNDAuMWMxMC45LTEwLjMsMjUtMTUuMyw0Mi40LTE1LjNjMTYuOCwwLDMwLjQsNSw0MS4zLDE1DQoJCQlzMTYuNSwyMi43LDE2LjUsMzcuN2MwLDEwLjYtMi45LDIwLTguOCwyOC42QzMzMi4yLDM2My44LDMyMS42LDM3NC4xLDMwNi4zLDM4NS45eiBNMjc3LjEsNDA2LjVsLTIuMSwxLjUNCgkJCWMtMTUsMTAuMy0yNS4zLDE4LjktMzAuNiwyNXMtOCwxMy04LDIwYzAsMTAsNC4xLDE5LjQsMTIuMSwyNy43YzguMyw4LDE3LjcsMTIuMSwyNy43LDEyLjFjMTQuMSwwLDMwLjQtOS4xLDQ4LjktMjcuNw0KCQkJTDI3Ny4xLDQwNi41eiBNMjg1LjEsMzYwLjJsMi45LTIuNGM1LTMuOCw5LjQtNy40LDEyLjctMTBjMy4yLTIuOSw1LjktNS4zLDcuNC03LjRjMy4yLTMuOCw0LjctOC41LDQuNy0xNC40DQoJCQljMC02LjUtMi4xLTExLjUtNi41LTE1LjZzLTEwLTUuOS0xNy40LTUuOWMtNi41LDAtMTIuMSwyLjEtMTYuOCw2LjJjLTQuNCwzLjgtNi44LDguOC02LjgsMTVjMCw3LjEsMi45LDE0LjEsOC41LDIxLjJsOS4xLDEwLjkNCgkJCUMyODMuMywzNTguMiwyODMuOSwzNTksMjg1LjEsMzYwLjJ6Ii8+DQoJPC9nPg0KPC9nPg0KPC9zdmc+DQo=">
+
+          <aside class="notes">
+            <ul>
+              <li>use an mvc framework instead</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h1>Key endpoints:</h1>
+          <div class="fragment">
+            <h3><pre><code class="html">/datasets.json?q=&lt;search string&gt;&page=&lt;page number&gt;</code></pre></h3>
+            <a class="follow-link" href="http://opendata.arcgis.com/datasets.json?q=water&page=1" target="_blank"></a>
+          </div>
+
+          <div class="fragment">
+            <h3><pre><code class="javascript">$.getJSON(MyApiUrl + '/datasets.json?q=water&page=1');</code></pre></h3>
+          </div>
+          
+          <div class="fragment">
+            <div>and</div>
+            <h3><pre><code class="html">/datasets/&lt;id&gt;.json</code></pre></h3>
+            <a class="follow-link" href="http://opendata.arcgis.com/datasets/354b5206149c4863abf3d77710063489_2.json" target="_blank"></a>
+          </div>
+
+          <div class="fragment">
+            <h3><pre><code class="javascript">$.getJSON(MyApiUrl + '/datasets/abc123.json');</code></pre></h3>
+          </div>
+
+          <aside class="notes">
+            <ul>
+              <li>jsonview</li>
+              <li>overall structure of the JSON</li>
+              <li>
+                key attributes:
+                <ul>
+                  <li>id</li>
+                  <li>item_type</li>
+                  <li>type</li>
+                  <li>url - which is another api from which you can get the actual data</li>
+                </ul>
+              </li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h1>And maybe:</h1>
+
+          <div class="fragment">
+            <h3><pre><code class="html">/datasets/&lt;id&gt;/related.json</code></pre></h3>
+            <a class="follow-link" href="http://opendata.arcgis.com/datasets/354b5206149c4863abf3d77710063489_2/related.json" target="_blank"></a>
+          </div>
+
+          <div class="fragment">
+            <h3><pre><code class="javascript">$.getJSON(MyApiUrl + '/datasets/abc123/related.json');</code></pre></h3>
+          </div>
+
+          <div class="fragment">
+            <div>And:</div>
+            <h3><pre><code class="html">/datasets/autocomplete?query=&lt;search string&gt;</code></pre></h3>
+            <a class="follow-link" href="http://opendata.arcgis.com/datasets/autocomplete.json?query=wate" target="_blank"></a>
+          </div>
+
+          <div class="fragment">
+            <h3><pre><code class="javascript">$.getJSON(MyApiUrl + '/datasets/autocomplete?query=wat');</code></pre></h3>
+          </div>
+        </section>
+
+        <section>
+          <h1>Also:</h1>
+          <div class="fragment">
+            <h3><pre><code class="html">/datasets/&lt;id&gt;.csv</code></pre></h3>
+            <a class="follow-link" href="http://opendata.arcgis.com/datasets/354b5206149c4863abf3d77710063489_2.csv" target="_blank"></a>
+          </div>
+          
+          <div class="fragment">
+            <h3><pre><code class="html">/datasets/&lt;id&gt;.kml</code></pre></h3>
+            <a class="follow-link" href="http://opendata.arcgis.com/datasets/354b5206149c4863abf3d77710063489_2.kml" target="_blank"></a>
+          </div>
+
+          <div class="fragment">
+            <h3><pre><code class="html">/datasets/&lt;id&gt;.zip</code></pre></h3>
+            <a class="follow-link" href="http://opendata.arcgis.com/datasets/354b5206149c4863abf3d77710063489_2.zip" target="_blank"></a>
+          </div>
+        </section>
+
+        <section>
+          <h1>TODO: how errors are handled by the api and how to handle them in code...</h1>
+        </section>
+
+        <section>
           <img class="screen-shot" src="images/opendata-backbone.png">
           <h2><a class="follow-link" href="http://mjuniper.github.io/OpenData-Backbone" target="_blank">mjuniper.github.io/OpenData-Backbone</a></h2>
         </section>
@@ -187,85 +315,6 @@
                 $ gulp serve
               </code>
             </pre>
-          </div>
-        </section>
-
-        <section>
-          <h1>Key endpoints:</h1>
-          <div class="fragment">
-            <h3><pre><code class="html">/datasets.json?q=&lt;search string&gt;&page=&lt;page number&gt;</code></pre></h3>
-            <a class="follow-link" href="http://opendata.arcgis.com/datasets.json?q=water&page=1" target="_blank"></a>
-          </div>
-
-          <div class="fragment">
-            <h3><pre><code class="javascript">$.getJson(MyApiUrl + '/datasets.json?q=water&page=1');</code></pre></h3>
-          </div>
-          
-          <div class="fragment">
-            <div>and</div>
-            <h3><pre><code class="html">/datasets/&lt;id&gt;.json</code></pre></h3>
-            <a class="follow-link" href="http://opendata.arcgis.com/datasets/354b5206149c4863abf3d77710063489_2.json" target="_blank"></a>
-          </div>
-
-          <div class="fragment">
-            <h3><pre><code class="javascript">$.getJson(MyApiUrl + '/datasets/abc123.json');</code></pre></h3>
-          </div>
-
-          <aside class="notes">
-            <ul>
-              <li>jsonview</li>
-              <li>overall structure of the JSON</li>
-              <li>
-                key attributes:
-                <ul>
-                  <li>id</li>
-                  <li>item_type</li>
-                  <li>type</li>
-                  <li>url</li>
-                </ul>
-              </li>
-            </ul>
-          </aside>
-        </section>
-
-        <section>
-          <h1>And maybe:</h1>
-
-          <div class="fragment">
-            <h3><pre><code class="html">/datasets/&lt;id&gt;/related.json</code></pre></h3>
-            <a class="follow-link" href="http://opendata.arcgis.com/datasets/354b5206149c4863abf3d77710063489_2/related.json" target="_blank"></a>
-          </div>
-
-          <div class="fragment">
-            <h3><pre><code class="javascript">$.getJson(MyApiUrl + '/datasets/abc123/related.json');</code></pre></h3>
-          </div>
-
-          <div class="fragment">
-            <div>And:</div>
-            <h3><pre><code class="html">/datasets/autocomplete?query=&lt;search string&gt;</code></pre></h3>
-            <a class="follow-link" href="http://opendata.arcgis.com/datasets/autocomplete.json?query=wate" target="_blank"></a>
-          </div>
-
-          <div class="fragment">
-            <h3><pre><code class="javascript">$.getJson(MyApiUrl + '/datasets/autocomplete?query=wat');</code></pre></h3>
-          </div>
-        </section>
-
-        <section>
-          <h1>Also:</h1>
-          <div class="fragment">
-            <h3><pre><code class="html">/datasets/&lt;id&gt;.csv</code></pre></h3>
-            <a class="follow-link" href="http://opendata.arcgis.com/datasets/354b5206149c4863abf3d77710063489_2.csv" target="_blank"></a>
-          </div>
-          
-          <div class="fragment">
-            <h3><pre><code class="html">/datasets/&lt;id&gt;.kml</code></pre></h3>
-            <a class="follow-link" href="http://opendata.arcgis.com/datasets/354b5206149c4863abf3d77710063489_2.kml" target="_blank"></a>
-          </div>
-
-          <div class="fragment">
-            <h3><pre><code class="html">/datasets/&lt;id&gt;.zip</code></pre></h3>
-            <a class="follow-link" href="http://opendata.arcgis.com/datasets/354b5206149c4863abf3d77710063489_2.zip" target="_blank"></a>
           </div>
         </section>
 
@@ -382,6 +431,16 @@ DatasetModel = Backbone.Model.extend({
           { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
         ]
       });
+
+      Reveal.addEventListener('fragmentshown', function (event) {
+        if (event.fragment.className.indexOf('capture-event') > -1) {
+          window[event.fragment.attributes.getNamedItem('data-action').value](event.fragment.parentElement);
+        }
+      });
+
+      function strikethrough(el) {
+        el.classList.add('strikethrough');
+      }
 
     </script>
 
