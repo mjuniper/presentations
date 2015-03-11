@@ -110,6 +110,10 @@
         </section>
 
         <section>
+          <img src="images/arch.jpeg">
+        </section>
+
+        <section>
           <h1>Socrata</h1>
 
           <div class="fragment">
@@ -248,7 +252,7 @@
           <img class="screen-shot" src="images/umbrella.png">
           <h2><a class="follow-link" href="http://opendata.arcgis.com" target="_blank">ArcGIS Open Data</a></h2>
 
-          <aside class="notes">Open Data is build against the same API</aside>
+          <aside class="notes">Open Data is built against the same API</aside>
         </section>
 
         <section>
@@ -265,7 +269,7 @@
           <h2><pre><code class="javascript">
 $.getJSON('http://my.api.url')
   .done(function (response, status, xhr) { 
-    /* do something with the response! */ 
+    /* stuff it into the DOM... */ 
   })
   .fail(function (xhr, status, error) { 
     /* do something about the error! */ 
@@ -276,7 +280,6 @@ $.getJSON('http://my.api.url')
           <aside class="notes">
             <ul>
               <li>if you're familiar with jquery, you might do something like this</li>
-              <li>but unless you're building a trivial app, don't do it that way</li>
             </ul>
           </aside>
         </section>
@@ -294,8 +297,17 @@ $.getJSON('http://my.api.url')
 
           <aside class="notes">
             <ul>
-              <li>if you're familiar with jquery, you might do something like this</li>
               <li>but unless you're building a trivial app, don't do it that way</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h1 id="mvc">MV<span>*</span></h1>
+
+          <aside class="notes">
+            <ul>
+              <li>use an mvc framework instead</li>
             </ul>
           </aside>
         </section>
@@ -307,12 +319,18 @@ $.getJSON('http://my.api.url')
           <img class="framework-logo" src="images/angularjs-for-header-only.svg">
           <img class="framework-logo" src="images/react.svg">
           <img class="framework-logo" src="images/ampersand.svg">
+          <img class="framework-logo" src="images/mayhem.png"></img>
 
           <aside class="notes">
             <ul>
-              <li>use an mvc framework instead</li>
+              <li>like one of these</li>
             </ul>
           </aside>
+        </section>
+
+        <section>
+          <h1>Choosing the Best JavaScript Framework for You</h1>
+          Friday, 13 Mar 2015, 1:00pm - 2:00pm
         </section>
 
         <section>
@@ -438,7 +456,6 @@ $.getJSON('http://my.api.url')
             <li class="fragment">Currently no JSONP support</li>
             <li class="fragment">Does support CORS</li>
             <li class="fragment">But ... IE &lt; 10</li>
-            <li class="fragment">HTTP only</li>
           </ul>
         </section>
 
@@ -529,8 +546,11 @@ DatasetModel = Backbone.Model.extend({
           <img class="framework-logo" src="images/ampersand.svg">
         </section>
 
-
-
+        <section>
+          <h2>
+            <a href="http://mjuniper.github.io/presentations/opendata-api.html/">mjuniper.github.io/presentations/opendata-api.html</a>
+          </h2>
+        </section>
 
         <section>
           <h1>Rate This Session</h1>
