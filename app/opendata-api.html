@@ -172,6 +172,101 @@
         </section>
 
         <section>
+          <h1>What is an API?</h1>
+          <div class="fragment">
+            "In computer programming, an application programming interface (API) is a set of routines, protocols, and tools for building software applications. An API expresses a software component in terms of its operations, inputs, outputs, and underlying types."
+          </div>
+        </section>
+
+        <section>
+          <h1>Totally clear right?<h1>
+          <img src="images/fish_slap.gif">
+        </section>
+
+        <section>
+          <h1>Simple API example</h1>
+          <div class="fragment">http://opendata.arcgis.com</div>
+          <div class="fragment">/datasets</div>
+          <div class="fragment">.json</div>
+          <div class="fragment">?q=water&sort_by=relevance&page=1</div>
+          <!-- 
+              NOTES: Breakdown an URL into it component parts.
+              Domain, URI, file type/format, and Query string.  
+              This should look familar to anyone that's used.
+          -->
+
+          <div class="fragment">
+            <h3>Example:</h3>
+              <div class="fragment">
+                <a href="http://opendata.arcgis.com/datasets.json?q=water&sort_by=relevance&page=1" class="fragment follow-link" target="_blank">http://opendata.arcgis.com/datasets.json?q=water&sort_by=relevance&page=1</a>    
+                <a href="http://opendata.arcgis.com/datasets?q=water&sort_by=relevance&page=1" class="fragment follow-link" target="_blank">http://opendata.arcgis.com/datasets?q=water&sort_by=relevance&page=1</a>              
+              </div>
+          </div>
+          <!--
+            Notice the only difference between these URLs is the .jon extension, but the results are considerably different.
+          -->
+        </section>
+
+        <section>
+          <h1>OpenData V1 API (beta)</h1>
+          <div class="fragment">HTTP protocol (GET, POST, PUT, DELETE)</div>
+          <div class="fragment">opendata.arcgis.com or imap.maryland.opendata.arcgis.com</div>
+          <div class="fragment">Available resources /datasets, /sites, and /groups</div>
+          <div class="fragment">JSON format</div>
+          <!-- 
+            Standard HTTP.
+            API URL is based on either umbrella or the custom site.
+            Custom site API will only surface data include by that site.            
+          -->
+        </section>
+
+        <section>
+          <h1>Who consumes the OpenData API?</h1>
+          <div class="fragment">
+            <ul>
+              <li>Opendata "Umbrella" (Backbone)</li>
+              <li>OpenData Custom Sites (Backbone)</li>
+              <li>OpenData Admin (Angular)</li>
+            </ul>
+          </div>
+          <!-- NOTES: Unofficially public, Not documentmented, API results could change-->
+        </section>
+
+        <section>
+          <h1>OpenData V2 API (public)</h1>
+          <div class="fragment">Versioning via URL or Headers </div>
+          <div class="fragment">
+            <pre class="code">
+              <code class="http">
+                /api/v2
+                Accept: application/vnd.arcgis+json; version=2
+              </code>
+            </pre>
+          </div>
+        </section>
+
+        <section>
+          <h1>OpenData V2 API (public) continued..</h1>
+          <div class="fragment">Consistent return of an object or list of objects based on resource</div>
+          <div class="fragment">
+            <pre class="code">
+              <code class="json">
+                /api/v2/datasets.json -> {"datasets": []} 
+                /api/v2/datasets/:id.json -> {"dataset": {}}
+              </code>
+            </pre>
+          </div>
+        </section>
+
+        <section>
+          <h1>OpenData V2 API (public) continued..</h1>
+          <div class="fragment">Authenticated access</div>
+          <div class="fragment">Caching via Etag and If-None-Match header</div>
+          <div class="fragment">Appropriate HTTP Status codes</div>
+          <div class="fragment">Well documented</div>
+        </section>
+
+        <section>
           <h1>What can you do with it?</h1>
 
           <div id="build-an-app" class="fragment">
