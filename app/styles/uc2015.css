@@ -25,6 +25,11 @@ section img.framework-logo {
   margin: 5%;
 }
 
+section img#architecture {
+  width: 50%;
+  margin: 0;
+}
+
 /*section .image-slanted {
   position: absolute;
   top: -250px;
