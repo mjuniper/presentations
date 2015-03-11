@@ -52,6 +52,14 @@ pre.code {
   max-height: inherit;
 }
 
+#mvc span {
+  font-size: 3em;
+  line-height: 0.01em;
+  vertical-align: bottom;
+  position: relative;
+  top: 0.1em;
+}
+
 #slide-footer {
   color: lightgray;
   position: absolute;
