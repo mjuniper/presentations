@@ -25,6 +25,11 @@ section img.framework-logo {
   margin: 5%;
 }
 
+section img#architecture {
+  width: 50%;
+  margin: 0;
+}
+
 /*section .image-slanted {
   position: absolute;
   top: -250px;
@@ -50,6 +55,14 @@ pre.code {
 .reveal section pre code {
   padding: 15px;
   max-height: inherit;
+}
+
+#mvc span {
+  font-size: 3em;
+  line-height: 0.01em;
+  vertical-align: bottom;
+  position: relative;
+  top: 0.1em;
 }
 
 #slide-footer {

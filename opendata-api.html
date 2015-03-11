@@ -53,16 +53,42 @@
 
         <section>
           <h1>ArcGIS Open Data</h1>
-          
-          <h3 class="fragment"><a class="follow-link" target="_blank" href="http://clt.charlotte.opendata.arcgis.com">clt.charlotte.opendata.arcgis.com</a></h3>
 
           <aside class="notes">
+            <h3>Make your authoritative data:</h3>
             <ul>
-              <li>You've got an open data site...</li>
-              <li>but what if </li>
-              <li>the site customizations options we provide are not enough</li>
-              <li>or you already have a data portal and want to make the data from your Open Data site available through it</li>
-              <li>or you want to make data in another system available via your Open Data site</li>
+              <li>Discoverable</li>
+              <li>Explorable</li>
+              <li>Accessible</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <img src="images/charlotte.png">
+        </section>
+
+        <section>
+          <img src="images/d3.png">
+        </section>
+
+        <section>
+          <img src="images/maryland.png">
+        </section>
+
+        <section>
+          <img src="images/halifax.png">
+        </section>
+
+        <section>
+          <img src="images/umbrella.png">
+
+          <aside class="notes">
+            <h3>but what if...</h3>
+            <ul>
+              <li>site customization capabilities insufficient</li>
+              <li>bring AGO OD into existing website</li>
+              <li>expose data from other systems in ArcGIS OD</li>
             </ul>
           </aside>
         </section>
@@ -110,6 +136,10 @@
         </section>
 
         <section>
+          <img id="architecture" src="images/arch.jpeg">
+        </section>
+
+        <section>
           <h1>Socrata</h1>
 
           <div class="fragment">
@@ -129,6 +159,11 @@
             <h3>Registered as an item in ArcGIS Online:</h3>
             <a class="follow-link" href="http://dcdev.maps.arcgis.com/home/item.html?id=ebf151a0feda4c57ac7422dcd48d87dc" target="_blank">dcdev.maps.arcgis.com/home/item.html?id=ebf151a0feda4c57ac7422dcd48d87dc</a>
           </div>
+
+          <div class="fragment">
+            <h3>Shared through Open Data:</h3>
+            <a class="follow-link" href="http://jupe.dc.opendatadev.arcgis.com/datasets/75892e4ebf134c8fab2d72c84f529545_0" target="_blank">jupe.dc.opendatadev.arcgis.com/datasets/75892e4ebf134c8fab2d72c84f529545_0</a>
+          </div>
         </section>
 
         <section>
@@ -139,6 +174,99 @@
         <section>
           <h1>Open Data API</h1>
           <h3>Brooks Robertson</h3>
+        </section>
+
+        <section>
+          <h1>What is an API?</h1>
+          <div class="fragment">
+            "In computer programming, an application programming interface (API) is a set of routines, protocols, and tools for building software applications. An API expresses a software component in terms of its operations, inputs, outputs, and underlying types."
+          </div>
+        </section>
+
+        <section>
+          <h1>Totally clear right?<h1>
+          <img src="images/fish_slap.gif">
+        </section>
+
+        <section>
+          <h1>Simple API example</h1>
+          <div class="fragment">http://opendata.arcgis.com</div>
+          <div class="fragment">/datasets</div>
+          <div class="fragment">.json</div>
+          <div class="fragment">?q=water&sort_by=relevance&page=1</div>
+          <!-- 
+              NOTES: Breakdown an URL into it component parts.
+              Domain, URI, file type/format, and Query string.  
+              This should look familar to anyone that's used.
+          -->
+
+          <div class="fragment">
+            <h3>Example:</h3>
+            <a href="http://opendata.arcgis.com/datasets.json?q=water&sort_by=relevance&page=1" class="fragment follow-link" target="_blank">http://opendata.arcgis.com/datasets.json?q=water&sort_by=relevance&page=1</a>    
+            <a href="http://opendata.arcgis.com/datasets?q=water&sort_by=relevance&page=1" class="fragment follow-link" target="_blank">http://opendata.arcgis.com/datasets?q=water&sort_by=relevance&page=1</a>              
+          </div>
+          <!--
+            Notice the only difference between these URLs is the .jon extension, but the results are considerably different.
+          -->
+        </section>
+
+        <section>
+          <h1>OpenData V1 API (beta)</h1>
+          <div class="fragment">HTTP protocol (GET, POST, PUT, DELETE)</div>
+          <div class="fragment">opendata.arcgis.com or imap.maryland.opendata.arcgis.com</div>
+          <div class="fragment">Available resources /datasets, /sites, and /groups</div>
+          <div class="fragment">JSON format</div>
+          <!-- 
+            Standard HTTP.
+            API URL is based on either umbrella or the custom site.
+            Custom site API will only surface data include by that site.            
+          -->
+        </section>
+
+        <section>
+          <h1>Who consumes the OpenData API?</h1>
+          <div class="fragment">
+            <ul>
+              <li>Opendata "Umbrella" (Backbone)</li>
+              <li>OpenData Custom Sites (Backbone)</li>
+              <li>OpenData Admin (Angular)</li>
+            </ul>
+          </div>
+          <!-- NOTES: Unofficially public, Not documentmented, API results could change-->
+        </section>
+
+        <section>
+          <h1>OpenData V2 API (public)</h1>
+          <div class="fragment">Versioning via URL or Headers </div>
+          <div class="fragment">
+            <pre class="code">
+              <code class="http">
+                /api/v2
+                Accept: application/vnd.arcgis+json; version=2
+              </code>
+            </pre>
+          </div>
+        </section>
+
+        <section>
+          <h1>OpenData V2 API (public) continued..</h1>
+          <div class="fragment">Consistent return of an object or list of objects based on resource</div>
+          <div class="fragment">
+            <pre class="code">
+              <code class="json">
+                /api/v2/datasets.json -> {"datasets": []} 
+                /api/v2/datasets/:id.json -> {"dataset": {}}
+              </code>
+            </pre>
+          </div>
+        </section>
+
+        <section>
+          <h1>OpenData V2 API (public) continued..</h1>
+          <div class="fragment">Authenticated access</div>
+          <div class="fragment">Caching via Etag and If-None-Match header</div>
+          <div class="fragment">Appropriate HTTP Status codes</div>
+          <div class="fragment">Well documented</div>
         </section>
 
         <section>
@@ -153,7 +281,7 @@
           <img class="screen-shot" src="images/umbrella.png">
           <h2><a class="follow-link" href="http://opendata.arcgis.com" target="_blank">ArcGIS Open Data</a></h2>
 
-          <aside class="notes">Open Data is build against the same API</aside>
+          <aside class="notes">Open Data is built against the same API</aside>
         </section>
 
         <section>
@@ -170,7 +298,7 @@
           <h2><pre><code class="javascript">
 $.getJSON('http://my.api.url')
   .done(function (response, status, xhr) { 
-    /* do something with the response! */ 
+    /* stuff it into the DOM... */ 
   })
   .fail(function (xhr, status, error) { 
     /* do something about the error! */ 
@@ -181,7 +309,6 @@ $.getJSON('http://my.api.url')
           <aside class="notes">
             <ul>
               <li>if you're familiar with jquery, you might do something like this</li>
-              <li>but unless you're building a trivial app, don't do it that way</li>
             </ul>
           </aside>
         </section>
@@ -199,8 +326,17 @@ $.getJSON('http://my.api.url')
 
           <aside class="notes">
             <ul>
-              <li>if you're familiar with jquery, you might do something like this</li>
               <li>but unless you're building a trivial app, don't do it that way</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h1 id="mvc">MV<span>*</span></h1>
+
+          <aside class="notes">
+            <ul>
+              <li>use an mvc framework instead</li>
             </ul>
           </aside>
         </section>
@@ -212,12 +348,18 @@ $.getJSON('http://my.api.url')
           <img class="framework-logo" src="images/angularjs-for-header-only.svg">
           <img class="framework-logo" src="images/react.svg">
           <img class="framework-logo" src="images/ampersand.svg">
+          <img class="framework-logo" src="images/mayhem.png"></img>
 
           <aside class="notes">
             <ul>
-              <li>use an mvc framework instead</li>
+              <li>like one of these</li>
             </ul>
           </aside>
+        </section>
+
+        <section>
+          <h1>Choosing the Best JavaScript Framework for You</h1>
+          Friday, 13 Mar 2015, 1:00pm - 2:00pm
         </section>
 
         <section>
@@ -343,7 +485,6 @@ $.getJSON('http://my.api.url')
             <li class="fragment">Currently no JSONP support</li>
             <li class="fragment">Does support CORS</li>
             <li class="fragment">But ... IE &lt; 10</li>
-            <li class="fragment">HTTP only</li>
           </ul>
         </section>
 
@@ -434,8 +575,11 @@ DatasetModel = Backbone.Model.extend({
           <img class="framework-logo" src="images/ampersand.svg">
         </section>
 
-
-
+        <section>
+          <h2>
+            <a href="http://mjuniper.github.io/presentations/opendata-api.html/">mjuniper.github.io/presentations/opendata-api.html</a>
+          </h2>
+        </section>
 
         <section>
           <h1>Rate This Session</h1>
