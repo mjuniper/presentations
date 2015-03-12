@@ -190,10 +190,13 @@
 
         <section>
           <h1>Simple API example</h1>
-          <div class="fragment">http://opendata.arcgis.com</div>
-          <div class="fragment">/datasets</div>
-          <div class="fragment">.json</div>
-          <div class="fragment">?q=water&sort_by=relevance&page=1</div>
+          <ol>
+            <li class="fragment">http://opendata.arcgis.com</li>
+            <li class="fragment">/datasets</li>
+            <li class="fragment">.json</li>
+            <li class="fragment">?q=water&sort_by=relevance&page=1</li>
+          </ol>
+          
           <!-- 
               NOTES: Breakdown an URL into it component parts.
               Domain, URI, file type/format, and Query string.  
@@ -213,8 +216,15 @@
         <section>
           <h1>OpenData V1 API (beta)</h1>
           <div class="fragment">HTTP protocol (GET, POST, PUT, DELETE)</div>
-          <div class="fragment">opendata.arcgis.com or imap.maryland.opendata.arcgis.com</div>
-          <div class="fragment">Available resources /datasets, /sites, and /groups</div>
+          <div class="fragment">
+            <h3>opendata.arcgis.com</h3>
+          </div>
+
+          <div class="fragment">
+            <h4>OR</h4>
+            <h3>imap.maryland.opendata.arcgis.com</h3>
+          </div>
+          <div class="fragment">Available resources /datasets, /sites</div>
           <div class="fragment">JSON format</div>
           <!-- 
             Standard HTTP.
@@ -238,13 +248,10 @@
         <section>
           <h1>OpenData V2 API (public)</h1>
           <div class="fragment">Versioning via URL or Headers </div>
+
           <div class="fragment">
-            <pre class="code">
-              <code class="http">
-                /api/v2
-                Accept: application/vnd.arcgis+json; version=2
-              </code>
-            </pre>
+            <h3><pre><code class="http">/api/v2/...</code></pre></h3>
+            <h3><pre><code class="http">Accept: application/vnd.arcgis+json; version=2</code></pre></h3>
           </div>
         </section>
 
@@ -252,12 +259,8 @@
           <h1>OpenData V2 API (public) continued..</h1>
           <div class="fragment">Consistent return of an object or list of objects based on resource</div>
           <div class="fragment">
-            <pre class="code">
-              <code class="json">
-                /api/v2/datasets.json -> {"datasets": []} 
-                /api/v2/datasets/:id.json -> {"dataset": {}}
-              </code>
-            </pre>
+            <h3><pre><code class="json">/api/v2/datasets.json -> {"datasets": []}</code></pre></h3>
+            <h3><pre><code class="json">/api/v2/datasets/:id.json -> {"dataset": {}}</code></pre></h3>
           </div>
         </section>
 
@@ -428,6 +431,11 @@ $.getJSON('http://my.api.url')
           <div class="fragment">
             <h3><pre><code class="html">/datasets/&lt;id&gt;.csv</code></pre></h3>
             <a class="follow-link" href="http://opendata.arcgis.com/datasets/354b5206149c4863abf3d77710063489_2.csv" target="_blank"></a>
+          </div>
+
+          <div class="fragment">
+            <h3><pre><code class="html">/datasets/&lt;id&gt;.geojson</code></pre></h3>
+            <a class="follow-link" href="http://opendata.arcgis.com/datasets/354b5206149c4863abf3d77710063489_2.geojson" target="_blank"></a>
           </div>
           
           <div class="fragment">
