@@ -17,6 +17,10 @@ li.fragment {
   box-shadow: none;
 }
 
+.reveal section div.topmargin {
+  margin-top: 2em;
+}
+
 section img.framework-logo {
   height: 200px;
   background-color: transparent;
