@@ -1,0 +1,677 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>Developing with ArcGIS Open Data</title>
+
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <meta name="description" content="Get a firsthand look at working with the ArcGIS Open Data API’s, to build your own open data site or next popular dashboard application that propel transparency to the next level. You will also see how to expose your open data catalog as DCAT to promote interoperability with other open platforms, and melt your mind with space cats.">
+    <meta name="author" content="Mike Juniper">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="styles/reveal.min.css">
+    <link rel="stylesheet" href="styles/theme/esri.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <link rel="stylesheet" href="styles/uc2015.css">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+      if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+      }
+    </script>
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section class="title">
+          <h1>Developing with ArcGIS Open Data</h1>
+          <p>
+            <h4>Mike Juniper :: Washington DC R&amp;D Center</h4>
+            <h4>Brooks Robertson :: Washington DC R&amp;D Center</h4>
+            <h4>Daniel Fenton :: Washington DC R&amp;D Center</h4>
+          </p>
+        </section>
+
+        <section>
+          <div>
+            <h2>
+              <a href="http://mjuniper.github.io/presentations/opendata-api.html">mjuniper.github.io/presentations/opendata-api.html</a>
+            </h2>
+          </div>
+            
+          <div class="topmargin">
+            <h4>
+              <a href="https://github.com/mjuniper/presentations">github.com/mjuniper/presentations</a>
+            </h4>
+          </div>
+        </section>
+
+        <section>
+          <h1>ArcGIS Open Data</h1>
+
+          <aside class="notes">
+            <h3>Make your authoritative data:</h3>
+            <ul>
+              <li>Discoverable</li>
+              <li>Explorable</li>
+              <li>Accessible</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <img src="images/charlotte.png">
+        </section>
+
+        <section>
+          <img src="images/d3.png">
+        </section>
+
+        <section>
+          <img src="images/maryland.png">
+        </section>
+
+        <section>
+          <img src="images/halifax.png">
+        </section>
+
+        <section>
+          <img src="images/umbrella.png">
+
+          <aside class="notes">
+            <h3>but what if...</h3>
+            <ul>
+              <li>site customization capabilities insufficient</li>
+              <li>bring AGO OD into existing website</li>
+              <li>expose data from other systems in ArcGIS OD</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h1>Interoperability</h1>
+          <ul>
+            <li class="fragment">
+              <a href="https://github.com/Esri/koop">koop</a>
+            </li>
+            <li class="fragment">
+              <a href="http://www.opensearch.org">OpenSearch</a>
+            </li>
+            <li class="fragment">
+              <a href="http://www.w3.org/TR/vocab-dcat/">DCAT</a>
+            </li>
+            <li class="fragment">
+              <a href="https://github.com/ArcGIS/composer-api">OpenData API</a>
+            </li>
+            <li class="fragment">
+              <a href="https://github.com/mjuniper/OpenData-Backbone">Building an app against the API</a>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>koop</h1>
+          <h3>Feature Services from APIs</h3>
+          <ul>
+            <li class="fragment">
+              Open Source (<a href="https://github.com/Esri/koop">github.com/Esri/koop</a>) R &amp; D
+            </li>
+            <li class="fragment">
+              <a href="http://nodejs.org">node js</a>
+            </li>
+            <li class="fragment">
+              geojson (&amp; others) &nbsp;&nbsp;&nbsp;==&gt;&nbsp;&nbsp;&nbsp; feature services
+            </li>
+            <li class="fragment">
+              feature services &nbsp;&nbsp;&nbsp;==&gt;&nbsp;&nbsp;&nbsp; geojson
+            </li>
+            <li class="fragment">
+              export as kml, csv, shp
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <img id="architecture" src="images/arch.jpeg">
+        </section>
+
+        <section>
+          <h1>Socrata</h1>
+
+          <div class="fragment">
+            <a class="follow-link" href="https://data.seattle.gov/Community/Schools/pmap-kbvr" target="_blank">data.seattle.gov/Community/Schools/pmap-kbvr</a>
+          </div>
+
+          <div class="fragment">
+            <a class="follow-link" href="http://data.seattle.gov/resource/2tje-83f6.json" target="_blank">data.seattle.gov/resource/2tje-83f6.json</a>
+          </div>
+
+          <div class="fragment">
+            <h3>Via koop:</h3>
+            <a class="follow-link" href="http://koop.dc.esri.com/socrata/seattle/2tje-83f6/FeatureServer/0" target="_blank">koop.dc.esri.com/socrata/seattle/2tje-83f6/FeatureServer/0</a>
+          </div>
+
+          <div class="fragment">
+            <h3>Registered as an item in ArcGIS Online:</h3>
+            <a class="follow-link" href="http://dcdev.maps.arcgis.com/home/item.html?id=ebf151a0feda4c57ac7422dcd48d87dc" target="_blank">dcdev.maps.arcgis.com/home/item.html?id=ebf151a0feda4c57ac7422dcd48d87dc</a>
+          </div>
+
+          <div class="fragment">
+            <h3>Shared through Open Data:</h3>
+            <a class="follow-link" href="http://jupe.dc.opendatadev.arcgis.com/datasets/75892e4ebf134c8fab2d72c84f529545_0" target="_blank">jupe.dc.opendatadev.arcgis.com/datasets/75892e4ebf134c8fab2d72c84f529545_0</a>
+          </div>
+        </section>
+
+        <section>
+          <h1>OpenSearch &amp; DCAT</h1>
+          <h3>Daniel Fenton</h3>
+        </section>
+
+        <section>
+          <h1>Open Data API</h1>
+          <h3>Brooks Robertson</h3>
+        </section>
+
+        <section>
+          <h1>What is an API?</h1>
+          <div class="fragment">
+            "In computer programming, an application programming interface (API) is a set of routines, protocols, and tools for building software applications. An API expresses a software component in terms of its operations, inputs, outputs, and underlying types."
+          </div>
+        </section>
+
+        <section>
+          <h1>Totally clear right?<h1>
+          <img src="images/fish_slap.gif">
+        </section>
+
+        <section>
+          <h1>Simple API example</h1>
+          <ol>
+            <li class="fragment">http://opendata.arcgis.com</li>
+            <li class="fragment">/datasets</li>
+            <li class="fragment">.json</li>
+            <li class="fragment">?q=water&sort_by=relevance&page=1</li>
+          </ol>
+          
+          <!-- 
+              NOTES: Breakdown an URL into it component parts.
+              Domain, URI, file type/format, and Query string.  
+              This should look familar to anyone that's used.
+          -->
+
+          <div class="fragment">
+            <h3>Example:</h3>
+            <a href="http://opendata.arcgis.com/datasets.json?q=water&sort_by=relevance&page=1" class="fragment follow-link" target="_blank">http://opendata.arcgis.com/datasets.json?q=water&sort_by=relevance&page=1</a>    
+            <a href="http://opendata.arcgis.com/datasets?q=water&sort_by=relevance&page=1" class="fragment follow-link" target="_blank">http://opendata.arcgis.com/datasets?q=water&sort_by=relevance&page=1</a>              
+          </div>
+          <!--
+            Notice the only difference between these URLs is the .jon extension, but the results are considerably different.
+          -->
+        </section>
+
+        <section>
+          <h1>OpenData V1 API (beta)</h1>
+          <div class="fragment">HTTP protocol (GET, POST, PUT, DELETE)</div>
+          <div class="fragment">
+            <h3>opendata.arcgis.com</h3>
+          </div>
+
+          <div class="fragment">
+            <h4>OR</h4>
+            <h3>imap.maryland.opendata.arcgis.com</h3>
+          </div>
+          <div class="fragment">Available resources /datasets, /sites</div>
+          <div class="fragment">JSON format</div>
+          <!-- 
+            Standard HTTP.
+            API URL is based on either umbrella or the custom site.
+            Custom site API will only surface data include by that site.            
+          -->
+        </section>
+
+        <section>
+          <h1>Who consumes the OpenData API?</h1>
+          <div class="fragment">
+            <ul>
+              <li>Opendata "Umbrella" (Backbone)</li>
+              <li>OpenData Custom Sites (Backbone)</li>
+              <li>OpenData Admin (Angular)</li>
+            </ul>
+          </div>
+          <!-- NOTES: Unofficially public, Not documentmented, API results could change-->
+        </section>
+
+        <section>
+          <h1>OpenData V2 API (public)</h1>
+          <div class="fragment">Versioning via URL or Headers </div>
+
+          <div class="fragment">
+            <h3><pre><code class="http">/api/v2/...</code></pre></h3>
+            <h3><pre><code class="http">Accept: application/vnd.arcgis+json; version=2</code></pre></h3>
+          </div>
+        </section>
+
+        <section>
+          <h1>OpenData V2 API (public) continued..</h1>
+          <div class="fragment">Consistent return of an object or list of objects based on resource</div>
+          <div class="fragment">
+            <h3><pre><code class="json">/api/v2/datasets.json -> {"datasets": []}</code></pre></h3>
+            <h3><pre><code class="json">/api/v2/datasets/:id.json -> {"dataset": {}}</code></pre></h3>
+          </div>
+        </section>
+
+        <section>
+          <h1>OpenData V2 API (public) continued..</h1>
+          <div class="fragment">Authenticated access</div>
+          <div class="fragment">Caching via Etag and If-None-Match header</div>
+          <div class="fragment">Appropriate HTTP Status codes</div>
+          <div class="fragment">Well documented</div>
+        </section>
+
+        <section>
+          <h1>What can you do with it?</h1>
+
+          <div id="build-an-app" class="fragment">
+            <h2>Build an app!</h2>
+          </div>
+        </section>
+
+        <section>
+          <img class="screen-shot" src="images/umbrella.png">
+          <h2><a class="follow-link" href="http://opendata.arcgis.com" target="_blank">ArcGIS Open Data</a></h2>
+
+          <aside class="notes">Open Data is built against the same API</aside>
+        </section>
+
+        <section>
+          <img src="images/api-arch.png">
+
+          <aside class="notes">
+            <ul>
+              <li>A static website that makes http requests for data</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h2><pre><code class="javascript">
+$.getJSON('http://my.api.url')
+  .done(function (response, status, xhr) { 
+    /* stuff it into the DOM... */ 
+  })
+  .fail(function (xhr, status, error) { 
+    /* do something about the error! */ 
+  });
+          </code></pre></h2>
+          
+
+          <aside class="notes">
+            <ul>
+              <li>if you're familiar with jquery, you might do something like this</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section class="strikethrough" data-transition="fade" data-transition-speed="slow">
+          <h2><pre><code class="javascript">
+$.getJSON('http://my.api.url')
+  .done(function (response, status, xhr) { 
+    /* do something with the response! */ 
+  })
+  .fail(function (xhr, status, error) { 
+    /* do something about the error! */ 
+  });
+          </code></pre></h2>
+
+          <aside class="notes">
+            <ul>
+              <li>but unless you're building a trivial app, don't do it that way</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h1 id="mvc">MV<span>*</span></h1>
+
+          <aside class="notes">
+            <ul>
+              <li>use an mvc framework instead</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <img class="framework-logo" src="images/backbone.png">
+          <img class="framework-logo" src="images/marionette.svg">
+          <img class="framework-logo" src="images/0cf15665a9146ba852bf042b0652780a.png">
+          <img class="framework-logo" src="images/angularjs-for-header-only.svg">
+          <img class="framework-logo" src="images/react.svg">
+          <img class="framework-logo" src="images/ampersand.svg">
+          <img class="framework-logo" src="images/mayhem.png"></img>
+
+          <aside class="notes">
+            <ul>
+              <li>like one of these</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h1>Choosing the Best JavaScript Framework for You</h1>
+          Friday, 13 Mar 2015, 1:00pm - 2:00pm
+        </section>
+
+        <section>
+          <h1>Key endpoints:</h1>
+          <div class="fragment">
+            <h3><pre><code class="html">/datasets.json?q=&lt;search string&gt;&page=&lt;page number&gt;</code></pre></h3>
+            <a class="follow-link" href="http://opendata.arcgis.com/datasets.json?q=water&page=1" target="_blank"></a>
+          </div>
+
+          <div class="fragment">
+            <h3><pre><code class="javascript">$.getJSON(MyApiUrl + '/datasets.json?q=water&page=1');</code></pre></h3>
+          </div>
+          
+          <div class="fragment">
+            <div>and</div>
+            <h3><pre><code class="html">/datasets/&lt;id&gt;.json</code></pre></h3>
+            <a class="follow-link" href="http://opendata.arcgis.com/datasets/354b5206149c4863abf3d77710063489_2.json" target="_blank"></a>
+          </div>
+
+          <div class="fragment">
+            <h3><pre><code class="javascript">$.getJSON(MyApiUrl + '/datasets/abc123.json');</code></pre></h3>
+          </div>
+
+          <aside class="notes">
+            <ul>
+              <li>jsonview</li>
+              <li>overall structure of the JSON</li>
+              <li>
+                key attributes:
+                <ul>
+                  <li>id</li>
+                  <li>item_type</li>
+                  <li>type</li>
+                  <li>url - which is another api from which you can get the actual data</li>
+                </ul>
+              </li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h1>And maybe:</h1>
+
+          <div class="fragment">
+            <h3><pre><code class="html">/datasets/&lt;id&gt;/related.json</code></pre></h3>
+            <a class="follow-link" href="http://opendata.arcgis.com/datasets/354b5206149c4863abf3d77710063489_2/related.json" target="_blank"></a>
+          </div>
+
+          <div class="fragment">
+            <h3><pre><code class="javascript">$.getJSON(MyApiUrl + '/datasets/abc123/related.json');</code></pre></h3>
+          </div>
+
+          <div class="fragment">
+            <div>And:</div>
+            <h3><pre><code class="html">/datasets/autocomplete?query=&lt;search string&gt;</code></pre></h3>
+            <a class="follow-link" href="http://opendata.arcgis.com/datasets/autocomplete.json?query=wate" target="_blank"></a>
+          </div>
+
+          <div class="fragment">
+            <h3><pre><code class="javascript">$.getJSON(MyApiUrl + '/datasets/autocomplete?query=wat');</code></pre></h3>
+          </div>
+        </section>
+
+        <section>
+          <h1>Also:</h1>
+          <div class="fragment">
+            <h3><pre><code class="html">/datasets/&lt;id&gt;.csv</code></pre></h3>
+            <a class="follow-link" href="http://opendata.arcgis.com/datasets/354b5206149c4863abf3d77710063489_2.csv" target="_blank"></a>
+          </div>
+
+          <div class="fragment">
+            <h3><pre><code class="html">/datasets/&lt;id&gt;.geojson</code></pre></h3>
+            <a class="follow-link" href="http://opendata.arcgis.com/datasets/354b5206149c4863abf3d77710063489_2.geojson" target="_blank"></a>
+          </div>
+          
+          <div class="fragment">
+            <h3><pre><code class="html">/datasets/&lt;id&gt;.kml</code></pre></h3>
+            <a class="follow-link" href="http://opendata.arcgis.com/datasets/354b5206149c4863abf3d77710063489_2.kml" target="_blank"></a>
+          </div>
+
+          <div class="fragment">
+            <h3><pre><code class="html">/datasets/&lt;id&gt;.zip</code></pre></h3>
+            <a class="follow-link" href="http://opendata.arcgis.com/datasets/354b5206149c4863abf3d77710063489_2.zip" target="_blank"></a>
+          </div>
+        </section>
+
+        <section>
+          <h1>Errors...</h1>
+
+          <img src="images/curl.png" style="width:60%;">
+          <a class="follow-link" href="http://opendata.arcgis.com/datasets/sdhkdhsf.json" target="_blank"></a>
+
+          <aside class="notes">
+            <ul>
+              <li>errors are handled how you'd expect - http status code</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h2><pre><code class="javascript">
+$.getJSON('http://my.api.url')
+  .done(function (response, status, xhr) { 
+    if (response.error) {
+      /* you don't have to do this! */
+    }
+  })
+  .fail(function (xhr, status, error) {
+    switch (xhr.status) {
+      case 404:
+        /* handle 404 */
+      default:
+        /* handle other errors */
+    }
+  });
+          </code></pre></h2>
+
+          <aside class="notes">
+            <ul>
+              <li>so you can handle errors like you'd expect</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h1>Gotcha's:</h1>
+          <ul>
+            <li class="fragment">Currently no JSONP support</li>
+            <li class="fragment">Does support CORS</li>
+            <li class="fragment">But ... IE &lt; 10</li>
+          </ul>
+        </section>
+
+        <section>
+          <img class="screen-shot" src="images/opendata-backbone.png">
+          <h2><a class="follow-link" href="http://mjuniper.github.io/OpenData-Backbone" target="_blank">mjuniper.github.io/OpenData-Backbone</a></h2>
+        </section>
+
+        <section>
+          <img class="framework-logo" src="images/backbone.png">
+          <img class="framework-logo" src="images/marionette.svg">
+          <img class="framework-logo" src="images/bootstrap-logo.png">
+
+          <aside class="notes">
+            <ul>
+              <li>Backbone &amp; Marionette because I know them well and could build it quickly</li>
+              <li>Also because even if you don't use them, it's pretty easy to understand</li>
+              <li>Bootstrap because it's widely known, well documented, and extensible</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h1>Ok,... how?</h1>
+          
+          <div class="fragment">
+            Fork it: <a class="follow-link" href="https://github.com/mjuniper/OpenData-Backbone" target="_blank">github.com/mjuniper/OpenData-Backbone</a>
+            <div>then:</div>
+          </div>
+          <div class="fragment">
+            <pre class="code">
+              <code class="bash">
+                $ git clone
+                $ cd opendata-backbone
+                $ npm install
+                $ bower install
+                $ gulp serve
+              </code>
+            </pre>
+          </div>
+        </section>
+
+        <section>
+          <h1>In backbone-land...</h1>
+        </section>
+
+        <section>
+          <pre><code class="javascript">
+DatasetCollection = Backbone.Collection.extend({
+  
+  url: function () {
+    //get the params (q=, page=, etc) from somewhere...
+    var queryParams = '';
+    return MyOD.config.api + 'datasets.json?' + queryParams;
+  },
+
+  parse: function (resp) {
+    return resp.data;
+  }
+
+});
+          </code></pre>
+          <a class="follow-link" target="_blank" href="https://github.com/mjuniper/OpenData-Backbone/blob/master/app/scripts/entities/dataset-collection.js#L13"></a>
+          
+          <div class="fragment">
+            <div>and</div>
+            <pre><code class="javascript">
+DatasetModel = Backbone.Model.extend({
+  
+  url: function () {
+    return MyOD.config.api + 'datasets/' + this.get('id') + '.json';
+  },
+
+  parse: function (response) {
+    return response.data;
+  }
+  
+});
+            </code></pre>
+          </div>
+        </section>
+
+        <section>
+          <h1>More to come?</h1>
+          <img class="framework-logo" src="images/0cf15665a9146ba852bf042b0652780a.png">
+          <img class="framework-logo" src="images/angularjs-for-header-only.svg">
+          <img class="framework-logo" src="images/react.svg">
+          <img class="framework-logo" src="images/ampersand.svg">
+        </section>
+
+        <section>
+          <h1>Rate This Session</h1>
+          <h2><a href="http://www.esri.com/RateMyDevSummitSession">www.esri.com/RateMyDevSummitSession</a></h2>
+        </section>
+
+      </div>
+
+      <div id="slide-footer">
+        <div class="left">
+          Esri UC 2015 | Developing with ArcGIS Open Data
+        </div>
+        <div class="right">
+          <a href="http://mjuniper.github.io/presentations/opendata-api.html">mjuniper.github.io/presentations/opendata-api.html</a>
+        </div>
+      </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="scripts/reveal.min.js"></script>
+
+    <script>
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        history: true,
+        previewLinks: false,
+        transition: 'linear', // default/cube/page/concave/zoom/linear/fade/none
+        width: 1600,
+        height: 900,
+        minScale: 0.2,
+        maxScale: 1.0,
+        //slideNumber: true,
+
+        keyboard: {
+          13: function () {
+            var curSlide = Reveal.getCurrentSlide();
+
+            els = curSlide.querySelectorAll(':scope > a.follow-link, :scope > h1 > a.follow-link, :scope > h2 > a.follow-link, .fragment.visible > a.follow-link');
+
+            if (els && els.length) {
+              var el = els[els.length - 1];
+              var evObj = document.createEvent('Events');
+              evObj.initEvent('click', true, false);
+              el.dispatchEvent(evObj);
+            } 
+          }
+        },
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+      // Reveal.addEventListener('fragmentshown', function (event) {
+      //   if (event.fragment.className.indexOf('capture-event') > -1) {
+      //     window[event.fragment.attributes.getNamedItem('data-action').value](event.fragment.parentElement);
+      //   }
+      // });
+
+      // function strikethrough(el) {
+      //   el.classList.add('strikethrough');
+      // }
+
+    </script>
+
+  </body>
+</html>
