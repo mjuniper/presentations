@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Modern Web Development - Workflow</title>
+
+		<meta name="description" content="Modern Web Development - Workflow">
+		<meta name="author" content="Mike Juniper">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="styles/reveal.css">
+		<link rel="stylesheet" href="styles/theme/esri-dev-summit-2016.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/solarized_dark.css">
+
+    <link rel="stylesheet" href="styles/opendata-api-2016.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+      if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+      }
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+      <div class="slides">
+        <section class="title"  data-background="images/title-2016.png" data-background-size="cover">
+          <h1>Modern Web Development Workshop</h1>
+          <h2>Modern Workflow</h2>
+          <p>
+            <h4>Mike Juniper :: Washington DC R&amp;D Center</h4>
+          </p>
+        </section>
+
+        <section>
+          <div>
+            <h2>
+              <a href="http://mjuniper.github.io/presentations/modern-webdev-workflow">mjuniper.github.io/presentations/modern-webdev-workflow</a>
+            </h2>
+          </div>
+
+          <div class="topmargin">
+            <h4>
+              <a href="https://github.com/mjuniper/presentations">github.com/mjuniper/presentations</a>
+            </h4>
+          </div>
+        </section>
+
+
+
+
+
+        <section>
+          slides...
+        </section>
+
+
+
+
+
+        <section data-background="images/end.png" data-background-size="cover">
+
+        </section>
+
+      </div>
+
+      <div id="slide-footer">
+        <div class="left">
+          Esri UC 2016 | Modern Web Development - Workflow
+        </div>
+        <div class="right">
+          <a href="http://mjuniper.github.io/presentations/modern-webdev-workflow">mjuniper.github.io/presentations/modern-webdev-workflow</a>
+        </div>
+      </div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="scripts/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+        controls: false,
+				progress: true,
+				history: true,
+				center: true,
+        history: true,
+        previewLinks: false,
+        transition: 'linear', // default/cube/page/concave/zoom/linear/fade/none
+        width: 1600,
+        height: 900,
+        minScale: 0.2,
+        maxScale: 1.0,
+        slideNumber: false,
+
+        keyboard: {
+          13: function () {
+            var curSlide = Reveal.getCurrentSlide();
+
+            els = curSlide.querySelectorAll(':scope > a.follow-link, :scope > h1 > a.follow-link, :scope > h2 > a.follow-link, .fragment.visible > a.follow-link');
+
+            if (els && els.length) {
+              var el = els[els.length - 1];
+              var evObj = document.createEvent('Events');
+              evObj.initEvent('click', true, false);
+              el.dispatchEvent(evObj);
+            }
+          }
+        },
+
+				// Optional reveal.js plugins
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+			});
+
+		</script>
+
+	</body>
+</html>
