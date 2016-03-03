@@ -26,13 +26,11 @@
 
 		<!-- Printing and PDF exports -->
 		<script>
-      if( window.location.search.match( /print-pdf/gi ) ) {
-        var link = document.createElement( 'link' );
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = 'css/print/pdf.css';
-        document.getElementsByTagName( 'head' )[0].appendChild( link );
-      }
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'styles/print/pdf.css' : 'styles/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
 
 		<!--[if lt IE 9]>
@@ -49,7 +47,7 @@
           <h1>Modern Web Development Workshop</h1>
           <h3>Modern Workflow</h3>
           <p>
-            <h4>Mike Juniper :: Washington DC R&amp;D Center</h4>
+            <h4><a href="https://github.com/mjuniper">Mike Juniper</a> :: Washington DC R&amp;D Center</h4>
           </p>
         </section>
 
@@ -87,7 +85,7 @@
 
       <div id="slide-footer">
         <div class="left">
-          Esri UC 2016 | Modern Web Development - Workflow
+          Esri Dev Summit 2016 | Modern Web Development - Workflow
         </div>
         <div class="right">
           <a href="http://mjuniper.github.io/presentations/modern-webdev-workflow">mjuniper.github.io/presentations/modern-webdev-workflow</a>
@@ -108,7 +106,6 @@
 				progress: true,
 				history: true,
 				center: true,
-        history: true,
         previewLinks: false,
         transition: 'linear', // default/cube/page/concave/zoom/linear/fade/none
         width: 1600,

@@ -90,3 +90,52 @@ section.strikethrough {
 .left {
   float: left;
 }
+
+#heart {
+    position: relative;
+    width: 300px;
+    height: 540px;
+}
+#heart:before,
+#heart:after {
+    position: absolute;
+    content: "";
+    left: 800px;
+    top: 0;
+    width: 300px;
+    height: 480px;
+    background: red;
+    -moz-border-radius: 300px 300px 0 0;
+    border-radius: 300px 300px 0 0;
+    -webkit-transform: rotate(-45deg);
+       -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+         -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+    -webkit-transform-origin: 0 100%;
+       -moz-transform-origin: 0 100%;
+        -ms-transform-origin: 0 100%;
+         -o-transform-origin: 0 100%;
+            transform-origin: 0 100%;
+}
+#heart:after {
+    left: 500px;
+    -webkit-transform: rotate(45deg);
+       -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+         -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+    -webkit-transform-origin: 100% 100%;
+       -moz-transform-origin: 100% 100%;
+        -ms-transform-origin: 100% 100%;
+         -o-transform-origin: 100% 100%;
+            transform-origin :100% 100%;
+}
+
+#heart-text {
+  color: pink;
+  position: absolute;
+  top: 100px;
+  left: 600px;
+  font-size: 3em;
+}

@@ -26,13 +26,11 @@
 
 		<!-- Printing and PDF exports -->
 		<script>
-      if( window.location.search.match( /print-pdf/gi ) ) {
-        var link = document.createElement( 'link' );
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = 'css/print/pdf.css';
-        document.getElementsByTagName( 'head' )[0].appendChild( link );
-      }
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'styles/print/pdf.css' : 'styles/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
 
 		<!--[if lt IE 9]>
@@ -48,8 +46,8 @@
         <section class="title"  data-background="images/title-2016.png" data-background-size="cover">
           <h1>Developing with ArcGIS Open Data</h1>
           <p>
-            <h4>Mike Juniper :: Washington DC R&amp;D Center</h4>
-            <h4>Alex Harris :: Washington DC R&amp;D Center</h4>
+            <h4><a href="https://github.com/mjuniper">Mike Juniper</a> :: Washington DC R&amp;D Center</h4>
+            <h4><a href="https://github.com/akharris">Alex Harris</a> :: Washington DC R&amp;D Center</h4>
           </p>
         </section>
 
@@ -599,7 +597,7 @@ DatasetModel = Backbone.Model.extend({
 
       <div id="slide-footer">
         <div class="left">
-          Esri UC 2016 | Developing with ArcGIS Open Data
+          Esri Dev Summit 2016 | Developing with ArcGIS Open Data
         </div>
         <div class="right">
           <a href="http://mjuniper.github.io/presentations/opendata-api.html">mjuniper.github.io/presentations/opendata-api.html</a>
@@ -620,7 +618,6 @@ DatasetModel = Backbone.Model.extend({
 				progress: true,
 				history: true,
 				center: true,
-        history: true,
         previewLinks: false,
         transition: 'linear', // default/cube/page/concave/zoom/linear/fade/none
         width: 1600,
