@@ -34,15 +34,21 @@ section img#architecture {
   margin: 0;
 }
 
-/*pre.code {
+/*pre.code code {
   background-color: #3F3F3F;
-  font-size: 1em;
+  font-size: 2em;
+}*/
+
+.reveal pre {
+  box-shadow: none;
 }
 
 .reveal section pre code {
-  padding: 15px;
+  padding: 5px 20px;
   max-height: inherit;
-}*/
+  font-size: 1.1em;
+  line-height: 1.2em;
+}
 
 #mvc span {
   font-size: 2.7em;
