@@ -16,7 +16,7 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-		<link rel="stylesheet" href="styles/reveal.css">
+		<link rel="stylesheet" href="styles/reveal-newer.css">
 		<link rel="stylesheet" href="styles/theme/esri-dev-summit-2016.css" id="theme">
 
 		<!-- Code syntax highlighting -->
@@ -26,13 +26,11 @@
 
 		<!-- Printing and PDF exports -->
 		<script>
-      if( window.location.search.match( /print-pdf/gi ) ) {
-        var link = document.createElement( 'link' );
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = 'css/print/pdf.css';
-        document.getElementsByTagName( 'head' )[0].appendChild( link );
-      }
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'styles/print/pdf.css' : 'styles/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
 
 		<!--[if lt IE 9]>
@@ -48,8 +46,8 @@
         <section class="title"  data-background="images/title-2016.png" data-background-size="cover">
           <h1>Developing with ArcGIS Open Data</h1>
           <p>
-            <h4>Mike Juniper :: Washington DC R&amp;D Center</h4>
-            <h4>Alex Harris :: Washington DC R&amp;D Center</h4>
+            <h4><a href="https://github.com/mjuniper">Mike Juniper</a> :: Washington DC R&amp;D Center</h4>
+            <h4><a href="https://github.com/akharris">Alex Harris</a> :: Washington DC R&amp;D Center</h4>
           </p>
         </section>
 
@@ -262,8 +260,8 @@
           <div class="fragment">Versioning via URL or Headers </div>
 
           <div class="fragment">
-            <h3><pre><code class="hljs http">/api/v2/...</code></pre></h3>
-            <h3><pre><code class="hljs http">Accept: application/vnd.arcgis+json; version=2</code></pre></h3>
+            <h3><pre><code class="hljs">/api/v2/...</code></pre></h3>
+            <h3><pre><code class="hljs">Accept: application/vnd.arcgis+json; version=2</code></pre></h3>
           </div>
         </section>
 
@@ -271,8 +269,8 @@
           <h1>OpenData V2 API (public) continued..</h1>
           <div class="fragment">Consistent return of an object or list of objects based on resource</div>
           <div class="fragment">
-            <h3><pre><code class="hljs json">/api/v2/datasets.json -> {"datasets": []}</code></pre></h3>
-            <h3><pre><code class="hljs json">/api/v2/datasets/:id.json -> {"dataset": {}}</code></pre></h3>
+            <h3><pre><code class="hljs">/api/v2/datasets.json -> {"datasets": []}</code></pre></h3>
+            <h3><pre><code class="hljs">/api/v2/datasets/:id.json -> {"dataset": {}}</code></pre></h3>
           </div>
         </section>
 
@@ -310,7 +308,7 @@
         </section>
 
         <section>
-          <h2><pre><code class="hljs javascript">
+          <h2><pre><code class="hljs">
 $.getJSON('http://my.api.url')
   .done(function (response, status, xhr) {
     /* stuff it into the DOM... */
@@ -329,7 +327,7 @@ $.getJSON('http://my.api.url')
         </section>
 
         <section class="strikethrough" data-transition="fade" data-transition-speed="slow">
-          <h2><pre><code class="hljs javascript">
+          <h2><pre><code class="hljs">
 $.getJSON('http://my.api.url')
   .done(function (response, status, xhr) {
     /* do something with the response! */
@@ -375,22 +373,22 @@ $.getJSON('http://my.api.url')
         <section>
           <h1>Key endpoints:</h1>
           <div class="fragment">
-            <h3><pre><code class="hljs html">/datasets.json?q=&lt;search string&gt;&page=&lt;page number&gt;</code></pre></h3>
+            <h3><pre><code class="hljs">/datasets.json?q=&lt;search string&gt;&page=&lt;page number&gt;</code></pre></h3>
             <a class="follow-link" href="http://opendata.arcgis.com/datasets.json?q=water&page=1" target="_blank"></a>
           </div>
 
           <div class="fragment">
-            <h3><pre><code class="hljs javascript">$.getJSON(MyApiUrl + '/datasets.json?q=water&page=1');</code></pre></h3>
+            <h3><pre><code class="hljs">$.getJSON(MyApiUrl + '/datasets.json?q=water&page=1');</code></pre></h3>
           </div>
 
           <div class="fragment">
             <div>and</div>
-            <h3><pre><code class="hljs html">/datasets/&lt;id&gt;.json</code></pre></h3>
+            <h3><pre><code class="hljs">/datasets/&lt;id&gt;.json</code></pre></h3>
             <a class="follow-link" href="http://opendata.arcgis.com/datasets/354b5206149c4863abf3d77710063489_2.json" target="_blank"></a>
           </div>
 
           <div class="fragment">
-            <h3><pre><code class="hljs javascript">$.getJSON(MyApiUrl + '/datasets/abc123.json');</code></pre></h3>
+            <h3><pre><code class="hljs">$.getJSON(MyApiUrl + '/datasets/abc123.json');</code></pre></h3>
           </div>
 
           <aside class="notes">
@@ -414,7 +412,7 @@ $.getJSON('http://my.api.url')
           <h1>And maybe:</h1>
 
           <div class="fragment">
-            <h3><pre><code class="hljs html">/datasets/&lt;id&gt;/related.json</code></pre></h3>
+            <h3><pre><code class="hljs">/datasets/&lt;id&gt;/related.json</code></pre></h3>
             <a class="follow-link" href="http://opendata.arcgis.com/datasets/354b5206149c4863abf3d77710063489_2/related.json" target="_blank"></a>
           </div>
 
@@ -424,12 +422,12 @@ $.getJSON('http://my.api.url')
 
           <div class="fragment">
             <div>And:</div>
-            <h3><pre><code class="hljs html">/datasets/autocomplete?query=&lt;search string&gt;</code></pre></h3>
+            <h3><pre><code class="hljs">/datasets/autocomplete?query=&lt;search string&gt;</code></pre></h3>
             <a class="follow-link" href="http://opendata.arcgis.com/datasets/autocomplete.json?query=wate" target="_blank"></a>
           </div>
 
           <div class="fragment">
-            <h3><pre><code class="hljs javascript">$.getJSON(MyApiUrl + '/datasets/autocomplete?query=wat');</code></pre></h3>
+            <h3><pre><code class="hljs">$.getJSON(MyApiUrl + '/datasets/autocomplete?query=wat');</code></pre></h3>
           </div>
         </section>
 
@@ -470,7 +468,7 @@ $.getJSON('http://my.api.url')
         </section>
 
         <section>
-          <h2><pre><code class="hljs javascript">
+          <h2><pre><code class="hljs">
 $.getJSON('http://my.api.url')
   .done(function (response, status, xhr) {
     if (response.error) {
@@ -531,7 +529,7 @@ $.getJSON('http://my.api.url')
           </div>
           <div class="fragment">
             <pre class="code">
-              <code class="hljs bash">
+              <code class="hljs">
                 $ git clone
                 $ cd opendata-backbone
                 $ npm install
@@ -547,7 +545,7 @@ $.getJSON('http://my.api.url')
         </section>
 
         <section>
-          <pre><code class="hljs javascript">
+          <pre><code class="hljs">
 DatasetCollection = Backbone.Collection.extend({
 
   url: function () {
@@ -566,7 +564,7 @@ DatasetCollection = Backbone.Collection.extend({
 
           <div class="fragment">
             <div>and</div>
-            <pre><code class="hljs javascript">
+            <pre><code class="hljs">
 DatasetModel = Backbone.Model.extend({
 
   url: function () {
@@ -599,7 +597,7 @@ DatasetModel = Backbone.Model.extend({
 
       <div id="slide-footer">
         <div class="left">
-          Esri UC 2016 | Developing with ArcGIS Open Data
+          Esri Dev Summit 2016 | Developing with ArcGIS Open Data
         </div>
         <div class="right">
           <a href="http://mjuniper.github.io/presentations/opendata-api.html">mjuniper.github.io/presentations/opendata-api.html</a>
@@ -620,7 +618,6 @@ DatasetModel = Backbone.Model.extend({
 				progress: true,
 				history: true,
 				center: true,
-        history: true,
         previewLinks: false,
         transition: 'linear', // default/cube/page/concave/zoom/linear/fade/none
         width: 1600,
