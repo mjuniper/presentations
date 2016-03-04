@@ -104,15 +104,160 @@
 
 				<section>
 					<h1>Javascript the weird parts</h1>
-					<ul>
-						<li>prototypical inheritance</li>
-						<li>first class functions</li>
-						<li>truthy/falsey (`if (var) {...}` - fails if var is 0; if you need a real boolean `!!var`)</li>
-						<li>equality 1 == '1'; 1 === '1'</li>
-						<li>scope</li>
-						<li>closures</li>
-					</ul>
 				</section>
+
+				<section>
+					<h2>prototypal inheritance</h2>
+
+					<blockquote>
+						JavaScript has a class-free object system in which objects inherit properties directly from other objects. - Douglas Crockford
+					</blockquote>
+
+					<aside class="notes">
+						We will get to ES2015 classes shortly which provide classes but it's just syntactic sugar - JS remains prototypal
+					</aside>
+				</section>
+
+				<section>
+					<h2>first class functions</h2>
+
+					<pre class="fragment">
+						<code class="hljs" data-trim>
+var func = function () {};
+func.foo = 'foo'; // it's an object so it can have properties
+func.bar = function(msg) { alert(msg); }; // and it can have methods
+
+// func => Function.prototype => Object.prototype
+						</code>
+					</pre>
+
+					<pre class="fragment">
+						<code class="hljs" data-trim>
+var func = function(func, msg) {
+	func(msg);
+};
+func(window.alert, 'hello');
+						</code>
+					</pre>
+
+					<pre class="fragment">
+						<code class="hljs" data-trim>
+var func = function() {
+	return window.alert;
+};
+func()('hello');
+						</code>
+					</pre>
+
+					<aside class="notes">
+						<ul>
+							<li>a function can have properties (which can be functions)</li>
+							<li>you can store the function in a variable</li>
+							<li>you can pass the function as a parameter to another function</li>
+							<li>you can return the function from a function</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<h2>equality</h2>
+					<pre>
+						<code class="hljs">
+1 == 1    // true
+1 == '1'  // true
+
+1 === 1   // true
+1 === '1' // false
+						</code>
+					</pre>
+				</section>
+
+				<section>
+					<h2>truthy/falsey</h2>
+					<pre>
+						<code class="hljs">
+// all these are falsey
+false
+null
+undefined
+0
+''
+NaN
+obj.undefinedProperty
+
+if (person.undefinedProperty) {
+	// watch out for if person.undefinedProperty is an integer - it could be 0!
+}
+						</code>
+					</pre>
+				</section>
+
+				<section>
+					<h2>scope</h2>
+
+					<blockquote>
+						Variable Scope (JavaScript) JavaScript has two scopes: global and local. A variable that is declared outside a function definition is a global variable, and its value is accessible and modifiable throughout your program. A variable that is declared inside a function definition is local. - MSDN
+					</blockquote>
+
+					<pre>
+						<code class="hljs">
+var foo = 'foo'; // global
+var func = function() {
+	var bar = 'bar'; // local
+	console.log(foo); // foo
+	console.log(bar); // bar
+}
+func();
+console.log(foo); // foo
+console.log(bar); // bar is undefined!
+						</code>
+					</pre>
+				</section>
+
+				<section>
+					<h2>closures</h2>
+
+					<blockquote>
+						Closures are functions that refer to independent (free) variables. In other words, the function defined in the closure 'remembers' the environment in which it was created. - MDN
+					</blockquote>
+
+					<pre>
+						<code class="hljs">
+function makeFunc() {
+  var name = 'jupe';
+  function displayName() { // closure - it has access to name
+    alert(name);
+  }
+  return displayName;
+}
+
+var myFunc = makeFunc();
+myFunc();
+						</code>
+					</pre>
+				</section>
+
+				<section>
+					<h2>number, string, and boolean objects</h2>
+					<h3 class="fragment">Don't use them!</h3>
+					<pre class="fragment">
+						<code class="hljs" data-trim>
+'jupe' == 'jupe';                         // true
+new String('jupe') == new String('jupe'); // false
+
+var b = new Boolean(false);
+b;         // false
+!b;        // also false!
+!b == b;   // true!
+!b === b;  // false!
+!!b == !b  // false!!!
+!!b === !b // false!!!
+						</code>
+					</pre>
+				</section>
+
+
+
 
 				<section>
 					<h1>Tools</h1>
@@ -124,12 +269,6 @@
 						<li><a href="http://developers.arcgis.com/javascript/sandbox/sandbox.html">ArcGIS Javascript API Sandbox</a></li>
 						<li>etc, etc, etc</li>
 					</ul>
-
-					<aside class="notes">
-            <h3>but what about frameworks?</h3>
-						some of these can be made to work with frameworks
-						and some are specific to a particular framework
-					</aside>
 				</section>
 
 				<section>
@@ -141,11 +280,17 @@
 						<li>sharing code</li>
 						<li>taking a framework for a test drive</li>
 					</ul>
+
+					<aside class="notes">
+            <h3>but what about frameworks?</h3>
+						some of these can be made to work with frameworks
+						and some are specific to a particular framework
+					</aside>
 				</section>
 
 				<section>
 					<h1>ES6/ES2015 (&amp; ES7 &amp; ES8)</h1>
-					<h2>Not yet fully implemented in browsers:<br><a href="http://kangax.github.io/compat-table/es6/">kangax.github.io/compat-table/es6/</a></h2>
+					<h2>Not yet fully implemented in browsers:<br><a class="follow-link" target="_blank" href="http://kangax.github.io/compat-table/es6/">kangax.github.io/compat-table/es6/</a></h2>
 				</section>
 
 				<section>
@@ -160,7 +305,7 @@
 				</section>
 
 				<section>
-					<a href="https://babeljs.io/" target="_blank"><img src="images/babel.png" alt="" /></a>
+					<a href="https://babeljs.io/" class="follow-link" target="_blank"><img src="images/babel.png" alt="" /></a>
 
 					<aside class="notes">
 						<ul>
@@ -171,10 +316,11 @@
 				</section>
 
 				<section>
-					<h1><a target="_blank" href="https://babeljs.io/repl">The babel repl</a></h1>
+					<h1><a class="follow-link" target="_blank" href="https://babeljs.io/repl">The babel repl</a></h1>
 
 					<aside class="notes">
 						<ul>
+							<li>later we'll show you how you can integrate babel into your workflow but for now we'll play with the repl</li>
 							<li>run, eval, print loop - babel running in a browser</li>
 							<li>allows you to try stuff out</li>
 							<li>instructive to see what it transforms to</li>
@@ -187,7 +333,7 @@
 
 				<section>
 					<h1>const/let</h1>
-					<a target="_blank" href="https://babeljs.io/repl/#?experimental=false&evaluate=true&loose=false&spec=false&code=%0A%2F%2F%20const%2C%20let%0A%0Aconst%20msg%20%3D%20'Hello%2C%20Jupe'%3B%0A%2F%2Fmsg%20%3D%20''%3B%0A%0A%2F%2F%20%7B%0A%2F%2F%20%20%20const%20msg%20%3D%20'block%20scope!'%3B%0A%2F%2F%20%20%20console.log(msg)%3B%0A%2F%2F%20%7D%0A%0Aconsole.log(msg)%3B%0A%0A%0A%2F%2Fconst%20is%20not%20immutable!%0A%2F%2F%20const%20obj%20%3D%20%7B%0A%2F%2F%20%20%20foo%3A%20'foo'%2C%20%2F%2F%20%3C%3D%3D%20trailing%20comma%0A%2F%2F%20%7D%0A%0A%2F%2Fobj%20%3D%20%7B%7D%3B%0A%2F%2Fobj.foo%20%3D%20'bar'%3B%0A%0A%2F%2F%20console.log(obj.foo)%3B">babel repl</a>
+					<a class="follow-link" target="_blank" href="https://babeljs.io/repl/#?experimental=false&evaluate=true&loose=false&spec=false&code=%0A%2F%2F%20const%2C%20let%0A%0Aconst%20msg%20%3D%20'Hello%2C%20Jupe'%3B%0A%2F%2Fmsg%20%3D%20''%3B%0A%0A%2F%2F%20%7B%0A%2F%2F%20%20%20const%20msg%20%3D%20'block%20scope!'%3B%0A%2F%2F%20%20%20console.log(msg)%3B%0A%2F%2F%20%7D%0A%0Aconsole.log(msg)%3B%0A%0A%0A%2F%2Fconst%20is%20not%20immutable!%0A%2F%2F%20const%20obj%20%3D%20%7B%0A%2F%2F%20%20%20foo%3A%20'foo'%2C%20%2F%2F%20%3C%3D%3D%20trailing%20comma%0A%2F%2F%20%7D%0A%0A%2F%2Fobj%20%3D%20%7B%7D%3B%0A%2F%2Fobj.foo%20%3D%20'bar'%3B%0A%0A%2F%2F%20console.log(obj.foo)%3B">babel repl</a>
 
 					<aside class="notes">
 						<ul>
@@ -200,18 +346,19 @@
 
 				<section>
 					<h1>template literals &amp; multiline strings</h1>
-					<a target="_blank" href="https://babeljs.io/repl/#?experimental=false&evaluate=true&loose=false&spec=false&code=%0A%2F%2F%20template%20literals%0A%0Afunction%20getMsg(name)%20%7B%0A%20%20return%20%60Hello%2C%20%24%7Bname%7D%60%3B%0A%7D%0A%0Aconst%20msg%20%3D%20getMsg('jupe')%3B%0A%0Aconsole.log(msg)%3B%0A%0A%0A%2F%2F%20multiline%20strings%0A%0A%2F%2F%20const%20str%20%3D%20%60%0A%2F%2F%20foo%0A%2F%2F%20the%0A%2F%2F%20bar%0A%2F%2F%20%60%3B%0A%0A%2F%2F%20console.log(str)%3B">babel repl</a>
+					<a class="follow-link" target="_blank" href="https://babeljs.io/repl/#?experimental=false&evaluate=true&loose=false&spec=false&code=%0A%2F%2F%20template%20literals%0A%0Afunction%20getMsg(name)%20%7B%0A%20%20return%20%60Hello%2C%20%24%7Bname%7D%60%3B%0A%7D%0A%0Aconst%20msg%20%3D%20getMsg('jupe')%3B%0A%0Aconsole.log(msg)%3B%0A%0A%0A%2F%2F%20multiline%20strings%0A%0A%2F%2F%20const%20str%20%3D%20%60%0A%2F%2F%20foo%0A%2F%2F%20the%0A%2F%2F%20bar%0A%2F%2F%20%60%3B%0A%0A%2F%2F%20console.log(str)%3B">babel repl</a>
 
 					<aside class="notes">
 						<ul>
 							<li>more readable.</li>
+							<li>no more string concatenation!</li>
 						</ul>
 					</aside>
 				</section>
 
 				<section>
 					<h1>arrows</h1>
-					<a target="_blank" href="https://babeljs.io/repl/#?experimental=false&evaluate=true&loose=false&spec=false&code=%0A%2F%2F%20arrows%0A%0Aconst%20getMsg%20%3D%20name%20%3D%3E%20%60Hello%2C%20%24%7Bname%7D%60%3B%0A%0Aconst%20msg%20%3D%20getMsg('jupe')%3B%0A%0Aconsole.log(msg)%3B%0A%0A%0A%2F%2F%20let%20arr%20%3D%20%5B1%2C%202%2C%203%5D%3B%0A%2F%2F%20let%20squares%20%3D%20arr.map(x%20%3D%3E%20x%20*%20x)%3B%0A%2F%2F%20console.log(JSON.stringify(squares))%3B">babel repl</a>
+					<a class="follow-link" target="_blank" href="https://babeljs.io/repl/#?experimental=false&evaluate=true&loose=false&spec=false&code=%0A%2F%2F%20arrows%0A%0Aconst%20getMsg%20%3D%20name%20%3D%3E%20%60Hello%2C%20%24%7Bname%7D%60%3B%0A%0Aconst%20msg%20%3D%20getMsg('jupe')%3B%0A%0Aconsole.log(msg)%3B%0A%0A%0A%2F%2F%20let%20arr%20%3D%20%5B1%2C%202%2C%203%5D%3B%0A%2F%2F%20let%20squares%20%3D%20arr.map(x%20%3D%3E%20x%20*%20x)%3B%0A%2F%2F%20console.log(JSON.stringify(squares))%3B">babel repl</a>
 
 					<aside class="notes">
 						<ul>
@@ -222,40 +369,40 @@
 
 				<section>
 					<h1>classes &amp; modules</h1>
-					<a target="_blank" href="https://babeljs.io/repl/#?experimental=false&evaluate=true&loose=false&spec=false&code=%0A%2F%2F%20classes%0A%0Aclass%20Person%20%7B%0A%20%20constructor(first%2C%20last)%20%7B%0A%20%20%20%20this.first%20%3D%20first%3B%0A%20%20%20%20this.last%20%3D%20last%3B%0A%20%20%7D%0A%20%20get%20fullName()%20%7B%0A%20%20%20%20return%20%60%24%7Bthis.first%7D%20%24%7Bthis.last%7D%60%3B%0A%20%20%7D%0A%7D%0A%0Alet%20p%20%3D%20new%20Person('mike'%2C%20'juniper')%3B%0Aconsole.log(p.fullName)%3B%0A%0Aclass%20Employee%20extends%20Person%20%7B%0A%20%20constructor(first%2C%20last%2C%20title)%20%7B%0A%20%20%20%20super(first%2C%20last)%3B%0A%20%20%20%20this.title%20%3D%20title%3B%0A%20%20%7D%0A%20%20get%20nameWithTitle()%20%7B%0A%20%20%20%20return%20%60%24%7Bsuper.fullName%7D%20(%24%7Bthis.title%7D)%60%3B%0A%20%20%7D%0A%7D%0A%0Alet%20e%20%3D%20new%20Employee('mike'%2C%20'juniper'%2C%20'software%20engineer')%3B%0Aconsole.log(e.nameWithTitle)%3B%0A%0A%0A%2F%2F%20modules%0A%0A%2F%2F%20%2F%2F%20mymodule.js%0A%2F%2F%20export%20function%20myFunc()%20%7B%0A%2F%2F%20%20%20%2F%2F%20...%20do%20stuff%0A%2F%2F%20%7D%0A%0A%2F%2F%20%2F%2F%20elsewhere...%0A%2F%2F%20import%20%7BmyFunc%20as%20myAwesomeFunc%7D%20from%20'mymodule'%3B%0A">babel repl</a>
+					<a class="follow-link" target="_blank" href="https://babeljs.io/repl/#?experimental=false&evaluate=true&loose=false&spec=false&code=%0A%2F%2F%20classes%0A%0Aclass%20Person%20%7B%0A%20%20constructor(first%2C%20last)%20%7B%0A%20%20%20%20this.first%20%3D%20first%3B%0A%20%20%20%20this.last%20%3D%20last%3B%0A%20%20%7D%0A%20%20get%20fullName()%20%7B%0A%20%20%20%20return%20%60%24%7Bthis.first%7D%20%24%7Bthis.last%7D%60%3B%0A%20%20%7D%0A%7D%0A%0Alet%20p%20%3D%20new%20Person('mike'%2C%20'juniper')%3B%0Aconsole.log(p.fullName)%3B%0A%0Aclass%20Employee%20extends%20Person%20%7B%0A%20%20constructor(first%2C%20last%2C%20title)%20%7B%0A%20%20%20%20super(first%2C%20last)%3B%0A%20%20%20%20this.title%20%3D%20title%3B%0A%20%20%7D%0A%20%20get%20nameWithTitle()%20%7B%0A%20%20%20%20return%20%60%24%7Bsuper.fullName%7D%20(%24%7Bthis.title%7D)%60%3B%0A%20%20%7D%0A%7D%0A%0Alet%20e%20%3D%20new%20Employee('mike'%2C%20'juniper'%2C%20'software%20engineer')%3B%0Aconsole.log(e.nameWithTitle)%3B%0A%0A%0A%2F%2F%20modules%0A%0A%2F%2F%20%2F%2F%20mymodule.js%0A%2F%2F%20export%20function%20myFunc()%20%7B%0A%2F%2F%20%20%20%2F%2F%20...%20do%20stuff%0A%2F%2F%20%7D%0A%0A%2F%2F%20%2F%2F%20elsewhere...%0A%2F%2F%20import%20%7BmyFunc%20as%20myAwesomeFunc%7D%20from%20'mymodule'%3B%0A">babel repl</a>
 
 					<aside class="notes">
 						<ul>
-							<li></li>
+							<li>more convenient syntax for stuff we were already doing</li>
 						</ul>
 					</aside>
 				</section>
 
 				<section>
 					<h1>for-of</h1>
-					<a target="_blank" href="https://babeljs.io/repl/#?experimental=false&evaluate=true&loose=false&spec=false&code=%0A%2F%2F%20for-of%0A%0Aconst%20arr%20%3D%20%5B'a'%2C%20'b'%2C%20'c'%5D%3B%0A%0Aconsole.log('for%20loop%3A')%3B%0Afor%20(var%20i%3D0%3B%20i%3Carr.length%3B%20i%2B%2B)%20%7B%0A%20%20var%20elem%20%3D%20arr%5Bi%5D%3B%0A%20%20console.log(elem)%3B%0A%7D%0A%0Aconsole.log('%5Cnarr.FforEach%3A')%3B%0Aarr.forEach(function%20(elem)%20%7B%0A%20%20console.log(elem)%3B%0A%7D)%3B%0A%0Aconsole.log('%5Cnfor-of%3A')%3B%0Afor%20(let%20elem%20of%20arr)%20%7B%0A%20%20console.log(elem)%3B%0A%20%20%2F%2F%20if%20(elem%20%3D%3D%3D%20'a')%20%7B%0A%20%20%2F%2F%20%20%20break%3B%0A%20%20%2F%2F%20%7D%0A%7D">babel repl</a>
+					<a class="follow-link" target="_blank" href="https://babeljs.io/repl/#?experimental=false&evaluate=true&loose=false&spec=false&code=%0A%2F%2F%20for-of%0A%0Aconst%20arr%20%3D%20%5B'a'%2C%20'b'%2C%20'c'%5D%3B%0A%0Aconsole.log('for%20loop%3A')%3B%0Afor%20(var%20i%3D0%3B%20i%3Carr.length%3B%20i%2B%2B)%20%7B%0A%20%20var%20elem%20%3D%20arr%5Bi%5D%3B%0A%20%20console.log(elem)%3B%0A%7D%0A%0Aconsole.log('%5Cnarr.FforEach%3A')%3B%0Aarr.forEach(function%20(elem)%20%7B%0A%20%20console.log(elem)%3B%0A%7D)%3B%0A%0Aconsole.log('%5Cnfor-of%3A')%3B%0Afor%20(let%20elem%20of%20arr)%20%7B%0A%20%20console.log(elem)%3B%0A%20%20%2F%2F%20if%20(elem%20%3D%3D%3D%20'a')%20%7B%0A%20%20%2F%2F%20%20%20break%3B%0A%20%20%2F%2F%20%7D%0A%7D">babel repl</a>
 
 					<aside class="notes">
 						<ul>
-							<li></li>
+							<li>a new way of iterating arrays</li>
 						</ul>
 					</aside>
 				</section>
 
 				<section>
 					<h1>parameter defaults</h1>
-					<a target="_blank" href="https://babeljs.io/repl/#?experimental=false&evaluate=true&loose=false&spec=false&code=%0A%2F%2F%20parameter%20default%20values%0A%0Afunction%20foo(x%20%3D%200%2C%20y%20%3D%201)%20%7B%0A%20%20return%20x%20%2B%20y%3B%0A%7D%0A%0Aconsole.log(foo())%3B%0Aconsole.log(foo(1))%3B%0Aconsole.log(foo(1%2C%202))%3B%0A%0A%2F%2F%20console.log(foo(null%2C%20null))%3B%20%2F%2F%20does%20not%20trigger%20the%20default%20value%0A%0A">babel repl</a>
+					<a class="follow-link" target="_blank" href="https://babeljs.io/repl/#?experimental=false&evaluate=true&loose=false&spec=false&code=%0A%2F%2F%20parameter%20default%20values%0A%0Afunction%20foo(x%20%3D%200%2C%20y%20%3D%201)%20%7B%0A%20%20return%20x%20%2B%20y%3B%0A%7D%0A%0Aconsole.log(foo())%3B%0Aconsole.log(foo(1))%3B%0Aconsole.log(foo(1%2C%202))%3B%0A%0A%2F%2F%20console.log(foo(null%2C%20null))%3B%20%2F%2F%20does%20not%20trigger%20the%20default%20value%0A%0A">babel repl</a>
 
 					<aside class="notes">
 						<ul>
-							<li></li>
+							<li>nicer syntax for default parameter values</li>
 						</ul>
 					</aside>
 				</section>
 
 				<section>
 					<h1>object stuff</h1>
-					<a target="_blank" href="https://babeljs.io/repl/#?experimental=false&evaluate=true&loose=false&spec=false&code=%0A%2F%2F%20objects%0A%0Aconst%20name%20%3D%20'foo'%3B%0A%0Alet%20obj%20%3D%20%7B%0A%20%20name%2C%0A%20%20foo()%20%7B%0A%20%20%20%20return%20'foo'%3B%0A%20%20%7D%2C%0A%20%20bar()%20%7B%0A%20%20%20%20return%20this.foo()%3B%0A%20%20%7D%2C%0A%7D%3B%0A%0Aconsole.log(obj)%3B%0A%0A%0A%2F%2F%20Object.assign(obj%2C%20%7B%20otherName%3A%20'bar'%20%7D)%3B%0A%2F%2F%20console.log(obj)%3B">babel repl</a>
+					<a class="follow-link" target="_blank" href="https://babeljs.io/repl/#?experimental=false&evaluate=true&loose=false&spec=false&code=%0A%2F%2F%20objects%0A%0Aconst%20name%20%3D%20'foo'%3B%0A%0Alet%20obj%20%3D%20%7B%0A%20%20name%2C%0A%20%20foo()%20%7B%0A%20%20%20%20return%20'foo'%3B%0A%20%20%7D%2C%0A%20%20bar()%20%7B%0A%20%20%20%20return%20this.foo()%3B%0A%20%20%7D%2C%0A%7D%3B%0A%0Aconsole.log(obj)%3B%0A%0A%0A%2F%2F%20Object.assign(obj%2C%20%7B%20otherName%3A%20'bar'%20%7D)%3B%0A%2F%2F%20console.log(obj)%3B">babel repl</a>
 
 					<aside class="notes">
 						<ul>
@@ -266,7 +413,7 @@
 
 				<section>
 					<h1>number stuff</h1>
-					<a target="_blank" href="https://babeljs.io/repl/#?experimental=false&evaluate=true&loose=false&spec=false&code=%0A%2F%2F%20number%20stuff%0A%0Aconsole.log(Number.isInteger(Infinity))%3B%20%2F%2F%20false%0Aconsole.log(Number.isInteger(0.2))%3B%20%2F%2F%20false%0Aconsole.log(Number.isInteger('foo'))%3B%20%2F%2F%20false%0Aconsole.log(Number.isInteger(1))%3B%20%2F%2F%20false%0A%0Aconsole.log(Number.isNaN(%22NaN%22))%3B%20%2F%2F%20false%0Aconsole.log(Number.isNaN(NaN))%3B%20%2F%2F%20false">babel repl</a>
+					<a class="follow-link" target="_blank" href="https://babeljs.io/repl/#?experimental=false&evaluate=true&loose=false&spec=false&code=%0A%2F%2F%20number%20stuff%0A%0Aconsole.log(Number.isInteger(Infinity))%3B%20%2F%2F%20false%0Aconsole.log(Number.isInteger(0.2))%3B%20%2F%2F%20false%0Aconsole.log(Number.isInteger('foo'))%3B%20%2F%2F%20false%0Aconsole.log(Number.isInteger(1))%3B%20%2F%2F%20false%0A%0Aconsole.log(Number.isNaN(%22NaN%22))%3B%20%2F%2F%20false%0Aconsole.log(Number.isNaN(NaN))%3B%20%2F%2F%20false">babel repl</a>
 
 					<aside class="notes">
 						<ul>
@@ -277,7 +424,7 @@
 
 				<section>
 					<h1>string stuff</h1>
-					<a target="_blank" href="https://babeljs.io/repl/#?experimental=false&evaluate=true&loose=false&spec=false&code=%0A%2F%2F%20string%20stuff%0A%0Aconsole.log('abcde'.includes('cd'))%3B%20%2F%2F%20true%0Aconsole.log('abcde'.includes('bd'))%3B%20%2F%2F%20true%0A%0Aconsole.log('abc'.repeat(10))%3B%20%2F%2F%20%22abcabcabc%22">babel repl</a>
+					<a class="follow-link" target="_blank" href="https://babeljs.io/repl/#?experimental=false&evaluate=true&loose=false&spec=false&code=%0A%2F%2F%20string%20stuff%0A%0Aconsole.log('abcde'.includes('cd'))%3B%20%2F%2F%20true%0Aconsole.log('abcde'.includes('bd'))%3B%20%2F%2F%20true%0A%0Aconsole.log('abc'.repeat(10))%3B%20%2F%2F%20%22abcabcabc%22">babel repl</a>
 
 					<aside class="notes">
 						<ul>
@@ -288,7 +435,7 @@
 
 				<section>
 					<h1>array stuff</h1>
-					<a target="_blank" href="https://babeljs.io/repl/#?experimental=false&evaluate=true&loose=false&spec=false&code=%0A%2F%2F%20array%20stuff%0A%0AArray.from(document.querySelectorAll('*'))%3B%20%2F%2F%20Returns%20a%20real%20Array%0A%0Aconsole.log(%5B1%2C%202%2C%203%5D.find(x%20%3D%3E%20x%20%3D%3D%203))%3B%20%2F%2F%203%0Aconsole.log(%5B1%2C%202%2C%203%5D.findIndex(x%20%3D%3E%20x%20%3D%3D%202))%3B%20%2F%2F%201%0A%0A%0A%2F%2F%20const%20entries%20%3D%20%5B%22a%22%2C%20%22b%22%2C%20%22c%22%5D.entries()%3B%20%2F%2F%20iterator%20%5B0%2C%20%22a%22%5D%2C%20%5B1%2C%22b%22%5D%2C%20%5B2%2C%22c%22%5D%0A%2F%2F%20console.log(entries.next())%3B%0A%2F%2F%20for%20(let%20x%20of%20entries)%20%7B%0A%2F%2F%20%20%20console.log(x)%3B%0A%2F%2F%20%7D%0A%0A%2F%2F%5B%22a%22%2C%20%22b%22%2C%20%22c%22%5D.keys()%3B%20%2F%2F%20iterator%200%2C%201%2C%202%0A%2F%2F%5B%22a%22%2C%20%22b%22%2C%20%22console.log(c%22%5D.values()%3B%20%2F%2F%20iterator%20%22a%22%2C%20%22b%22%2C%20%22c%22">babel repl</a>
+					<a class="follow-link" target="_blank" href="https://babeljs.io/repl/#?experimental=false&evaluate=true&loose=false&spec=false&code=%0A%2F%2F%20array%20stuff%0A%0AArray.from(document.querySelectorAll('*'))%3B%20%2F%2F%20Returns%20a%20real%20Array%0A%0Aconsole.log(%5B1%2C%202%2C%203%5D.find(x%20%3D%3E%20x%20%3D%3D%203))%3B%20%2F%2F%203%0Aconsole.log(%5B1%2C%202%2C%203%5D.findIndex(x%20%3D%3E%20x%20%3D%3D%202))%3B%20%2F%2F%201%0A%0A%0A%2F%2F%20const%20entries%20%3D%20%5B%22a%22%2C%20%22b%22%2C%20%22c%22%5D.entries()%3B%20%2F%2F%20iterator%20%5B0%2C%20%22a%22%5D%2C%20%5B1%2C%22b%22%5D%2C%20%5B2%2C%22c%22%5D%0A%2F%2F%20console.log(entries.next())%3B%0A%2F%2F%20for%20(let%20x%20of%20entries)%20%7B%0A%2F%2F%20%20%20console.log(x)%3B%0A%2F%2F%20%7D%0A%0A%2F%2F%5B%22a%22%2C%20%22b%22%2C%20%22c%22%5D.keys()%3B%20%2F%2F%20iterator%200%2C%201%2C%202%0A%2F%2F%5B%22a%22%2C%20%22b%22%2C%20%22console.log(c%22%5D.values()%3B%20%2F%2F%20iterator%20%22a%22%2C%20%22b%22%2C%20%22c%22">babel repl</a>
 
 					<aside class="notes">
 						<ul>
@@ -299,39 +446,35 @@
 
 				<section>
 					<h1>spread/rest</h1>
-					<a target="_blank" href="https://babeljs.io/repl/#?experimental=false&evaluate=true&loose=false&spec=false&code=%0A%2F%2F%20rest%0A%0Afunction%20sum()%20%7B%0A%20%20var%20sum%20%3D%200%3B%0A%20%20for(var%20i%20%3D%200%3B%20i%20%3C%20arguments.length%3B%20i%2B%2B)%20%7B%0A%20%20%20%20sum%20%2B%3D%20arguments%5Bi%5D%3B%0A%20%20%7D%0A%20%20return%20sum%3B%0A%7D%0Aconsole.log(sum(1%2C%202%2C%203%2C%204))%3B%20%2F%2F%20-%3E%2010%0A%0Afunction%20betterSum(...args)%20%7B%0A%20%20%2F%2F%20args%20is%20an%20array!%0A%20%20var%20sum%20%3D%200%3B%0A%20%20for%20(let%20arg%20of%20args)%20%7B%0A%20%20%20%20sum%20%2B%3D%20arg%3B%0A%20%20%7D%0A%20%20return%20sum%3B%0A%7D%0Aconsole.log(betterSum(1%2C%202%2C%203%2C%204))%3B%20%2F%2F%20-%3E%2010%0A%0Afunction%20bestSum(...args)%20%7B%0A%20%20return%20args.reduce((prev%2C%20current)%20%3D%3E%20prev%20%2B%20current)%3B%0A%7D%0Aconsole.log(bestSum(1%2C%202%2C%203%2C%204))%3B%20%2F%2F%20-%3E%2010%0A%0A%0A%0A%0A%0A%2F%2F%20spread%0A%0A%2F%2F%20function%20func2(x%2C%20y%2C%20z)%20%7B%0A%2F%2F%20%20%20return%20x%20%2B%20y%20%2B%20z%3B%0A%2F%2F%20%7D%0A%0A%2F%2F%20console.log(func2(...%5B1%2C2%2C3%5D))">babel repl</a>
+					<a class="follow-link" target="_blank" href="https://babeljs.io/repl/#?experimental=false&evaluate=true&loose=false&spec=false&code=%0A%2F%2F%20rest%0A%0Afunction%20sum()%20%7B%0A%20%20var%20sum%20%3D%200%3B%0A%20%20for(var%20i%20%3D%200%3B%20i%20%3C%20arguments.length%3B%20i%2B%2B)%20%7B%0A%20%20%20%20sum%20%2B%3D%20arguments%5Bi%5D%3B%0A%20%20%7D%0A%20%20return%20sum%3B%0A%7D%0Aconsole.log(sum(1%2C%202%2C%203%2C%204))%3B%20%2F%2F%20-%3E%2010%0A%0Afunction%20betterSum(...args)%20%7B%0A%20%20%2F%2F%20args%20is%20an%20array!%0A%20%20var%20sum%20%3D%200%3B%0A%20%20for%20(let%20arg%20of%20args)%20%7B%0A%20%20%20%20sum%20%2B%3D%20arg%3B%0A%20%20%7D%0A%20%20return%20sum%3B%0A%7D%0Aconsole.log(betterSum(1%2C%202%2C%203%2C%204))%3B%20%2F%2F%20-%3E%2010%0A%0Afunction%20bestSum(...args)%20%7B%0A%20%20return%20args.reduce((prev%2C%20current)%20%3D%3E%20prev%20%2B%20current)%3B%0A%7D%0Aconsole.log(bestSum(1%2C%202%2C%203%2C%204))%3B%20%2F%2F%20-%3E%2010%0A%0A%0A%0A%0A%0A%2F%2F%20spread%0A%0A%2F%2F%20function%20func2(x%2C%20y%2C%20z)%20%7B%0A%2F%2F%20%20%20return%20x%20%2B%20y%20%2B%20z%3B%0A%2F%2F%20%7D%0A%0A%2F%2F%20console.log(func2(...%5B1%2C2%2C3%5D))">babel repl</a>
 
 					<aside class="notes">
 						<ul>
-							<li></li>
+							<li>spread turn arrays into parameters</li>
+							<li>rest turns parameters into arrays</li>
 						</ul>
 					</aside>
 				</section>
 
-
-
-
-
-
-
 				<section>
 					<h1>destructuring</h1>
-					<a target="_blank" href="">babel repl</a>
+					<a class="follow-link" target="_blank" href="https://babeljs.io/repl/#?experimental=false&evaluate=true&loose=false&spec=false&code=%0A%2F%2F%20destructuring%0A%0A%2F%2F%20arrays%0Avar%20%5Bx%2C%20%2C%20y%5D%20%3D%20%5B1%2C2%2C3%5D%3B%0Aconsole.log(%60%24%7Bx%7D%2C%20%24%7By%7D%60)%3B%0A%0A%0A%2F%2F%20%2F%2F%20objects%0A%2F%2F%20const%20obj%20%3D%20%7B%20first%3A%20'mike'%2C%20last%3A%20'juniper'%20%7D%3B%0A%2F%2F%20let%20%7B%20first%3A%20f%2C%20last%3A%20l%20%7D%20%3D%20obj%3B%20%2F%2F%20(A)%0A%2F%2F%20console.log(%60%24%7Bf%7D%20%24%7Bl%7D%60)%3B%0A%0A%0A%2F%2F%20%2F%2F%20fail%20soft%0A%2F%2F%20var%20%5Ba%5D%20%3D%20%5B%5D%3B%0A%2F%2F%20console.log(a%20%3D%3D%3D%20undefined)%3B%0A%0A%2F%2F%20%2F%2F%20fail%20soft%20with%20defaults%0A%2F%2F%20var%20%5Ba%20%3D%201%5D%20%3D%20%5B%5D%3B%0A%2F%2F%20console.log(a)%3B">babel repl</a>
 
 					<aside class="notes">
 						<ul>
-							<li></li>
+							<li>extract data from arrays or objects into variables</li>
 						</ul>
 					</aside>
 				</section>
 
 				<section>
 					<h1>native promises</h1>
-					<a target="_blank" href="">babel repl</a>
+					<a class="follow-link" target="_blank" href="https://babeljs.io/repl/#?experimental=false&evaluate=true&loose=false&spec=false&code=%0A%2F%2F%20promises%0A%0Afunction%20timeout(duration%20%3D%200)%20%7B%0A%20%20return%20new%20Promise((resolve%2C%20reject)%20%3D%3E%20%7B%0A%20%20%20%20setTimeout(()%20%3D%3E%20%7Bresolve('foo')%7D%2C%20duration)%3B%0A%20%20%7D)%0A%7D%0A%0Aconsole.log('calling%20timeout')%3B%0Avar%20p%20%3D%20timeout(3000).then(x%20%3D%3E%20%7B%0A%20%20console.log(x)%3B%0A%7D)%3B">babel repl</a>
 
 					<aside class="notes">
 						<ul>
-							<li></li>
+							<li>Promise: A promise represents the eventual result of an asynchronous operation.</li>
+							<li>we've been using them for a while - es2015 brings a native implementation</li>
 						</ul>
 					</aside>
 				</section>
@@ -344,6 +487,14 @@
 					</aside>
 				</section>
 
+				<section>
+					<h1>Keep learning</h1>
+					<h2 class="fragment">but try not to get overwhelmed</h2>
+					<div class="fragment">
+						<h3><a href="http://javascriptweekly.com/">Javascript Weekly</a></h3>
+						<h3><a href="https://devchat.tv/js-jabber/">Javascript Jabber</a></h3>
+					</div>
+				</section>
 
         <section data-background="images/end.png" data-background-size="cover">
 
