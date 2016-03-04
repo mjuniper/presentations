@@ -123,9 +123,12 @@
 
 					<pre class="fragment">
 						<code class="hljs" data-trim>
-var func = function () {};
+var func = function () { console.log('yay'); };
 func.foo = 'foo'; // it's an object so it can have properties
 func.bar = function(msg) { alert(msg); }; // and it can have methods
+
+func();
+func.bar('hello');
 
 // func => Function.prototype => Object.prototype
 						</code>
@@ -255,9 +258,6 @@ b;         // false
 						</code>
 					</pre>
 				</section>
-
-
-
 
 				<section>
 					<h1>Tools</h1>
@@ -413,7 +413,7 @@ b;         // false
 
 				<section>
 					<h1>number stuff</h1>
-					<a class="follow-link" target="_blank" href="https://babeljs.io/repl/#?experimental=false&evaluate=true&loose=false&spec=false&code=%0A%2F%2F%20number%20stuff%0A%0Aconsole.log(Number.isInteger(Infinity))%3B%20%2F%2F%20false%0Aconsole.log(Number.isInteger(0.2))%3B%20%2F%2F%20false%0Aconsole.log(Number.isInteger('foo'))%3B%20%2F%2F%20false%0Aconsole.log(Number.isInteger(1))%3B%20%2F%2F%20false%0A%0Aconsole.log(Number.isNaN(%22NaN%22))%3B%20%2F%2F%20false%0Aconsole.log(Number.isNaN(NaN))%3B%20%2F%2F%20false">babel repl</a>
+					<a class="follow-link" target="_blank" href="https://babeljs.io/repl/#?experimental=false&evaluate=true&loose=false&spec=false&code=%0A%2F%2F%20number%20stuff%0A%0Aconsole.log(Number.isInteger(Infinity))%3B%20%2F%2F%20false%0Aconsole.log(Number.isInteger(0.2))%3B%20%2F%2F%20false%0Aconsole.log(Number.isInteger('foo'))%3B%20%2F%2F%20false%0Aconsole.log(Number.isInteger(1))%3B%20%2F%2F%20true%0A%0Aconsole.log(Number.isNaN(%22NaN%22))%3B%20%2F%2F%20false%0Aconsole.log(Number.isNaN(NaN))%3B%20%2F%2F%20true">babel repl</a>
 
 					<aside class="notes">
 						<ul>
@@ -424,7 +424,7 @@ b;         // false
 
 				<section>
 					<h1>string stuff</h1>
-					<a class="follow-link" target="_blank" href="https://babeljs.io/repl/#?experimental=false&evaluate=true&loose=false&spec=false&code=%0A%2F%2F%20string%20stuff%0A%0Aconsole.log('abcde'.includes('cd'))%3B%20%2F%2F%20true%0Aconsole.log('abcde'.includes('bd'))%3B%20%2F%2F%20true%0A%0Aconsole.log('abc'.repeat(10))%3B%20%2F%2F%20%22abcabcabc%22">babel repl</a>
+					<a class="follow-link" target="_blank" href="https://babeljs.io/repl/#?experimental=false&evaluate=true&loose=false&spec=false&code=%0A%2F%2F%20string%20stuff%0A%0Aconsole.log('abcde'.includes('cd'))%3B%20%2F%2F%20true%0Aconsole.log('abcde'.includes('bd'))%3B%20%2F%2F%20false%0A%0Aconsole.log('abc'.repeat(10))%3B%20%2F%2F%20%22abcabcabc%22">babel repl</a>
 
 					<aside class="notes">
 						<ul>
@@ -458,7 +458,7 @@ b;         // false
 
 				<section>
 					<h1>destructuring</h1>
-					<a class="follow-link" target="_blank" href="https://babeljs.io/repl/#?experimental=false&evaluate=true&loose=false&spec=false&code=%0A%2F%2F%20destructuring%0A%0A%2F%2F%20arrays%0Avar%20%5Bx%2C%20%2C%20y%5D%20%3D%20%5B1%2C2%2C3%5D%3B%0Aconsole.log(%60%24%7Bx%7D%2C%20%24%7By%7D%60)%3B%0A%0A%0A%2F%2F%20%2F%2F%20objects%0A%2F%2F%20const%20obj%20%3D%20%7B%20first%3A%20'mike'%2C%20last%3A%20'juniper'%20%7D%3B%0A%2F%2F%20let%20%7B%20first%3A%20f%2C%20last%3A%20l%20%7D%20%3D%20obj%3B%20%2F%2F%20(A)%0A%2F%2F%20console.log(%60%24%7Bf%7D%20%24%7Bl%7D%60)%3B%0A%0A%0A%2F%2F%20%2F%2F%20fail%20soft%0A%2F%2F%20var%20%5Ba%5D%20%3D%20%5B%5D%3B%0A%2F%2F%20console.log(a%20%3D%3D%3D%20undefined)%3B%0A%0A%2F%2F%20%2F%2F%20fail%20soft%20with%20defaults%0A%2F%2F%20var%20%5Ba%20%3D%201%5D%20%3D%20%5B%5D%3B%0A%2F%2F%20console.log(a)%3B">babel repl</a>
+					<a class="follow-link" target="_blank" href="https://babeljs.io/repl/#?experimental=false&evaluate=true&loose=false&spec=false&code=%0A%2F%2F%20destructuring%0A%0A%2F%2F%20arrays%0Avar%20%5Bx%2C%20%2C%20y%5D%20%3D%20%5B1%2C2%2C3%5D%3B%0Aconsole.log(%60%24%7Bx%7D%2C%20%24%7By%7D%60)%3B%0A%0A%0A%2F%2F%20%2F%2F%20objects%0A%2F%2F%20const%20obj%20%3D%20%7B%20first%3A%20'mike'%2C%20last%3A%20'juniper'%20%7D%3B%0A%2F%2F%20let%20%7B%20first%3A%20f%2C%20last%3A%20l%20%7D%20%3D%20obj%3B%0A%2F%2F%20console.log(%60%24%7Bf%7D%20%24%7Bl%7D%60)%3B%0A%0A%0A%2F%2F%20%2F%2F%20fail%20soft%0A%2F%2F%20var%20%5Ba%5D%20%3D%20%5B%5D%3B%0A%2F%2F%20console.log(a%20%3D%3D%3D%20undefined)%3B%0A%0A%2F%2F%20%2F%2F%20fail%20soft%20with%20defaults%0A%2F%2F%20var%20%5Ba%20%3D%201%5D%20%3D%20%5B%5D%3B%0A%2F%2F%20console.log(a)%3B">babel repl</a>
 
 					<aside class="notes">
 						<ul>
