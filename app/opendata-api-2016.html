@@ -248,7 +248,7 @@
           <div class="fragment">
             <ul>
               <li>OpenData "Umbrella" (Ember)</li>
-              <li>OpenData Custom Sites 1.0 - will be deprecated soon (Backbone)</li>
+              <li>OpenData Custom Sites 1.0 (Backbone)</li>
               <li>OpenData Admin (Angular)</li>
               <li>OpenData Custom Sites 2.0 - coming soon (Ember)</li>
             </ul>
@@ -280,19 +280,19 @@
           <div class="fragment">Metadata included on requests for logical collections</div>
           <div class="fragment">
             <h3><pre><code class="hljs">
-              {
-                "data": [collection-of-resources...],
-                "meta": {
-                  "apiRoot": "https://opendata.arcgis.com/api/v2/",
-                  "resourceRoot": "https://opendata.arcgis.com/api/v2/datasets/",
-                  "queryParameters": {
-                    query-parameters-of-request...
-                  },
-                  "stats": {
-                    counts-and-other-aggregations
-                  }
-                }
-              }
+{
+  "data": [collection-of-resources...],
+  "meta": {
+    "apiRoot": "https://opendata.arcgis.com/api/v2/",
+    "resourceRoot": "https://opendata.arcgis.com/api/v2/datasets/",
+    "queryParameters": {
+      query-parameters-of-request...
+    },
+    "stats": {
+      counts-and-other-aggregations
+    }
+  }
+}
             </code></pre></h3>
           </div>
         </section>
@@ -521,22 +521,22 @@ $.getJSON('http://my.api.url')
         <section>
           <h1>Key endpoints:</h1>
           <div class="fragment">
-            <h3><pre><code class="hljs">/datasets.json?q=&lt;search string&gt;&page=&lt;page number&gt;</code></pre></h3>
-            <a class="follow-link" href="http://opendata.arcgis.com/datasets.json?q=water&page=1" target="_blank"></a>
+            <h3><pre><code class="hljs">/api/v2/datasets?q=&lt;search string&gt;&page[number]=&lt;page number&gt;</code></pre></h3>
+            <a class="follow-link" href="http://opendata.arcgis.com/api/v2/datasets?q=water&page[number]=1" target="_blank"></a>
           </div>
 
           <div class="fragment">
-            <h3><pre><code class="hljs">$.getJSON(MyApiUrl + '/datasets.json?q=water&page=1');</code></pre></h3>
+            <h3><pre><code class="hljs">$.getJSON(MyApiUrl + '/api/v2/datasets?q=water&page[number]=1');</code></pre></h3>
           </div>
 
           <div class="fragment">
             <div>and</div>
-            <h3><pre><code class="hljs">/datasets/&lt;id&gt;.json</code></pre></h3>
-            <a class="follow-link" href="http://opendata.arcgis.com/datasets/354b5206149c4863abf3d77710063489_2.json" target="_blank"></a>
+            <h3><pre><code class="hljs">/datasets/&lt;id&gt;</code></pre></h3>
+            <a class="follow-link" href="http://opendata.arcgis.com/api/v2/datasets/354b5206149c4863abf3d77710063489_2" target="_blank"></a>
           </div>
 
           <div class="fragment">
-            <h3><pre><code class="hljs">$.getJSON(MyApiUrl + '/datasets/abc123.json');</code></pre></h3>
+            <h3><pre><code class="hljs">$.getJSON(MyApiUrl + '/api/v2/datasets/abc123');</code></pre></h3>
           </div>
 
           <aside class="notes">
@@ -547,9 +547,8 @@ $.getJSON('http://my.api.url')
                 key attributes:
                 <ul>
                   <li>id</li>
-                  <li>item_type</li>
                   <li>type</li>
-                  <li>url - which is another api from which you can get the actual data</li>
+                  <li>url - points you to where the data actually lives</li>
                 </ul>
               </li>
             </ul>
@@ -560,12 +559,12 @@ $.getJSON('http://my.api.url')
           <h1>And maybe:</h1>
 
           <div class="fragment">
-            <h3><pre><code class="hljs">/datasets/&lt;id&gt;/related.json</code></pre></h3>
-            <a class="follow-link" href="http://opendata.arcgis.com/datasets/354b5206149c4863abf3d77710063489_2/related.json" target="_blank"></a>
+            <h3><pre><code class="hljs">/api/v2/datasets/&lt;id&gt;/related</code></pre></h3>
+            <a class="follow-link" href="http://opendata.arcgis.com/api/v2/datasets/354b5206149c4863abf3d77710063489_2/related" target="_blank"></a>
           </div>
 
           <div class="fragment">
-            <h3><pre><code class="hljs javascript">$.getJSON(MyApiUrl + '/datasets/abc123/related.json');</code></pre></h3>
+            <h3><pre><code class="hljs javascript">$.getJSON(MyApiUrl + '/api/v2/datasets/abc123/related');</code></pre></h3>
           </div>
 
           <div class="fragment">
@@ -605,12 +604,15 @@ $.getJSON('http://my.api.url')
         <section>
           <h1>Errors...</h1>
 
-          <img src="images/curl.png" style="width:60%;">
+          <img src="images/errors.png" style="width:40%;">
           <a class="follow-link" href="http://opendata.arcgis.com/datasets/sdhkdhsf.json" target="_blank"></a>
 
           <aside class="notes">
             <ul>
               <li>errors are handled how you'd expect - http status code</li>
+              <li>4xx means there was something wrong with the request</li>
+              <li>As mentioned earlier there will be plenty of details in the error message itself</li>
+              <li>5xx means the API goofed up</li>
             </ul>
           </aside>
         </section>
