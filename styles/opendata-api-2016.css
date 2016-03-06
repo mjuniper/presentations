@@ -34,10 +34,10 @@ section img#architecture {
   margin: 0;
 }
 
-pre.code code {
-  /*background-color: #3F3F3F;*/
+/*pre.code code {
+  background-color: #3F3F3F;
   font-size: 2em;
-}
+}*/
 
 .reveal pre {
   box-shadow: none;
@@ -46,7 +46,7 @@ pre.code code {
 .reveal section pre code {
   padding: 5px 20px;
   max-height: inherit;
-  font-size: 1.1em;
+  font-size: 2em;
   line-height: 1.2em;
 }
 
