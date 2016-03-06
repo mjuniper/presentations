@@ -34,10 +34,10 @@ section img#architecture {
   margin: 0;
 }
 
-/*pre.code code {
-  background-color: #3F3F3F;
+pre.code code {
+  /*background-color: #3F3F3F;*/
   font-size: 2em;
-}*/
+}
 
 .reveal pre {
   box-shadow: none;
