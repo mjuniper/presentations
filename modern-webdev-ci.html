@@ -45,7 +45,8 @@
       <div class="slides">
         <section class="title"  data-background="images/title-2016.png" data-background-size="cover">
           <h1>Modern Web Development Workshop</h1>
-          <h3>Continuous Integration &amp; Continuous Deployment</h3>
+					<h3>Continuous Integration, Continuous Delivery &amp; Continuous Deployment</h3>
+					<h3>Travis CI</h3>
           <p>
             <h4><a href="https://github.com/mjuniper">Mike Juniper</a> :: Washington DC R&amp;D Center</h4>
           </p>
@@ -65,17 +66,60 @@
           </div>
         </section>
 
-
-
-
-
-        <section>
-          slides...
+				<section>
+					<h1>Continuous Integration</h1>
+					<blockquote class="fragment">
+						The developer's working copies are synchronized with a shared mainline several times a day.
+					</blockquote>
         </section>
 
+				<section>
+					<h1>Continuous Delivery</h1>
+					<blockquote class="fragment">
+						The logical evolution of continuous integration: Always be able to put a product into production.
+					</blockquote>
+        </section>
 
+        <section>
+					<h1>Continuous Deployment</h1>
+					<blockquote class="fragment">
+						 The logical next step after continuous delivery: Automatically deploy the product into production.
+					</blockquote>
+        </section>
 
+				<section>
+					<h1>The reality...</h1>
+					<h2>We just want to:</h2>
+					<ul>
+						<li class="fragment">Have our tests run automatically when a PR is submitted.</li>
+						<li class="fragment">Deploy to QA when a PR is merged to master.</li>
+					</ul>
+				</section>
 
+				<section>
+					<h1>Lots of tools available</h1>
+					<span class="fragment"><a href="https://jenkins-ci.org/">Jenkins</a>&nbsp;</span>
+					<span class="fragment">::&nbsp;&nbsp;<a href="http://buildbot.net/">BuildBot</a>&nbsp;</span>
+					<span class="fragment">::&nbsp;&nbsp;<a href="https://github.com/Strider-CD/strider">Strider</a>&nbsp;</span>
+					<span class="fragment">::&nbsp;&nbsp;<a href="https://www.go.cd/">Go</a>&nbsp;</span>
+					<span class="fragment">::&nbsp;&nbsp;<a href="https://travis-ci.org/">Travis CI</a></span>
+				</section>
+
+				<section>
+					<h1>How is the open data team doing it?</h1>
+					<h3 class="fragment"><a href="https://travis-ci.org/">Travis CI</a></h3>
+				</section>
+
+				<section>
+					<h2><a href="https://github.com/ArcGIS/opendata-ui/blob/master/.travis.yml">.travis.yml</a></h2>
+					<h2><a href="https://github.com/ArcGIS/opendata-ui/blob/master/deploy.sh">deploy.sh</a></h2>
+					<h2><a href="https://github.com/ArcGIS/opendata-ui/pulls">PRs</a></h2>
+					<h3><a href="https://travis-ci.com/ArcGIS/opendata-ui/builds">Builds</a></h2>
+				</section>
+
+				<section>
+					<h1><a href="https://github.com/mjuniper/travis-example">Hands On!</a></h1>
+				</section>
 
         <section data-background="images/end.png" data-background-size="cover">
 

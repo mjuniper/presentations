@@ -139,3 +139,7 @@ section.strikethrough {
   left: 600px;
   font-size: 3em;
 }
+
+small {
+  vertical-align: baseline !important;
+}
