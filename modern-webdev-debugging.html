@@ -65,49 +65,89 @@
           </div>
         </section>
 
+				<section>
+					<h1>TOOLS</h1>
+				</section>
 
-				chrome dev tools - USE CHROME OK?
-					elements
-					console
-					sources
-					network
-				charles/fiddler - peeking at the network
-				postman / curl - is the problem upstream? or me?
-				modern-ie + vmware - testing the OTHER platforms
-				when you are stuck...
-					take a breath and remember it's not magic - it is comprehensible
-					stackoverflow ftw
-					framework slack channels
+				<section>
+					<h2>Chrome Developer Tools</h2>
+					<ul>
+						<li>elements</li>
+						<li>console</li>
+						<li>sources</li>
+						<li>network</li>
+					</ul>
+				</section>
 
+				<section>
+					<h2>Fiddler / Charles</h2>
+				</section>
 
-				techniques
-					read the error message if there is one
-						believe it!
-					breakpoints are your friend (also console.log)
-						start at the beginning and move on from there
-					network tab
-						did the request go out the door?
-						was it a 200?
-						did the response look how you expected
-					it's like science
-						come up with a hyposthesis
-						try to disprove it
-						if that were true, i would expect...
-					debugging css:
-						was the file loaded (does the rule exist in the browser)? - network tab
-						is the selector right? elements tab, console
-						is it specific enough (is it being overidden)? elements/styles tab
-						`outline: solid 2px red`
+				<section>
+					<h2>Postman / curl</h2>
+				</section>
 
+				<section>
+					<h2>IE?</h2>
+					<h3 class="fragment"><a href="https://dev.windows.com/en-us/microsoft-edge/tools/vms/">dev.windows.com/en-us/microsoft-edge/tools/vms/</a></h3>
+					<h3 class="fragment">+ your VM platform of choice</h3>
+				</section>
 
+				<section>
+					<h1>Techniques</h1>
+				</section>
 
-        <section>
-          slides...
-        </section>
+				<section>
+					<h2>Read the error message (if there is one).</h2>
+					<h3 class="fragment">Believe it!</h3>
+				</section>
 
+				<section>
+					<h2>Breakpoints + console.debug(...)</h2>
+				</section>
 
+				<section>
+					<h2>XHR / AJAX</h2>
+					<h3 class="fragment">Use the network tab</h3>
+					<ol>
+						<li class="fragment">Did the request go out the door?</li>
+						<li class="fragment">Did you get a 200 response?</li>
+						<li class="fragment">Did the the response look how you expected?</li>
+					</ol>
+				</section>
 
+				<section>
+					<h2>For more complicated scenarios:</h2>
+					<h3 class="fragment">Treat it like science</h3>
+					<ol>
+						<li class="fragment">Come up with a hypothesis.</li>
+						<li class="fragment">Imagine ways to test it: If that were true, I should not see the error if I do ...</li>
+						<li class="fragment">Test it</li>
+					</ol>
+				</section>
 
+				<section>
+					<h1>Debugging CSS</h1>
+					<ol>
+						<li class="fragment">Was the file loaded (does the rule exist in the browser)? [network tab]</li>
+						<li class="fragment">Is the selector right? [elements tab, console]</li>
+						<li class="fragment">is it specific enough (is it being overidden)? [elements/styles tab]</li>
+						<li>
+							<code>
+								<pre class="hljs">
+`outline: solid 2px red !important`
+								</pre>
+							</code>
+						</li>
+					</ol>
+				</section>
+
+				<section>
+					<h1>When you are stuck</h1>
+					<h2 class="fragment">Remember it's not magic, it is comprehensible.</h2>
+					<h2 class="fragment">Google &amp; Stackoverflow</h2>
+					<h2 class="fragment">Slack</h2>
+				</section>
 
         <section data-background="images/end.png" data-background-size="cover">
 
