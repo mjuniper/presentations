@@ -299,14 +299,59 @@
         </section>
 
         <section>
+          <h1>OpenData V2 API (beta): Query Abilities</h1>
+          <div class="fragment">Full text queries supported with the `q` parameter</div>
+          <div class="fragment"><a target="_blank" href="https://opendata.arcgis.com/api/v2/datasets?q=parcels">/api/v2/datasets?q=parcels</a></div>
+          <div class="fragment">Can 'side-load' related resources in a single request via `include` parameter</div>
+          <div class="fragment">"Bring me all the datasets that match the query 'parcel' and also include the organizations that published those datasets"</div>
+          <div class="fragment"><a target="_blank" href="https://opendata.arcgis.com/api/v2/datasets?q=parcels&include=organizations">/api/v2/datasets?q=parcels&include=organizations</a></div>
+        </section>
+
+        <section>
           <h1>OpenData V2 API (beta): Response Format</h1>
           <h2 class="fragment">Standardized response for a resource or a collection of resources</h2>
           <div class="fragment">
             <pre><code class="hljs">/api/v2/datasets -> {"data": []}</code></pre>
             <pre><code class="hljs">/api/v2/datasets/:id -> {"data": {}}</code></pre>
           </div>
-
         </section>
+
+        <section>
+          <h1>OpenData V2 API (beta): Object Format</h1>
+          <div class="fragment">Each object has a standard format</div>
+<pre class="fragment"><code class="hljs json">
+{
+  "id": "f2e1c2ef9eb44f2899f4a310a80ecec9_2",
+  "type": "dataset",
+  "attributes": {
+    "name": ...,
+    "url": ...,
+    "recordCount": ...,
+  }
+}
+</code></pre>
+        </section>
+
+        <section>
+          <h1>OpenData V2 API (beta): Side-Loaded Resources</h1>
+          <div class="fragment">How are side-loaded resources returned?</div>
+<pre class="fragment"><code class="hljs json">
+{
+  "data": [datasets...],
+  "included": [
+    {
+      "id": "afd7refdr",
+      "type": "organization",
+      "attributes": {
+        "name": ...,
+        "homePageUrl": ...,
+      }
+    }
+  ]
+}
+</code></pre>
+        </section>
+
 
         <section>
           <h1>OpenData V2 API (beta): Metadata</h1> 
@@ -436,19 +481,6 @@
         	<div class="fragment"><a target="_blank" href="https://opendata.arcgis.com/api/v2/datasets?foo=bar&filter[pizza]=anchovies">Try it yourself</a></div>
         </section>
 
-        <section>
-          <h1>OpenData V2 API (beta): Query Abilities</h1>
-          <div class="fragment">Full text queries supported with the `q` parameter</div>
-          <div class="fragment"><a target="_blank" href="https://opendata.arcgis.com/api/v2/datasets?q=parcels">/api/v2/datasets?q=parcels</a></div>
-          <div class="fragment">Can fetch related resources in a single request via `include` parameter</div>
-          <div class="fragment"><a target="_blank" href="https://opendata.arcgis.com/api/v2/datasets?q=parcels&include=organizations">/api/v2/datasets?q=parcels&include=organizations</a></div>
-					<pre class="fragment"><code class="hljs json">
-{
-  "data": [datasets-collection],
-  "included": [organizations-of-datasets]
-}
-					</code></pre>
-        </section>
 
         <section>
           <h1>OpenData V2 API (beta): Support</h1>
