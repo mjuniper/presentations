@@ -417,16 +417,16 @@
 
         <section>
           <h1>OpenData V2 API (beta): Paging</h1>
-          <div class="fragment">/api/v2/datasets?q=population&filter[content]=spatial%20dataset&filter[tags]=census|acs&page[size]=25</div>
+          <div class="fragment">/api/v2/datasets?q=population&filter[content]=spatial%20dataset&page[size]=25</div>
 
           <pre class="fragment"><code class="hljs json">
 {
   "data": [...],
   "meta": {...},
   "links": {
-    "first": "https://opendata.arcgis.com/api/v2/datasets?page[number]=1&page[size]=25&q=population&filter[content]=spatial%20dataset&filter[tags]=census%7Cacs",
-    "next": "https://opendata.arcgis.com/api/v2/datasets?page[number]=2&page[size]=25&q=population&filter[content]=spatial%20dataset&filter[tags]=census%7Cacs",
-    "last": "https://opendata.arcgis.com/api/v2/datasets?page[number]=8&page[size]=25&q=population&filter[content]=spatial%20dataset&filter[tags]=census%7Cacs"
+    "first": "https://opendata.arcgis.com/api/v2/datasets?page[number]=1&page[size]=25&q=population&filter[content]=spatial%20dataset",
+    "next": "https://opendata.arcgis.com/api/v2/datasets?page[number]=2&page[size]=25&q=population&filter[content]=spatial%20dataset",
+    "last": "https://opendata.arcgis.com/api/v2/datasets?page[number]=8&page[size]=25&q=population&filter[content]=spatial%20dataset"
   }
 }
           </code></pre>
@@ -483,8 +483,8 @@
 
         <section>
           <h1>OpenData V2 API (beta): Support</h1>
-          <div class="fragment"><a href="http://akharris.github.io/ember-arc-swag/#/api-explorer" target="_blank">Research on ArcGIS Open Data API Sandbox</a> at </div>
-          <div class="fragment"><a href="http://akharris.github.io/ember-arc-swag/#/api-explorer">http://akharris.github.io/ember-arc-swag/#/api-explorer</a></div>
+          <div class="fragment">Spike on an ArcGIS Open Data API Sandbox at </div>
+          <div class="fragment"><a href="http://akharris.github.io/ember-arc-swag/">http://akharris.github.io/ember-arc-swag/</a></div>
           <div class="fragment">API is being finalized. Expect documentation and an API console once the API is out of beta</div>
         </section>
 
@@ -885,6 +885,17 @@ export default DS.JSONAPISerializer.extend({
           <h1>More to come?</h1>
           <img class="framework-logo" src="images/angularjs-for-header-only.svg">
           <img class="framework-logo" src="images/react-logo-1000-transparent.png">
+        </section>
+
+        <section>
+          <ul>
+            <li><a href="http://mjuniper.github.io/presentations/opendata-api-2016.html">mjuniper.github.io/presentations/opendata-api-2016.html</a></li>
+            <li><a href="http://koopjs.github.io">koopjs.github.io/</a></li>
+            <li><a href="http://jsonapi.org">jsonapi.org</a></li>
+            <li><a href="http://akharris.github.io/ember-arc-swag">akharris.github.io/ember-arc-swag/</a> (not API feature-complete but still useful)</li>
+            <li><a href="http://emberjs.com">emberjs.com/</a></li>
+            <li><a href="http://backbonejs.org">backbonejs.org/</a></li>
+          </ul>
         </section>
 
         <section data-background="images/end.png" data-background-size="cover">
