@@ -201,14 +201,14 @@
 
         <section>
           <h1>What is an API?</h1>
-          <blockquote class="fragment">
-            "In computer programming, an application programming interface (API) is a set of routines, protocols, and tools for building software applications. An API expresses a software component in terms of its operations, inputs, outputs, and underlying types."
-          </blockquote>
+
+          <div class="fragment">
+            A contract for accessing and modifying data from an authoritative source.
+          </div>
         </section>
 
         <section>
           <h1>Simple API example</h1>
-
 					<pre class="fragment">
         		<code class="hljs">https://opendata.arcgis.com</code>
         	</pre>
@@ -230,11 +230,20 @@
 
           <div class="fragment">
             <h3>Example:</h3>
-            <a href="https://opendata.arcgis.com/api/v2/datasets?q=water&page[size]=10&page[number]=1" class="fragment follow-link" target="_blank">https://opendata.arcgis.com/api/v2/datasets?q=water&page[size]=10&amp;page[number]=1</a>
+            <a href="https://opendata.arcgis.com/api/v2/datasets?q=water&page[size]=5&page[number]=3" class="fragment follow-link" target="_blank">https://opendata.arcgis.com/api/v2/datasets?q=water&page[size]=5&amp;page[number]=3</a>
           </div>
           <!--
             Notice the only difference between these URLs is the .jon extension, but the results are considerably different.
           -->
+        </section>
+
+        <section>
+          <h1>An Aside on the V1 API</h1>
+          <ol>
+            <div class="fragment">Unsupported</div>
+            <div class="fragment">Undocumented</div>
+            <div class="fragment">Not long for this world -- will soon be deprecated</div>
+          </ol>
         </section>
 
         <section>
@@ -248,7 +257,7 @@
             <h4>OR</h4>
             <h3>imap.maryland.opendata.arcgis.com</h3>
           </div>
-          <div class="fragment">Available resources /datasets, /sites</div>
+          <div class="fragment">Available resources /datasets</div>
           <div class="fragment">JSON format</div>
           <!--
             Standard HTTP.
@@ -259,15 +268,11 @@
 
         <section>
           <h1>Who consumes the OpenData API?</h1>
-          <div class="fragment">
-            <ul>
-              <li>OpenData "Umbrella" (Ember)</li>
-              <li>OpenData Custom Sites 1.0 (Backbone)</li>
-              <li>OpenData Admin (Angular)</li>
-              <li>OpenData Custom Sites 2.0 - coming soon (Ember)</li>
-            </ul>
-          </div>
-          <!-- NOTES: Unofficially public, Not documentmented, API results could change-->
+          <div class="fragment">OpenData "Umbrella" (Ember)</div>
+          <div class="fragment">OpenData Custom Sites 1.0 (Backbone)</div>
+          <div class="fragment">OpenData Admin 1.0 (Angular)</div>
+          <div class="fragment">OpenData Custom Sites 2.0 - coming soon (Ember)</div>
+          <div class="fragment">OpenData Admin 2.0 - coming soon (Ember)</div>
         </section>
 
         <section>
@@ -284,8 +289,18 @@
         </section>
 
         <section>
+          <h1>Why choose the JSONAPI standard?</h1>
+          <div class="fragment">Standardizes JSON responses</div>
+          <div class="fragment">Supports features like side-loading</div>
+          <div class="fragment">Has many client and server implementations</div>
+
+          <div class="fragment">Go the <a href="http://jsonapi.org/implementations/">http://jsonapi.org/implementations/</a> for client and server libraries</div>
+          <div class="fragment">Go the <a href="http://jsonapi.org/format">http://jsonapi.org/format</a> for the spec</div>
+        </section>
+
+        <section>
           <h1>OpenData V2 API (beta): Response Format</h1>
-          <h2 class="fragment">Standardized response for an object or a logical collection</h2>
+          <h2 class="fragment">Standardized response for a resource or a collection of resources</h2>
           <div class="fragment">
             <pre><code class="hljs">/api/v2/datasets -> {"data": []}</code></pre>
             <pre><code class="hljs">/api/v2/datasets/:id -> {"data": {}}</code></pre>
@@ -293,8 +308,9 @@
 
         </section>
 
-				<section>
-					<h2>Metadata included on requests for logical collections</h2>
+        <section>
+          <h1>OpenData V2 API (beta): Metadata</h1>
+          <h2>Aggregations included on each request for collections</h2>
 
           <pre class="fragment"><code class="hljs json">
 {
@@ -316,9 +332,9 @@
 
         <section>
           <h1>OpenData V2 API (beta): Request Metadata Example</h1>
-          <div class="fragment">/api/v2/datasets?q=population&filter[content]=spatial%20dataset&filter[tags]=census|acs&page[size]=25</div>
+          <div class="fragment">/api/v2/datasets?q=population&filter[content]=spatial%20dataset&page[size]=25</div>
 
-          <pre class="fragment code-lots"><code class="hljs json">
+          <pre class="fragment code-lots"><code class="hljs json" data-trim>
 {
   "meta": {
     "apiRoot": "http://opendata.arcgis.com/api/v2",
@@ -330,8 +346,7 @@
       },
       "q": "population",
       "filter": {
-        "content": "spatial dataset",
-        "tags": "census|acs"
+        "content": "spatial dataset"
       }
     },
     "stats": {
@@ -365,9 +380,9 @@
   "data": [...],
   "meta": {...},
   "links": {
-    "first": "http://opendata.arcgis.com/api/v2/datasets?page[number]=1&page[size]=25&q=population&filter[content]=spatial%20dataset&filter[tags]=census%7Cacs",
-    "next": "http://opendata.arcgis.com/api/v2/datasets?page[number]=2&page[size]=25&q=population&filter[content]=spatial%20dataset&filter[tags]=census%7Cacs",
-    "last": "http://opendata.arcgis.com/api/v2/datasets?page[number]=8&page[size]=25&q=population&filter[content]=spatial%20dataset&filter[tags]=census%7Cacs"
+    "first": "https://opendata.arcgis.com/api/v2/datasets?page[number]=1&page[size]=25&q=population&filter[content]=spatial%20dataset&filter[tags]=census%7Cacs",
+    "next": "https://opendata.arcgis.com/api/v2/datasets?page[number]=2&page[size]=25&q=population&filter[content]=spatial%20dataset&filter[tags]=census%7Cacs",
+    "last": "https://opendata.arcgis.com/api/v2/datasets?page[number]=8&page[size]=25&q=population&filter[content]=spatial%20dataset&filter[tags]=census%7Cacs"
   }
 }
           </code></pre>
@@ -412,7 +427,7 @@
       "detail": "'filter[pizza]' is not a valid filter key",
       "status": 400,
       "source": { "parameter": "filter[pizza]" },
-      "links": { "about": "help-docs" },
+      "links": { "about": "coming-soon: link-to-help-docs" },
       "meta": { detailed-information-to-help-debug-the-request }
     }
   ]
@@ -429,17 +444,17 @@
           <div class="fragment"><a target="_blank" href="https://opendata.arcgis.com/api/v2/datasets?q=parcels&include=organizations">/api/v2/datasets?q=parcels&include=organizations</a></div>
 					<pre class="fragment"><code class="hljs json">
 {
-  "data": [array-of-dataset-objects-with-references-to-their-organizations],
-  "included": [array-of-organization-objects]
+  "data": [datasets-collection],
+  "included": [organizations-of-datasets]
 }
 					</code></pre>
         </section>
 
         <section>
           <h1>OpenData V2 API (beta): Support</h1>
-          <div class="fragment"><a target="_blank">ArcGIS Open Data API Sandbox</a></div>
-          <div class="fragment"><a target="_blank">Online Documentation</a></div>
-          <div class="fragment">API is being finalized. Expect a Stable API soon.</div>
+          <div class="fragment"><a href="http://akharris.github.io/ember-arc-swag/#/api-explorer" target="_blank">Research on ArcGIS Open Data API Sandbox</a> at </div>
+          <div class="fragment"><a href="http://akharris.github.io/ember-arc-swag/#/api-explorer">http://akharris.github.io/ember-arc-swag/#/api-explorer</a></div>
+          <div class="fragment">API is being finalized. Expect documentation and an API console once the API is out of beta</div>
         </section>
 
         <section>
@@ -591,22 +606,22 @@ $.getJSON('http://my.api.url')
           <h1>Also:</h1>
           <div class="fragment">
             <pre><code class="hljs html">/datasets/&lt;id&gt;.csv</code></pre>
-            <a class="follow-link" href="http://opendata.arcgis.com/datasets/354b5206149c4863abf3d77710063489_2.csv" target="_blank"></a>
+            <a class="follow-link" href="http://opendata.arcgis.com/datasets/9874ff4f0bc84bfa9e9cb5326b36f3b0_1.csv" target="_blank"></a>
           </div>
 
           <div class="fragment">
             <pre><code class="hljs html">/datasets/&lt;id&gt;.geojson</code></pre>
-            <a class="follow-link" href="http://opendata.arcgis.com/datasets/354b5206149c4863abf3d77710063489_2.geojson" target="_blank"></a>
+            <a class="follow-link" href="http://opendata.arcgis.com/datasets/9874ff4f0bc84bfa9e9cb5326b36f3b0_1.geojson" target="_blank"></a>
           </div>
 
           <div class="fragment">
             <pre><code class="hljs html">/datasets/&lt;id&gt;.kml</code></pre>
-            <a class="follow-link" href="http://opendata.arcgis.com/datasets/354b5206149c4863abf3d77710063489_2.kml" target="_blank"></a>
+            <a class="follow-link" href="http://opendata.arcgis.com/datasets/9874ff4f0bc84bfa9e9cb5326b36f3b0_1.kml" target="_blank"></a>
           </div>
 
           <div class="fragment">
             <pre><code class="hljs html">/datasets/&lt;id&gt;.zip</code></pre>
-            <a class="follow-link" href="http://opendata.arcgis.com/datasets/354b5206149c4863abf3d77710063489_2.zip" target="_blank"></a>
+            <a class="follow-link" href="http://opendata.arcgis.com/datasets/9874ff4f0bc84bfa9e9cb5326b36f3b0_1.zip" target="_blank"></a>
           </div>
         </section>
 
@@ -654,9 +669,10 @@ $.getJSON('http://my.api.url')
         <section>
           <h1>Gotcha's:</h1>
           <ul>
-            <li class="fragment">Currently no JSONP support</li>
+						<li class="fragment">SSL only (https://opendata.arcgis.com/api/v2)</li>
+						<li class="fragment">Currently no JSONP support</li>
             <li class="fragment">Does support CORS</li>
-            <li class="fragment">But ... IE &lt; 10</li>
+            <li class="fragment">But ... <a href="https://blogs.msdn.microsoft.com/ieinternals/2010/05/13/xdomainrequest-restrictions-limitations-and-workarounds/">IE &lt; 10</a></li>
           </ul>
         </section>
 
@@ -802,11 +818,11 @@ export default DS.JSONAPIAdapter.extend({
 
 });
           </code></pre>
-          <a class="follow-link" target="_blank" href="https://github.com/mjuniper/OpenData-Backbone/blob/master/app/scripts/entities/dataset-collection.js#L13"></a>
+
         </section>
 
 				<section class="code-only">
-          <pre><code class="hljs">
+          <pre><code class="hljs" data-trim>
 import Ember from 'ember';
 import DS from 'ember-data';
 
