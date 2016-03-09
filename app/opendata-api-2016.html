@@ -189,23 +189,22 @@
 
         <section>
           <h1>Open Data API</h1>
-          <h3>Alex Harris</h3>
+          <h3>Alex Harris &amp; Jake Sower</h3>
         </section>
 
         <section>
           <h1>What is an API?</h1>
           <div class="fragment">
-            "In computer programming, an application programming interface (API) is a set of routines, protocols, and tools for building software applications. An API expresses a software component in terms of its operations, inputs, outputs, and underlying types."
+            A contract for accessing and modifying data from an authoritative source.
           </div>
         </section>
 
         <section>
           <h1>Simple API example</h1>
           <ol>
-            <li class="fragment">http://opendata.arcgis.com</li>
+            <li class="fragment">http://opendata.arcgis.com/api/v2</li>
             <li class="fragment">/datasets</li>
-            <li class="fragment">.json</li>
-            <li class="fragment">?q=water&sort_by=relevance&page=1</li>
+            <li class="fragment">?q=water&page[number]=1&filter[tags]=census</li>
           </ol>
 
           <!--
@@ -216,12 +215,20 @@
 
           <div class="fragment">
             <h3>Example:</h3>
-            <a href="http://opendata.arcgis.com/datasets.json?q=water&sort_by=relevance&page=1" class="fragment follow-link" target="_blank">http://opendata.arcgis.com/datasets.json?q=water&sort_by=relevance&page=1</a>
-            <a href="http://opendata.arcgis.com/datasets?q=water&sort_by=relevance&page=1" class="fragment follow-link" target="_blank">http://opendata.arcgis.com/datasets?q=water&sort_by=relevance&page=1</a>
+            <a href="http://opendata.arcgis.com/api/v2/datasets?q=water&page[number]=1&filter[tags]=census" class="fragment follow-link" target="_blank">http://opendata.arcgis.com/api/v2/datasets?q=water&page[number]=1&filter[tags]=census</a>
           </div>
           <!--
             Notice the only difference between these URLs is the .jon extension, but the results are considerably different.
           -->
+        </section>
+
+        <section>
+          <h1>An Aside on the V1 API</h1>
+          <ol>
+            <div class="fragment">Unsupported</div>
+            <div class="fragment">Undocumented</div>
+            <div class="fragment">Not long for this world -- will soon be deprecated</div>
+          </ol>
         </section>
 
         <section>
@@ -235,7 +242,7 @@
             <h4>OR</h4>
             <h3>imap.maryland.opendata.arcgis.com</h3>
           </div>
-          <div class="fragment">Available resources /datasets, /sites</div>
+          <div class="fragment">Available resources /datasets</div>
           <div class="fragment">JSON format</div>
           <!--
             Standard HTTP.
@@ -252,6 +259,7 @@
               <li>OpenData Custom Sites 1.0 (Backbone)</li>
               <li>OpenData Admin (Angular)</li>
               <li>OpenData Custom Sites 2.0 - coming soon (Ember)</li>
+              <li>OpenData Admin 2.0 - coming soon (Ember)</li>
             </ul>
           </div>
           <!-- NOTES: Unofficially public, Not documentmented, API results could change-->
@@ -271,8 +279,18 @@
         </section>
 
         <section>
+          <h1>Why choose the JSONAPI standard?</h1>
+          <div class="fragment">Standardizes JSON responses</div>
+          <div class="fragment">Supports features like side-loading</div>
+          <div class="fragment">Has many client and server implementations</div>
+
+          <div class="fragment">Go the <a href="http://jsonapi.org/implementations/">http://jsonapi.org/implementations/</a> for client and server libraries</div>
+          <div class="fragment">Go the <a href="http://jsonapi.org/format">http://jsonapi.org/format</a> for the spec</div>
+        </section>
+
+        <section>
           <h1>OpenData V2 API (beta): Response Format</h1>
-          <h2 class="fragment">Standardized response for an object or a logical collection</h2>
+          <h2 class="fragment">Standardized response for a resource or a collection of resources</h2>
           <div class="fragment">
             <pre><code class="hljs">/api/v2/datasets -> {"data": []}</code></pre>
             <pre><code class="hljs">/api/v2/datasets/:id -> {"data": {}}</code></pre>
@@ -280,8 +298,9 @@
 
         </section>
 
-				<section>
-					<h2>Metadata included on requests for logical collections</h2>
+        <section>
+          <h1>OpenData V2 API (beta): Metadata</h1> 
+          <h2>Aggregations included on each request for collections</h2>
 
           <pre class="fragment"><code class="hljs json">
 {
@@ -303,7 +322,7 @@
 
         <section>
           <h1>OpenData V2 API (beta): Request Metadata Example</h1>
-          <div class="fragment">/api/v2/datasets?q=population&filter[content]=spatial%20dataset&filter[tags]=census|acs&page[size]=25</div>
+          <div class="fragment">/api/v2/datasets?q=population&filter[content]=spatial%20dataset&page[size]=25</div>
 
           <pre class="fragment code-lots"><code class="hljs json">
 {
@@ -317,8 +336,7 @@
       },
       "q": "population",
       "filter": {
-        "content": "spatial dataset",
-        "tags": "census|acs"
+        "content": "spatial dataset"
       }
     },
     "stats": {
@@ -352,9 +370,9 @@
   "data": [...],
   "meta": {...},
   "links": {
-    "first": "http://opendata.arcgis.com/api/v2/datasets?page[number]=1&page[size]=25&q=population&filter[content]=spatial%20dataset&filter[tags]=census%7Cacs",
-    "next": "http://opendata.arcgis.com/api/v2/datasets?page[number]=2&page[size]=25&q=population&filter[content]=spatial%20dataset&filter[tags]=census%7Cacs",
-    "last": "http://opendata.arcgis.com/api/v2/datasets?page[number]=8&page[size]=25&q=population&filter[content]=spatial%20dataset&filter[tags]=census%7Cacs"
+    "first": "https://opendata.arcgis.com/api/v2/datasets?page[number]=1&page[size]=25&q=population&filter[content]=spatial%20dataset&filter[tags]=census%7Cacs",
+    "next": "https://opendata.arcgis.com/api/v2/datasets?page[number]=2&page[size]=25&q=population&filter[content]=spatial%20dataset&filter[tags]=census%7Cacs",
+    "last": "https://opendata.arcgis.com/api/v2/datasets?page[number]=8&page[size]=25&q=population&filter[content]=spatial%20dataset&filter[tags]=census%7Cacs"
   }
 }
           </code></pre>
@@ -399,7 +417,7 @@
       "detail": "'filter[pizza]' is not a valid filter key",
       "status": 400,
       "source": { "parameter": "filter[pizza]" },
-      "links": { "about": "help-docs" },
+      "links": { "about": "coming-soon: link-to-help-docs" },
       "meta": { detailed-information-to-help-debug-the-request }
     }
   ]
@@ -416,17 +434,17 @@
           <div class="fragment"><a target="_blank" href="https://opendata.arcgis.com/api/v2/datasets?q=parcels&include=organizations">/api/v2/datasets?q=parcels&include=organizations</a></div>
 					<pre class="fragment"><code class="hljs json">
 {
-  "data": [array-of-dataset-objects-with-references-to-their-organizations],
-  "included": [array-of-organization-objects]
+  "data": [datasets-collection],
+  "included": [organizations-of-datasets]
 }
 					</code></pre>
         </section>
 
         <section>
           <h1>OpenData V2 API (beta): Support</h1>
-          <div class="fragment"><a target="_blank">ArcGIS Open Data API Sandbox</a></div>
-          <div class="fragment"><a target="_blank">Online Documentation</a></div>
-          <div class="fragment">API is being finalized. Expect a Stable API soon.</div>
+          <div class="fragment"><a href="http://akharris.github.io/ember-arc-swag/#/api-explorer" target="_blank">Research on ArcGIS Open Data API Sandbox</a> at </div>
+          <div class="fragment"><a href="http://akharris.github.io/ember-arc-swag/#/api-explorer">http://akharris.github.io/ember-arc-swag/#/api-explorer</a></div>
+          <div class="fragment">API is being finalized. Expect documentation and an API console once the API is out of beta</div>
         </section>
 
         <section>
