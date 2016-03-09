@@ -182,10 +182,9 @@
 
         <section>
           <h1>DCAT</h1>
-          <h3>Jake Sower</h3>
 
-					<a class="fragment" href="http://opendata.arcgis.com/data.json">opendata.arcgis.com/data.json</a>
-					<div class="fragment">
+					<a href="http://opendata.arcgis.com/data.json">opendata.arcgis.com/data.json</a>
+					<div>
 						<div>
 							or:
 						</div>
@@ -299,14 +298,59 @@
         </section>
 
         <section>
+          <h1>OpenData V2 API (beta): Query Abilities</h1>
+          <div class="fragment">Full text queries supported with the `q` parameter</div>
+          <div class="fragment"><a target="_blank" href="https://opendata.arcgis.com/api/v2/datasets?q=parcels">/api/v2/datasets?q=parcels</a></div>
+          <div class="fragment">Can 'side-load' related resources in a single request via `include` parameter</div>
+          <div class="fragment">"Bring me all the datasets that match the query 'parcel' and also include the organizations that published those datasets"</div>
+          <div class="fragment"><a target="_blank" href="https://opendata.arcgis.com/api/v2/datasets?q=parcels&include=organizations">/api/v2/datasets?q=parcels&include=organizations</a></div>
+        </section>
+
+        <section>
           <h1>OpenData V2 API (beta): Response Format</h1>
           <h2 class="fragment">Standardized response for a resource or a collection of resources</h2>
           <div class="fragment">
             <pre><code class="hljs">/api/v2/datasets -> {"data": []}</code></pre>
             <pre><code class="hljs">/api/v2/datasets/:id -> {"data": {}}</code></pre>
           </div>
-
         </section>
+
+        <section>
+          <h1>OpenData V2 API (beta): Object Format</h1>
+          <div class="fragment">Each object has a standard format</div>
+<pre class="fragment"><code class="hljs json">
+{
+  "id": "f2e1c2ef9eb44f2899f4a310a80ecec9_2",
+  "type": "dataset",
+  "attributes": {
+    "name": ...,
+    "url": ...,
+    "recordCount": ...,
+  }
+}
+</code></pre>
+        </section>
+
+        <section>
+          <h1>OpenData V2 API (beta): Side-Loaded Resources</h1>
+          <div class="fragment">How are side-loaded resources returned?</div>
+<pre class="fragment"><code class="hljs json">
+{
+  "data": [datasets...],
+  "included": [
+    {
+      "id": "afd7refdr",
+      "type": "organization",
+      "attributes": {
+        "name": ...,
+        "homePageUrl": ...,
+      }
+    }
+  ]
+}
+</code></pre>
+        </section>
+
 
         <section>
           <h1>OpenData V2 API (beta): Metadata</h1>
@@ -373,16 +417,16 @@
 
         <section>
           <h1>OpenData V2 API (beta): Paging</h1>
-          <div class="fragment">/api/v2/datasets?q=population&filter[content]=spatial%20dataset&filter[tags]=census|acs&page[size]=25</div>
+          <div class="fragment">/api/v2/datasets?q=population&filter[content]=spatial%20dataset&page[size]=25</div>
 
           <pre class="fragment"><code class="hljs json">
 {
   "data": [...],
   "meta": {...},
   "links": {
-    "first": "https://opendata.arcgis.com/api/v2/datasets?page[number]=1&page[size]=25&q=population&filter[content]=spatial%20dataset&filter[tags]=census%7Cacs",
-    "next": "https://opendata.arcgis.com/api/v2/datasets?page[number]=2&page[size]=25&q=population&filter[content]=spatial%20dataset&filter[tags]=census%7Cacs",
-    "last": "https://opendata.arcgis.com/api/v2/datasets?page[number]=8&page[size]=25&q=population&filter[content]=spatial%20dataset&filter[tags]=census%7Cacs"
+    "first": "https://opendata.arcgis.com/api/v2/datasets?page[number]=1&page[size]=25&q=population&filter[content]=spatial%20dataset",
+    "next": "https://opendata.arcgis.com/api/v2/datasets?page[number]=2&page[size]=25&q=population&filter[content]=spatial%20dataset",
+    "last": "https://opendata.arcgis.com/api/v2/datasets?page[number]=8&page[size]=25&q=population&filter[content]=spatial%20dataset"
   }
 }
           </code></pre>
@@ -436,24 +480,11 @@
         	<div class="fragment"><a target="_blank" href="https://opendata.arcgis.com/api/v2/datasets?foo=bar&filter[pizza]=anchovies">Try it yourself</a></div>
         </section>
 
-        <section>
-          <h1>OpenData V2 API (beta): Query Abilities</h1>
-          <div class="fragment">Full text queries supported with the `q` parameter</div>
-          <div class="fragment"><a target="_blank" href="https://opendata.arcgis.com/api/v2/datasets?q=parcels">/api/v2/datasets?q=parcels</a></div>
-          <div class="fragment">Can fetch related resources in a single request via `include` parameter</div>
-          <div class="fragment"><a target="_blank" href="https://opendata.arcgis.com/api/v2/datasets?q=parcels&include=organizations">/api/v2/datasets?q=parcels&include=organizations</a></div>
-					<pre class="fragment"><code class="hljs json">
-{
-  "data": [datasets-collection],
-  "included": [organizations-of-datasets]
-}
-					</code></pre>
-        </section>
 
         <section>
           <h1>OpenData V2 API (beta): Support</h1>
-          <div class="fragment"><a href="http://akharris.github.io/ember-arc-swag/#/api-explorer" target="_blank">Research on ArcGIS Open Data API Sandbox</a> at </div>
-          <div class="fragment"><a href="http://akharris.github.io/ember-arc-swag/#/api-explorer">http://akharris.github.io/ember-arc-swag/#/api-explorer</a></div>
+          <div class="fragment">Spike on an ArcGIS Open Data API Sandbox at </div>
+          <div class="fragment"><a href="http://akharris.github.io/ember-arc-swag/">http://akharris.github.io/ember-arc-swag/</a></div>
           <div class="fragment">API is being finalized. Expect documentation and an API console once the API is out of beta</div>
         </section>
 
@@ -725,7 +756,7 @@ DatasetCollection = Backbone.Collection.extend({
   url: function () {
     //get the params (q=, page=, etc) from somewhere...
     var queryParams = '';
-    return MyOD.config.api + 'datasets.json?' + queryParams;
+    return MyOD.config.api + 'datasets?' + queryParams;
   },
 
   parse: function (resp) {
@@ -740,7 +771,7 @@ DatasetCollection = Backbone.Collection.extend({
           <pre><code class="hljs">
 DatasetModel = Backbone.Model.extend({
   url: function () {
-    return MyOD.config.api + 'datasets/' + this.get('id') + '.json';
+    return MyOD.config.api + 'datasets/' + this.get('id');
   },
 
   parse: function (response) {
@@ -854,6 +885,17 @@ export default DS.JSONAPISerializer.extend({
           <h1>More to come?</h1>
           <img class="framework-logo" src="images/angularjs-for-header-only.svg">
           <img class="framework-logo" src="images/react-logo-1000-transparent.png">
+        </section>
+
+        <section>
+          <ul>
+            <li><a href="http://mjuniper.github.io/presentations/opendata-api-2016.html">mjuniper.github.io/presentations/opendata-api-2016.html</a></li>
+            <li><a href="http://koopjs.github.io">koopjs.github.io/</a></li>
+            <li><a href="http://jsonapi.org">jsonapi.org</a></li>
+            <li><a href="http://akharris.github.io/ember-arc-swag">akharris.github.io/ember-arc-swag/</a> (not API feature-complete but still useful)</li>
+            <li><a href="http://emberjs.com">emberjs.com/</a></li>
+            <li><a href="http://backbonejs.org">backbonejs.org/</a></li>
+          </ul>
         </section>
 
         <section data-background="images/end.png" data-background-size="cover">
