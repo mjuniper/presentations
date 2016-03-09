@@ -757,7 +757,7 @@ DatasetCollection = Backbone.Collection.extend({
   url: function () {
     //get the params (q=, page=, etc) from somewhere...
     var queryParams = '';
-    return MyOD.config.api + 'datasets.json?' + queryParams;
+    return MyOD.config.api + 'datasets?' + queryParams;
   },
 
   parse: function (resp) {
@@ -772,7 +772,7 @@ DatasetCollection = Backbone.Collection.extend({
           <pre><code class="hljs">
 DatasetModel = Backbone.Model.extend({
   url: function () {
-    return MyOD.config.api + 'datasets/' + this.get('id') + '.json';
+    return MyOD.config.api + 'datasets/' + this.get('id');
   },
 
   parse: function (response) {
