@@ -80,15 +80,15 @@
         </section>
 
         <section>
-          <img src="images/charlotte.png">
+          <img src="images/la-geohub.png">
+        </section>
+
+				<section>
+          <img src="images/hifld.png">
         </section>
 
         <section>
           <img src="images/d3.png">
-        </section>
-
-        <section>
-          <img src="images/maryland.png">
         </section>
 
         <section>
@@ -112,19 +112,16 @@
           <h1>Interoperability</h1>
           <ul>
             <li class="fragment">
-              <a href="https://github.com/Esri/koop">koop</a>
-            </li>
-            <li class="fragment">
-              <a href="http://www.opensearch.org">OpenSearch</a>
+              <a href="http://koopjs.github.io/">koop</a>
             </li>
             <li class="fragment">
               <a href="http://www.w3.org/TR/vocab-dcat/">DCAT</a>
             </li>
             <li class="fragment">
-              <a href="https://github.com/ArcGIS/composer-api">OpenData API</a>
+              OpenData API
             </li>
             <li class="fragment">
-              <a href="https://github.com/mjuniper/OpenData-Backbone">Building an app against the API</a>
+              <a href="https://github.com/mjuniper/OpenData-Backbone">Building</a> an <a href="https://github.com/mjuniper/opendata-ember">app</a> against the API
             </li>
           </ul>
         </section>
@@ -183,13 +180,22 @@
         </section>
 
         <section>
-          <h1>OpenSearch &amp; DCAT</h1>
+          <h1>DCAT</h1>
           <h3>Jake Sower</h3>
+
+					<a class="fragment" href="http://opendata.arcgis.com/data.json">opendata.arcgis.com/data.json</a>
+					<div class="fragment">
+						<div>
+							or:
+						</div>
+						&lt;your site&gt;.&lt;your organization&gt;.opendata.arcgis.com/data.json
+					</div>
         </section>
 
         <section>
           <h1>Open Data API</h1>
           <h3>Alex Harris</h3>
+					<h3>Jake Sower</h3>
         </section>
 
         <section>
@@ -201,18 +207,25 @@
 
         <section>
           <h1>Simple API example</h1>
-          <ol>
-            <li class="fragment">http://opendata.arcgis.com</li>
-            <li class="fragment">/datasets</li>
-            <li class="fragment">.json</li>
-            <li class="fragment">?q=water&sort_by=relevance&page=1</li>
-          </ol>
 
-          <!--
-              NOTES: Breakdown an URL into it component parts.
-              Domain, URI, file type/format, and Query string.
-              This should look familar to anyone that's used.
-          -->
+					<pre class="fragment">
+        		<code class="hljs">https://opendata.arcgis.com</code>
+        	</pre>
+					<pre class="fragment">
+        		<code class="hljs">/api/v2</code>
+        	</pre>
+					<pre class="fragment">
+		        	<code class="hljs">/datasets</code>
+	        	</pre>
+					<pre class="fragment">
+			      <code class="hljs">?q=water&amp;page[size]=5&amp;page[number]=3</code>
+        	</pre>
+
+					<aside class="notes">
+						Breakdown an URL into it component parts.
+						Domain, URI, file type/format, and Query string.
+						This should look familar to anyone that's used.
+					</aside>
 
           <div class="fragment">
             <h3>Example:</h3>
@@ -839,7 +852,7 @@ export default DS.JSONAPISerializer.extend({
           Esri Dev Summit 2016 | Developing with ArcGIS Open Data
         </div>
         <div class="right">
-          <a href="http://mjuniper.github.io/presentations/opendata-api.html">mjuniper.github.io/presentations/opendata-api.html</a>
+          <a href="http://mjuniper.github.io/presentations/opendata-api-2016.html">mjuniper.github.io/presentations/opendata-api-2016.html</a>
         </div>
       </div>
 
@@ -858,7 +871,7 @@ export default DS.JSONAPISerializer.extend({
 				history: true,
 				center: true,
         previewLinks: false,
-        transition: 'linear', // default/cube/page/concave/zoom/linear/fade/none
+        transition: 'slide', // default/cube/page/concave/zoom/linear/fade/none
         width: 1600,
         height: 900,
         minScale: 0.2,
