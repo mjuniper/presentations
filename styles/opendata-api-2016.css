@@ -22,7 +22,7 @@ li.fragment {
 }
 
 section img.framework-logo {
-  height: 200px;
+  height: 250px;
   background-color: transparent;
   border: none;
   box-shadow: none;
@@ -48,6 +48,19 @@ section img#architecture {
   max-height: inherit;
   font-size: 2em;
   line-height: 1.2em;
+}
+
+.reveal section pre.code-lots, .reveal section pre.code-lots code {
+  padding-top: 0;
+  padding-bottom: 0;
+  max-height: inherit;
+  font-size: 0.7em;
+  line-height: 1.3em;
+}
+
+.reveal section.code-only, .reveal section.code-only pre, .reveal section.code-only pre code {
+  padding-top: 0;
+  margin-top: 0;
 }
 
 #mvc span {

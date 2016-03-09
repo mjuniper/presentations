@@ -48,13 +48,14 @@
           <p>
             <h4><a href="https://github.com/mjuniper">Mike Juniper</a> :: Washington DC R&amp;D Center</h4>
             <h4><a href="https://github.com/akharris">Alex Harris</a> :: Washington DC R&amp;D Center</h4>
+						<h4><a href="https://github.com/jakesower">Jake Sower</a> :: Washington DC R&amp;D Center</h4>
           </p>
         </section>
 
         <section>
           <div>
             <h2>
-              <a href="http://mjuniper.github.io/presentations/opendata-api.html">mjuniper.github.io/presentations/opendata-api.html</a>
+              <a href="http://mjuniper.github.io/presentations/opendata-api-2016.html">mjuniper.github.io/presentations/opendata-api-2016.html</a>
             </h2>
           </div>
 
@@ -183,7 +184,7 @@
 
         <section>
           <h1>OpenSearch &amp; DCAT</h1>
-          <h3>Alex Harris</h3>
+          <h3>Jake Sower</h3>
         </section>
 
         <section>
@@ -224,7 +225,7 @@
         </section>
 
         <section>
-          <h1>OpenData V1 API (beta)</h1>
+          <h1>OpenData V1 API</h1>
           <div class="fragment">HTTP protocol (GET, POST, PUT, DELETE)</div>
           <div class="fragment">
             <h3>opendata.arcgis.com</h3>
@@ -247,39 +248,185 @@
           <h1>Who consumes the OpenData API?</h1>
           <div class="fragment">
             <ul>
-              <li>Opendata "Umbrella" (Backbone)</li>
-              <li>OpenData Custom Sites (Backbone)</li>
+              <li>OpenData "Umbrella" (Ember)</li>
+              <li>OpenData Custom Sites 1.0 (Backbone)</li>
               <li>OpenData Admin (Angular)</li>
+              <li>OpenData Custom Sites 2.0 - coming soon (Ember)</li>
             </ul>
           </div>
           <!-- NOTES: Unofficially public, Not documentmented, API results could change-->
         </section>
 
         <section>
-          <h1>OpenData V2 API (public)</h1>
-          <div class="fragment">Versioning via URL or Headers </div>
+          <h1>OpenData V2 API (beta)</h1>
+          <div class="fragment">Versioning via URL</div>
+          <div class="fragment">API returns JSON</div>
+          <div class="fragment">adheres to JSONAPI standard</div>
 
           <div class="fragment">
-            <h3><pre><code class="hljs">/api/v2/...</code></pre></h3>
-            <h3><pre><code class="hljs">Accept: application/vnd.arcgis+json; version=2</code></pre></h3>
+            <h3><pre><code class="hljs">/api/v2/{:resource}</code></pre></h3>
+            <h3><pre><code class="hljs">/api/v2/{:resource}/{:id}</code></pre></h3>
+            <h3><pre><code class="hljs">/api/v2/{:resource}/{:id}/{:related_resource}</code></pre></h3>
           </div>
         </section>
 
         <section>
-          <h1>OpenData V2 API (public) continued..</h1>
-          <div class="fragment">Consistent return of an object or list of objects based on resource</div>
+          <h1>OpenData V2 API (beta): Response Format</h1>
+          <h2 class="fragment">Standardized response for an object or a logical collection</h2>
           <div class="fragment">
-            <h3><pre><code class="hljs">/api/v2/datasets.json -> {"datasets": []}</code></pre></h3>
-            <h3><pre><code class="hljs">/api/v2/datasets/:id.json -> {"dataset": {}}</code></pre></h3>
+            <pre><code class="hljs">/api/v2/datasets -> {"data": []}</code></pre>
+            <pre><code class="hljs">/api/v2/datasets/:id -> {"data": {}}</code></pre>
           </div>
+
+        </section>
+
+				<section>
+					<h2>Metadata included on requests for logical collections</h2>
+
+          <pre class="fragment"><code class="hljs json">
+{
+  "data": [collection-of-resources...],
+  "meta": {
+    "apiRoot": "https://opendata.arcgis.com/api/v2/",
+    "resourceRoot": "https://opendata.arcgis.com/api/v2/datasets/",
+    "queryParameters": {
+      query-parameters-of-request...
+    },
+    "stats": {
+      counts-and-other-aggregations
+    }
+  }
+}
+          </code></pre>
+
+				</section>
+
+        <section>
+          <h1>OpenData V2 API (beta): Request Metadata Example</h1>
+          <div class="fragment">/api/v2/datasets?q=population&filter[content]=spatial%20dataset&filter[tags]=census|acs&page[size]=25</div>
+
+          <pre class="fragment code-lots"><code class="hljs json">
+{
+  "meta": {
+    "apiRoot": "http://opendata.arcgis.com/api/v2",
+    "resourceRoot": "http://opendata.arcgis.com/api/v2/datasets",
+    "queryParameters": {
+      "page": {
+        "number": 1,
+        "size": 25
+      },
+      "q": "population",
+      "filter": {
+        "content": "spatial dataset",
+        "tags": "census|acs"
+      }
+    },
+    "stats": {
+      "count": 10,
+      "totalCount": 186,
+      "aggs": {
+        "content": [{ "key": "spatial dataset", "docCount": 186 }],
+        "tags": [
+          { "key": "census", "docCount": 162 },
+          { "key": "population", "docCount": 97 },
+          { "key": "demographics", "docCount": 71 },
+          { "key": "acs": "docCount": 21}
+        ],
+        "source": [
+          { "key": "U.S. Federal Maps and Apps", "docCount": 24 },
+          { "key": "Miami-Dade County, Florida", "docCount": 11 }
+        ]
+      }
+    }
+  }
+}
+          </code></pre>
         </section>
 
         <section>
-          <h1>OpenData V2 API (public) continued..</h1>
-          <div class="fragment">Authenticated access</div>
-          <div class="fragment">Caching via Etag and If-None-Match header</div>
-          <div class="fragment">Appropriate HTTP Status codes</div>
-          <div class="fragment">Well documented</div>
+          <h1>OpenData V2 API (beta): Paging</h1>
+          <div class="fragment">/api/v2/datasets?q=population&filter[content]=spatial%20dataset&filter[tags]=census|acs&page[size]=25</div>
+
+          <pre class="fragment"><code class="hljs json">
+{
+  "data": [...],
+  "meta": {...},
+  "links": {
+    "first": "http://opendata.arcgis.com/api/v2/datasets?page[number]=1&page[size]=25&q=population&filter[content]=spatial%20dataset&filter[tags]=census%7Cacs",
+    "next": "http://opendata.arcgis.com/api/v2/datasets?page[number]=2&page[size]=25&q=population&filter[content]=spatial%20dataset&filter[tags]=census%7Cacs",
+    "last": "http://opendata.arcgis.com/api/v2/datasets?page[number]=8&page[size]=25&q=population&filter[content]=spatial%20dataset&filter[tags]=census%7Cacs"
+  }
+}
+          </code></pre>
+        </section>
+
+        <section>
+          <h1>OpenData V2 API (beta): Standardized Errors</h1>
+        	<div class="fragment">/api/v2/datasets?foo=bar</div>
+					<pre class="fragment"><code class="hljs json">
+{
+  "errors": [
+    {
+      "title": "Unrecognized Parameter",
+      "detail": "'foo' is not a recognized parameter for this request.",
+      "status": 400,
+      "source": { "parameter": "foo=bar" },
+      "links": { "about": "coming-soon: link-to-help-docs" },
+      "meta": { detailed-information-to-debug-the-request }
+    }
+  ]
+}
+					</code></pre>
+        </section>
+
+        <section>
+          <h1>OpenData V2 API (beta): More Standardized Errors</h1>
+        	<div class="fragment">/api/v2/datasets?foo=bar&filter[pizza]=anchovies</div>
+        	<div class="fragment">All errors are processed before a response is generated</div>
+					<pre class="fragment code-lots"><code class="hljs json">
+{
+  "errors": [
+    {
+      "title": "Unrecognized Parameter",
+      "detail": "'foo' is not a recognized parameter for this request.",
+      "status": 400,
+      "source": { "parameter": "foo=bar" },
+      "links": { "about": "coming-soon: link-to-help-docs" },
+      "meta": { detailed-information-to-help-debug-the-request }
+    },
+    {
+      "title": "Invalid filter key",
+      "detail": "'filter[pizza]' is not a valid filter key",
+      "status": 400,
+      "source": { "parameter": "filter[pizza]" },
+      "links": { "about": "help-docs" },
+      "meta": { detailed-information-to-help-debug-the-request }
+    }
+  ]
+}
+					</code></pre>
+        	<div class="fragment"><a target="_blank" href="https://opendata.arcgis.com/api/v2/datasets?foo=bar&filter[pizza]=anchovies">Try it yourself</a></div>
+        </section>
+
+        <section>
+          <h1>OpenData V2 API (beta): Query Abilities</h1>
+          <div class="fragment">Full text queries supported with the `q` parameter</div>
+          <div class="fragment"><a target="_blank" href="https://opendata.arcgis.com/api/v2/datasets?q=parcels">/api/v2/datasets?q=parcels</a></div>
+          <div class="fragment">Can fetch related resources in a single request via `include` parameter</div>
+          <div class="fragment"><a target="_blank" href="https://opendata.arcgis.com/api/v2/datasets?q=parcels&include=organizations">/api/v2/datasets?q=parcels&include=organizations</a></div>
+					<pre class="fragment"><code class="hljs json">
+{
+  "data": [array-of-dataset-objects-with-references-to-their-organizations],
+  "included": [array-of-organization-objects]
+}
+					</code></pre>
+        </section>
+
+        <section>
+          <h1>OpenData V2 API (beta): Support</h1>
+          <div class="fragment"><a target="_blank">ArcGIS Open Data API Sandbox</a></div>
+          <div class="fragment"><a target="_blank">Online Documentation</a></div>
+          <div class="fragment">API is being finalized. Expect a Stable API soon.</div>
         </section>
 
         <section>
@@ -308,7 +455,7 @@
         </section>
 
         <section>
-          <h2><pre><code class="hljs">
+          <pre><code class="hljs">
 $.getJSON('http://my.api.url')
   .done(function (response, status, xhr) {
     /* stuff it into the DOM... */
@@ -316,8 +463,7 @@ $.getJSON('http://my.api.url')
   .fail(function (xhr, status, error) {
     /* do something about the error! */
   });
-          </code></pre></h2>
-
+          </code></pre>
 
           <aside class="notes">
             <ul>
@@ -327,7 +473,7 @@ $.getJSON('http://my.api.url')
         </section>
 
         <section class="strikethrough" data-transition="fade" data-transition-speed="slow">
-          <h2><pre><code class="hljs">
+          <pre><code class="hljs">
 $.getJSON('http://my.api.url')
   .done(function (response, status, xhr) {
     /* do something with the response! */
@@ -335,7 +481,7 @@ $.getJSON('http://my.api.url')
   .fail(function (xhr, status, error) {
     /* do something about the error! */
   });
-          </code></pre></h2>
+          </code></pre>
 
           <aside class="notes">
             <ul>
@@ -359,9 +505,7 @@ $.getJSON('http://my.api.url')
           <img class="framework-logo" src="images/marionette.svg">
           <img class="framework-logo" src="images/0cf15665a9146ba852bf042b0652780a.png">
           <img class="framework-logo" src="images/angularjs-for-header-only.svg">
-          <img class="framework-logo" src="images/react.svg">
-          <img class="framework-logo" src="images/ampersand.svg">
-          <img class="framework-logo" src="images/mayhem.png"></img>
+          <img class="framework-logo" src="images/react-logo-1000-transparent.png">
 
           <aside class="notes">
             <ul>
@@ -373,22 +517,22 @@ $.getJSON('http://my.api.url')
         <section>
           <h1>Key endpoints:</h1>
           <div class="fragment">
-            <h3><pre><code class="hljs">/datasets.json?q=&lt;search string&gt;&page=&lt;page number&gt;</code></pre></h3>
-            <a class="follow-link" href="http://opendata.arcgis.com/datasets.json?q=water&page=1" target="_blank"></a>
+            <pre><code class="hljs">/api/v2/datasets?q=&lt;search string&gt;&page[number]=&lt;page number&gt;</code></pre>
+            <a class="follow-link" href="http://opendata.arcgis.com/api/v2/datasets?q=water&page[number]=1" target="_blank"></a>
           </div>
 
           <div class="fragment">
-            <h3><pre><code class="hljs">$.getJSON(MyApiUrl + '/datasets.json?q=water&page=1');</code></pre></h3>
+            <pre><code class="hljs">$.getJSON(MyApiUrl + '/api/v2/datasets?q=water&page[number]=1');</code></pre>
           </div>
 
           <div class="fragment">
             <div>and</div>
-            <h3><pre><code class="hljs">/datasets/&lt;id&gt;.json</code></pre></h3>
-            <a class="follow-link" href="http://opendata.arcgis.com/datasets/354b5206149c4863abf3d77710063489_2.json" target="_blank"></a>
+            <pre><code class="hljs">/api/v2/datasets/&lt;id&gt;</code></pre>
+            <a class="follow-link" href="http://opendata.arcgis.com/api/v2/datasets/354b5206149c4863abf3d77710063489_2" target="_blank"></a>
           </div>
 
           <div class="fragment">
-            <h3><pre><code class="hljs">$.getJSON(MyApiUrl + '/datasets/abc123.json');</code></pre></h3>
+            <pre><code class="hljs">$.getJSON(MyApiUrl + '/api/v2/datasets/abc123');</code></pre>
           </div>
 
           <aside class="notes">
@@ -399,9 +543,8 @@ $.getJSON('http://my.api.url')
                 key attributes:
                 <ul>
                   <li>id</li>
-                  <li>item_type</li>
                   <li>type</li>
-                  <li>url - which is another api from which you can get the actual data</li>
+                  <li>url - points you to where the data actually lives</li>
                 </ul>
               </li>
             </ul>
@@ -412,44 +555,44 @@ $.getJSON('http://my.api.url')
           <h1>And maybe:</h1>
 
           <div class="fragment">
-            <h3><pre><code class="hljs">/datasets/&lt;id&gt;/related.json</code></pre></h3>
-            <a class="follow-link" href="http://opendata.arcgis.com/datasets/354b5206149c4863abf3d77710063489_2/related.json" target="_blank"></a>
+            <pre><code class="hljs">/api/v2/datasets/&lt;id&gt;/related</code></pre>
+            <a class="follow-link" href="http://opendata.arcgis.com/api/v2/datasets/354b5206149c4863abf3d77710063489_2/related" target="_blank"></a>
           </div>
 
           <div class="fragment">
-            <h3><pre><code class="hljs javascript">$.getJSON(MyApiUrl + '/datasets/abc123/related.json');</code></pre></h3>
+            <pre><code class="hljs javascript">$.getJSON(MyApiUrl + '/api/v2/datasets/abc123/related');</code></pre>
           </div>
 
           <div class="fragment">
             <div>And:</div>
-            <h3><pre><code class="hljs">/datasets/autocomplete?query=&lt;search string&gt;</code></pre></h3>
+            <pre><code class="hljs">/datasets/autocomplete?query=&lt;search string&gt;</code></pre>
             <a class="follow-link" href="http://opendata.arcgis.com/datasets/autocomplete.json?query=wate" target="_blank"></a>
           </div>
 
           <div class="fragment">
-            <h3><pre><code class="hljs">$.getJSON(MyApiUrl + '/datasets/autocomplete?query=wat');</code></pre></h3>
+            <pre><code class="hljs">$.getJSON(MyApiUrl + '/datasets/autocomplete?query=wat');</code></pre>
           </div>
         </section>
 
         <section>
           <h1>Also:</h1>
           <div class="fragment">
-            <h3><pre><code class="hljs html">/datasets/&lt;id&gt;.csv</code></pre></h3>
+            <pre><code class="hljs html">/datasets/&lt;id&gt;.csv</code></pre>
             <a class="follow-link" href="http://opendata.arcgis.com/datasets/354b5206149c4863abf3d77710063489_2.csv" target="_blank"></a>
           </div>
 
           <div class="fragment">
-            <h3><pre><code class="hljs html">/datasets/&lt;id&gt;.geojson</code></pre></h3>
+            <pre><code class="hljs html">/datasets/&lt;id&gt;.geojson</code></pre>
             <a class="follow-link" href="http://opendata.arcgis.com/datasets/354b5206149c4863abf3d77710063489_2.geojson" target="_blank"></a>
           </div>
 
           <div class="fragment">
-            <h3><pre><code class="hljs html">/datasets/&lt;id&gt;.kml</code></pre></h3>
+            <pre><code class="hljs html">/datasets/&lt;id&gt;.kml</code></pre>
             <a class="follow-link" href="http://opendata.arcgis.com/datasets/354b5206149c4863abf3d77710063489_2.kml" target="_blank"></a>
           </div>
 
           <div class="fragment">
-            <h3><pre><code class="hljs html">/datasets/&lt;id&gt;.zip</code></pre></h3>
+            <pre><code class="hljs html">/datasets/&lt;id&gt;.zip</code></pre>
             <a class="follow-link" href="http://opendata.arcgis.com/datasets/354b5206149c4863abf3d77710063489_2.zip" target="_blank"></a>
           </div>
         </section>
@@ -457,18 +600,21 @@ $.getJSON('http://my.api.url')
         <section>
           <h1>Errors...</h1>
 
-          <img src="images/curl.png" style="width:60%;">
-          <a class="follow-link" href="http://opendata.arcgis.com/datasets/sdhkdhsf.json" target="_blank"></a>
+          <img src="images/errors.png" style="width:40%;">
+          <a class="follow-link" href="http://opendata.arcgis.com/api/v2/datasets/sdhkdhsf" target="_blank"></a>
 
           <aside class="notes">
             <ul>
               <li>errors are handled how you'd expect - http status code</li>
+              <li>4xx means there was something wrong with the request</li>
+              <li>As mentioned earlier there will be plenty of details in the error message itself</li>
+              <li>5xx means the API goofed up</li>
             </ul>
           </aside>
         </section>
 
         <section>
-          <h2><pre><code class="hljs">
+          <pre><code class="hljs">
 $.getJSON('http://my.api.url')
   .done(function (response, status, xhr) {
     if (response.error) {
@@ -483,7 +629,7 @@ $.getJSON('http://my.api.url')
         /* handle other errors */
     }
   });
-          </code></pre></h2>
+          </code></pre>
 
           <aside class="notes">
             <ul>
@@ -530,11 +676,11 @@ $.getJSON('http://my.api.url')
           <div class="fragment">
             <pre class="code">
               <code class="hljs">
-                $ git clone
-                $ cd opendata-backbone
-                $ npm install
-                $ bower install
-                $ gulp serve
+$ git clone
+$ cd opendata-backbone
+$ npm install
+$ bower install
+$ gulp serve
               </code>
             </pre>
           </div>
@@ -547,7 +693,6 @@ $.getJSON('http://my.api.url')
         <section>
           <pre><code class="hljs">
 DatasetCollection = Backbone.Collection.extend({
-
   url: function () {
     //get the params (q=, page=, etc) from somewhere...
     var queryParams = '';
@@ -557,16 +702,14 @@ DatasetCollection = Backbone.Collection.extend({
   parse: function (resp) {
     return resp.data;
   }
-
 });
           </code></pre>
           <a class="follow-link" target="_blank" href="https://github.com/mjuniper/OpenData-Backbone/blob/master/app/scripts/entities/dataset-collection.js#L13"></a>
+        </section>
 
-          <div class="fragment">
-            <div>and</div>
-            <pre><code class="hljs">
+				<section>
+          <pre><code class="hljs">
 DatasetModel = Backbone.Model.extend({
-
   url: function () {
     return MyOD.config.api + 'datasets/' + this.get('id') + '.json';
   },
@@ -574,18 +717,114 @@ DatasetModel = Backbone.Model.extend({
   parse: function (response) {
     return response.data;
   }
-
 });
-            </code></pre>
+          </code></pre>
+				</section>
+
+				<section>
+          <img class="screen-shot" src="images/opendata-backbone.png">
+          <h2><a class="follow-link" href="http://mjuniper.github.io/opendata-ember" target="_blank">mjuniper.github.io/opendata-ember</a></h2>
+        </section>
+
+        <section>
+          <img class="framework-logo" src="images/0cf15665a9146ba852bf042b0652780a.png">
+          <img class="framework-logo" src="images/bootstrap-logo.png">
+
+          <aside class="notes">
+            <ul>
+              <li>We were pretty sure we wanted to use ember for v2</li>
+              <li>Fits nicely with our v2 api because ember data</li>
+              <li>Bootstrap because it's widely known, well documented, and extensible</li>
+            </ul>
+          </aside>
+        </section>
+
+
+
+
+				<section>
+          <div>
+            Fork it: <a class="follow-link" href="https://github.com/mjuniper/opendata-ember" target="_blank">github.com/mjuniper/opendata-ember</a>
+            <div>then:</div>
+          </div>
+          <div class="fragment">
+            <pre class="code">
+              <code class="hljs">
+$ npm install -g ember-cli
+$ git clone
+$ cd opendata-ember
+$ npm install
+$ bower install
+$ ember serve
+              </code>
+            </pre>
           </div>
         </section>
 
         <section>
+          <h1>In ember-land...</h1>
+        </section>
+
+        <section class="code-only">
+          <pre><code class="hljs" data-trim>
+import Ember from 'ember';
+import DS from 'ember-data';
+
+export default DS.JSONAPIAdapter.extend({
+
+  host: ENV.APP.API,
+
+  namespace: 'api/v2',
+
+  pathForType: function(type) {
+    const camelized = Ember.String.camelize(type);
+    return Ember.String.pluralize(camelized);
+  },
+
+  urlForFindRecord: function (id/*, modelName, snapshot*/)  {
+    const host = this.get('host');
+    const namespace = this.get('namespace');
+    return `${host}/${namespace}/datasets/${id}`;
+  }
+
+});
+          </code></pre>
+          <a class="follow-link" target="_blank" href="https://github.com/mjuniper/OpenData-Backbone/blob/master/app/scripts/entities/dataset-collection.js#L13"></a>
+        </section>
+
+				<section class="code-only">
+          <pre><code class="hljs">
+import Ember from 'ember';
+import DS from 'ember-data';
+
+export default DS.JSONAPISerializer.extend({
+  normalizeResponse: function (store, primaryModelClass, payload/*, id, requestType*/) {
+    if (Ember.isArray(payload.data)) {
+      payload.data = payload.data.map(this._mapDataset);
+    } else {
+      payload.data = this._mapDataset(payload.data);
+    }
+    return payload;
+  },
+
+  _mapDataset: function (item) {
+    if(!item.attributes.name){
+      item.attributes.name = item.attributes.item_name;
+    }
+    return item;
+  }
+});
+          </code></pre>
+				</section>
+
+
+
+
+
+        <section>
           <h1>More to come?</h1>
-          <img class="framework-logo" src="images/0cf15665a9146ba852bf042b0652780a.png">
           <img class="framework-logo" src="images/angularjs-for-header-only.svg">
-          <img class="framework-logo" src="images/react.svg">
-          <img class="framework-logo" src="images/ampersand.svg">
+          <img class="framework-logo" src="images/react-logo-1000-transparent.png">
         </section>
 
         <section data-background="images/end.png" data-background-size="cover">
