@@ -21,4 +21,4 @@
 
 ### Accessing and Visualizing Esri GeoServices with ArcGIS API for JavaScript, D3, and Node.js
 
-* [preso](http://mjuniper.github.io/presentations/uc2014)
+* [preso](http://mjuniper.github.io/presentations/UC2014)
