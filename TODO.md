@@ -1,14 +1,8 @@
-* debugging talk
+## integrating opendata
 
-* Make sure they work on windows
-
-* other day 2 stuff
-
-* tweak talks
-
-
-=======================
-
-* one dude complained about bower installing the whole project
-  * why does he consider that a problem?
-  * you should not be checking in your dependencies
+- talk about how the opendata-api relates to the geoservices api and the portal api
+- talk about other endpoints besides datasets
+- talk about my search web component (https://github.com/esridc/opendata-search-component)
+- talk about opendata-backbone and opendata-ember
+- data.json???
+- opendata api filter[catalog]=...
