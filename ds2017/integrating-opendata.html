@@ -16,20 +16,20 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-		<link rel="stylesheet" href="styles/reveal-newer.css">
-		<link rel="stylesheet" href="styles/theme/esri-dev-summit-2017.css" id="theme">
+		<link rel="stylesheet" href="../styles/reveal-newer.css">
+		<link rel="stylesheet" href="../styles/theme/esri-dev-summit-2017.css" id="theme">
 
 		<!-- Code syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/solarized_dark.css">
+		<link rel="stylesheet" href="../lib/css/solarized_dark.css">
 
-    	<link rel="stylesheet" href="styles/devsummit-2017.css">
+  	<link rel="stylesheet" href="../styles/devsummit-2017.css">
 
 		<!-- Printing and PDF exports -->
 		<script>
 			var link = document.createElement( 'link' );
 			link.rel = 'stylesheet';
 			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'styles/print/pdf.css' : 'styles/print/paper.css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../styles/print/pdf.css' : '../styles/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
 
@@ -43,7 +43,7 @@
 		<div class="reveal">
 
       <div class="slides">
-        <section class="title"  data-background="images/title-2017b.png" data-background-size="cover">
+        <section class="title"  data-background="../images/title-2017b.png" data-background-size="cover">
           <h1>Integrating Open Data</h1>
           <p>
             <h4><a href="https://github.com/mjuniper">Mike Juniper</a> :: Washington DC R&amp;D Center</h4>
@@ -54,7 +54,7 @@
         <section>
           <div>
             <h2>
-              <a href="http://mjuniper.github.io/presentations/integrating-opendata-2017.html">mjuniper.github.io/presentations/integrating-opendata-2017.html</a>
+              <a href="http://mjuniper.github.io/presentations/ds2017/integrating-opendata.html">mjuniper.github.io/presentations/ds2017/integrating-opendata.html</a>
             </h2>
           </div>
 
@@ -79,23 +79,23 @@
         </section>
 
         <section>
-          <img src="images/la-geohub.png" data-transition-out="fade">
+          <img src="../images/la-geohub.png" data-transition-out="fade">
         </section>
 
 				<section data-transition="fade">
-          <img src="images/hifld.png">
+          <img src="../images/hifld.png">
         </section>
 
         <section data-transition="fade">
-          <img src="images/d3.png">
+          <img src="../images/d3.png">
         </section>
 
         <section data-transition="fade">
-          <img src="images/halifax.png">
+          <img src="../images/halifax.png">
         </section>
 
         <section data-transition="fade">
-          <img src="images/umbrella.png">
+          <img src="../images/umbrella.png">
 
           <aside class="notes">
             <h3>but what if...</h3>
@@ -149,7 +149,7 @@
         </section>
 
         <section>
-          <img id="architecture" src="images/arch.jpeg">
+          <img id="architecture" src="../images/arch.jpeg">
         </section>
 
         <section>
@@ -494,14 +494,14 @@
         </section>
 
         <section>
-          <img class="screen-shot" src="images/umbrella.png">
+          <img class="screen-shot" src="../images/umbrella.png">
           <h2><a class="follow-link" href="http://opendata.arcgis.com" target="_blank">ArcGIS Open Data</a></h2>
 
           <aside class="notes">Open Data is built against the same API</aside>
         </section>
 
         <section>
-          <img src="images/api-arch.png">
+          <img src="../images/api-arch.png">
 
           <aside class="notes">
             <ul>
@@ -557,11 +557,11 @@ $.getJSON('http://my.api.url')
         </section>
 
         <section>
-          <img class="framework-logo" src="images/backbone.png">
-          <img class="framework-logo" src="images/marionette.svg">
-          <img class="framework-logo" src="images/0cf15665a9146ba852bf042b0652780a.png">
-          <img class="framework-logo" src="images/angularjs-for-header-only.svg">
-          <img class="framework-logo" src="images/react-logo-1000-transparent.png">
+          <img class="framework-logo" src="../images/backbone.png">
+          <img class="framework-logo" src="../images/marionette.svg">
+          <img class="framework-logo" src="../images/0cf15665a9146ba852bf042b0652780a.png">
+          <img class="framework-logo" src="../images/angularjs-for-header-only.svg">
+          <img class="framework-logo" src="../images/react-logo-1000-transparent.png">
 
           <aside class="notes">
             <ul>
@@ -656,7 +656,7 @@ $.getJSON('http://my.api.url')
         <section>
           <h1>Errors...</h1>
 
-          <img src="images/errors.png" style="width:40%;">
+          <img src="../images/errors.png" style="width:40%;">
           <a class="follow-link" href="http://opendata.arcgis.com/api/v2/datasets/sdhkdhsf" target="_blank"></a>
 
           <aside class="notes">
@@ -705,14 +705,14 @@ $.getJSON('http://my.api.url')
         </section>
 
         <section>
-          <img class="screen-shot" src="images/opendata-backbone.png">
+          <img class="screen-shot" src="../images/opendata-backbone.png">
           <h2><a class="follow-link" href="http://mjuniper.github.io/OpenData-Backbone" target="_blank">mjuniper.github.io/OpenData-Backbone</a></h2>
         </section>
 
         <section>
-          <img class="framework-logo" src="images/backbone.png">
-          <img class="framework-logo" src="images/marionette.svg">
-          <img class="framework-logo" src="images/bootstrap-logo.png">
+          <img class="framework-logo" src="../images/backbone.png">
+          <img class="framework-logo" src="../images/marionette.svg">
+          <img class="framework-logo" src="../images/bootstrap-logo.png">
 
           <aside class="notes">
             <ul>
@@ -779,13 +779,13 @@ DatasetModel = Backbone.Model.extend({
 				</section>
 
 				<section>
-          <img class="screen-shot" src="images/opendata-backbone.png">
+          <img class="screen-shot" src="../images/opendata-backbone.png">
           <h2><a class="follow-link" href="http://mjuniper.github.io/opendata-ember" target="_blank">mjuniper.github.io/opendata-ember</a></h2>
         </section>
 
         <section>
-          <img class="framework-logo" src="images/0cf15665a9146ba852bf042b0652780a.png">
-          <img class="framework-logo" src="images/bootstrap-logo.png">
+          <img class="framework-logo" src="../images/0cf15665a9146ba852bf042b0652780a.png">
+          <img class="framework-logo" src="../images/bootstrap-logo.png">
 
           <aside class="notes">
             <ul>
@@ -873,13 +873,13 @@ export default DS.JSONAPISerializer.extend({
 
         <section>
           <h1>More to come?</h1>
-          <img class="framework-logo" src="images/angularjs-for-header-only.svg">
-          <img class="framework-logo" src="images/react-logo-1000-transparent.png">
+          <img class="framework-logo" src="../images/angularjs-for-header-only.svg">
+          <img class="framework-logo" src="../images/react-logo-1000-transparent.png">
         </section>
 
         <section>
           <ul>
-            <li><a href="http://mjuniper.github.io/presentations/integrating-opendata-2017.html">mjuniper.github.io/presentations/integrating-opendata-2017.html</a></li>
+            <li><a href="http://mjuniper.github.io/presentations/ds2017/integrating-opendata.html">mjuniper.github.io/presentations/ds2017/integrating-opendata.html</a></li>
             <li><a href="http://koopjs.github.io">koopjs.github.io/</a></li>
             <li><a href="http://jsonapi.org">jsonapi.org</a></li>
             <li><a href="http://akharris.github.io/ember-arc-swag">akharris.github.io/ember-arc-swag/</a> (not API feature-complete but still useful)</li>
@@ -888,7 +888,7 @@ export default DS.JSONAPISerializer.extend({
           </ul>
         </section>
 
-        <section data-background="images/end-2017.png" data-background-size="cover">
+        <section data-background="../images/end-2017.png" data-background-size="cover">
           <!-- <h1>Rate This Session</h1>
           <h2><a href="http://www.esri.com/RateMyDevSummitSession">www.esri.com/RateMyDevSummitSession</a></h2> -->
         </section>
@@ -900,14 +900,14 @@ export default DS.JSONAPISerializer.extend({
           Esri Dev Summit 2017 | Integrating Open Data
         </div>
         <div class="right">
-          <a href="http://mjuniper.github.io/presentations/integrating-opendata-2017.html">mjuniper.github.io/presentations/integrating-opendata-2017.html</a>
+          <a href="http://mjuniper.github.io/presentations/ds2017/integrating-opendata.html">mjuniper.github.io/presentations/ds2017/integrating-opendata.html</a>
         </div>
       </div>
 
 		</div>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="scripts/reveal.js"></script>
+		<script src="../lib/js/head.min.js"></script>
+		<script src="../scripts/reveal.js"></script>
 
 		<script>
 
@@ -943,12 +943,12 @@ export default DS.JSONAPISerializer.extend({
 
 				// Optional reveal.js plugins
         dependencies: [
-          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+          { src: '../lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: '../plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: '../plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
         ]
 			});
 

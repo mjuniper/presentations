@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Building Ambitious Applications Integrated with ArcGIS Online/Portal - Building an App</title>
+
+		<link rel="shortcut icon" href="favicon.ico">
+
+		<meta name="description" content="Developing with ArcGIS Open Data">
+		<meta name="author" content="Mike Juniper">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="../styles/reveal-newer.css">
+		<link rel="stylesheet" href="../styles/theme/esri-dev-summit-2017.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="../lib/css/solarized_dark.css">
+
+  	<link rel="stylesheet" href="../styles/devsummit-2017.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../styles/print/pdf.css' : '../styles/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+      <div class="slides">
+
+        <section class="title"  data-background="../images/title-2017b.png" data-background-size="cover">
+          <h1>Building Ambitious Applications Integrated with ArcGIS Online/Portal</h1>
+					<h3>Building an App</h3>
+          <p>
+            <h4><a href="https://github.com/mjuniper">Mike Juniper</a> :: Washington DC R&amp;D Center</h4>
+          </p>
+        </section>
+
+        <section>
+          <div>
+            <h2>
+              <a href="http://mjuniper.github.io/presentations/ds2017/ambitious-apps-building.html">mjuniper.github.io/presentations/ds2017/ambitious-apps-building.html</a>
+            </h2>
+          </div>
+
+          <div class="topmargin">
+            <h4>
+              <a href="https://github.com/mjuniper/presentations">github.com/mjuniper/presentations</a>
+            </h4>
+          </div>
+        </section>
+
+        <section>
+          <h2>Jupe's First Law of Web Development</h2>
+          <h1 class="fragment">If it's hard...</h1>
+          <h1 class="fragment">you're doing it wrong!</h1>
+        </section>
+
+        <section>
+          <h1>And the Ember corollaries:</h1>
+          <dl>
+            <dt class="fragment"><h3>If you find yourself thinking, "#$*@$ Ember!"</h3></dt>
+            <dd class="fragment"><h2>you're probably doing it wrong!</h2></dd>
+
+            <dt class="fragment"><h3>If find yourself thinking, "this should be easy."</h3></dt>
+            <dd class="fragment"><h2>it probably is if you do it the ember way.</h2></dd>
+
+            <dt class="fragment"><h3>If you find yourself thinking, "wouldn't it be great if ember did X?"</h3></dt>
+            <dd class="fragment"><h2>It probably does.</h2></dd>
+          </dl>
+        </section>
+
+        <section>
+          <h2>Refer to the docs: <a href="http://emberjs.com/api">emberjs.com/api</a></h2>
+          <h2 class="fragment">And the guides: <a href="http://guides.emberjs.com">guides.emberjs.com</a></h2>
+        </section>
+
+        <section>
+          <h2><a href="https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi">Ember Inspector</a></h2>
+        </section>
+
+        <section>
+
+        </section>
+
+        <section>
+
+        </section>
+
+        <section>
+
+        </section>
+
+        <section data-background="../images/end-2017.png" data-background-size="cover">
+          <!-- <h1>Rate This Session</h1>
+          <h2><a href="http://www.esri.com/RateMyDevSummitSession">www.esri.com/RateMyDevSummitSession</a></h2> -->
+        </section>
+
+      </div>
+
+      <div id="slide-footer">
+        <div class="left">
+          Esri Dev Summit 2017 | Integrating Open Data
+        </div>
+        <div class="right">
+          <a href="http://mjuniper.github.io/presentations/ds2017/ambitious-apps-building.html">mjuniper.github.io/presentations/ds2017/ambitious-apps-building.html</a>
+        </div>
+      </div>
+
+		</div>
+
+		<script src="../lib/js/head.min.js"></script>
+		<script src="../scripts/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+    		controls: false,
+				progress: true,
+				history: true,
+				center: true,
+        previewLinks: false,
+        transition: 'slide', // default/cube/page/concave/zoom/linear/fade/none
+        width: 1600,
+        height: 900,
+        minScale: 0.2,
+        maxScale: 1.0,
+        slideNumber: false,
+
+        keyboard: {
+          13: function () {
+            var curSlide = Reveal.getCurrentSlide();
+
+            els = curSlide.querySelectorAll(':scope > a.follow-link, :scope > h1 > a.follow-link, :scope > h2 > a.follow-link, .fragment.visible > a.follow-link');
+
+            if (els && els.length) {
+              var el = els[els.length - 1];
+              var evObj = document.createEvent('Events');
+              evObj.initEvent('click', true, false);
+              el.dispatchEvent(evObj);
+            }
+          }
+        },
+
+				// Optional reveal.js plugins
+        dependencies: [
+          { src: '../lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: '../plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: '../plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+			});
+
+		</script>
+
+	</body>
+</html>
