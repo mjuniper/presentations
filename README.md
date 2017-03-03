@@ -2,17 +2,17 @@
 
 ## Building Ambitious Applications Integrated with ArcGIS Online/Portal
 
-* [Building an app](http://mjuniper.github.io/presentations/ds2017-ambitious-apps-building)
-* [Services & Components](http://mjuniper.github.io/presentations/ds2017-ambitious-apps-architecture)
-* [Deployment](http://mjuniper.github.io/presentations/ds2017-ambitious-apps-deployment)
+* [Building an app](http://mjuniper.github.io/presentations/ds2017/ambitious-apps-building)
+* [Services & Components](http://mjuniper.github.io/presentations/ds2017/ambitious-apps-architecture)
+* [Deployment](http://mjuniper.github.io/presentations/ds2017/ambitious-apps-deployment)
 
 ## Integrating Open Data
 
-* [preso](http://mjuniper.github.io/presentations/integrating-opendata)
+* [preso](http://mjuniper.github.io/presentations/ds2017/integrating-opendata)
 
 ## Audacious Enterprise GIS Apps with ember
 
-* [preso](http://mjuniper.github.io/presentations/audacious-ember)
+* [preso](http://mjuniper.github.io/presentations/ds2017/audacious-ember)
 
 
 # 2016 Developer Summit
