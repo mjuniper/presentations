@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Building Ambitious Applications Integrated with ArcGIS Online/Portal - Deployment</title>
+
+		<link rel="shortcut icon" href="favicon.ico">
+
+		<meta name="description" content="Building Ambitious Applications Integrated with ArcGIS Online/Portal - Deployment">
+		<meta name="author" content="Mike Juniper">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="../styles/reveal-newer.css">
+		<link rel="stylesheet" href="../styles/theme/esri-dev-summit-2017.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="../lib/css/solarized_dark.css">
+
+  	<link rel="stylesheet" href="../styles/devsummit-2017.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../styles/print/pdf.css' : '../styles/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+      <div class="slides">
+
+        <section class="title"  data-background="../images/title-2017b.png" data-background-size="cover">
+          <h1>Building Ambitious Applications Integrated with ArcGIS Online/Portal</h1>
+					<h2>Deployment</h2>
+          <p>
+            <h4><a href="https://github.com/mjuniper">Mike Juniper</a> :: Washington DC R&amp;D Center</h4>
+          </p>
+        </section>
+
+        <section>
+          <div>
+            <h2>
+              <a href="http://mjuniper.github.io/presentations/ds2017/ambitious-apps-deployment.html">mjuniper.github.io/presentations/ds2017/ambitious-apps-deployment.html</a>
+            </h2>
+          </div>
+
+          <div class="topmargin">
+            <h4>
+              <a href="https://github.com/mjuniper/presentations">github.com/mjuniper/presentations</a>
+            </h4>
+          </div>
+        </section>
+
+        <section>
+          <h1>Deployment...</h1>
+          <ul>
+            <li class="fragment">Build the app</li>
+            <li class="fragment">Fingerprint assets</li>
+            <li class="fragment">Gzip assets</li>
+            <li class="fragment">Optimize images</li>
+            <li class="fragment">Upload to webserver</li>
+          </ul>
+          <h2 class="fragment">and maybe...</h2>
+          <ul>
+            <li class="fragment">Enforce a caching stragegy</li>
+            <li class="fragment">Post a message in slack</li>
+            <li class="fragment">Notify a web service</li>
+            <li class="fragment">Create a cloudfront invalidation</li>
+            <li class="fragment">???</li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>This is a job for the robots!</h1>
+        </section>
+
+        <section>
+          <h1>The stupid simple approach:</h1>
+          <h2><a href="http://surge.sh/">surge.sh</a></h2>
+          <ul>
+            <li class="fragment">Simple</li>
+            <li class="fragment">Easy</li>
+            <li class="fragment">Free</li>
+            <li class="fragment">Production ready?</li>
+          </ul>
+        </section>
+
+        <section>
+          <pre><code class="bash">
+  $ ember install ember-cli-surge
+  $ ember surge
+          </code></pre>
+        </section>
+
+        <section>
+          <h1>The blessed approach:</h1>
+          <h2><a href="http://ember-cli-deploy.com/">ember-cli-deploy</a></h2>
+          <ul>
+            <li class="fragment">Flexible</li>
+            <li class="fragment">Extensible</li>
+            <li class="fragment">Composable</li>
+            <li class="fragment">More complexity</li>
+            <li class="fragment">You need to figure out what you want it to do</li>
+          </ul>
+        </section>
+
+        <section>
+          <pre><code class="bash">
+$ ember install ember-cli-deploy
+$ ember install ... # ember-cli-deploy plugins or plugin packs
+          </code></pre>
+
+          <p>setup external stuff like s3, azure, cloudfront, Firebase, Heroku</p>
+
+          <pre><code class="js">
+// config/deploy.js
+// configure your deploy pipeline
+          </code></pre>
+
+          <pre><code class="bash">
+$ ember deploy --activate production # or other environment
+          </code></pre>
+
+        </section>
+
+        <section data-background="../images/end-2017.png" data-background-size="cover">
+          <!-- <h1>Rate This Session</h1>
+          <h2><a href="http://www.esri.com/RateMyDevSummitSession">www.esri.com/RateMyDevSummitSession</a></h2> -->
+        </section>
+
+      </div>
+
+      <div id="slide-footer">
+        <div class="left">
+          Esri Dev Summit 2017 | Building Ambitious Applications Integrated with ArcGIS Online/Portal - Deployment
+        </div>
+        <div class="right">
+          <a href="http://mjuniper.github.io/presentations/ds2017/ambitious-apps-deployment.html">mjuniper.github.io/presentations/ds2017/ambitious-apps-deployment.html</a>
+        </div>
+      </div>
+
+		</div>
+
+		<script src="../lib/js/head.min.js"></script>
+		<script src="../scripts/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+    		controls: false,
+				progress: true,
+				history: true,
+				center: true,
+        previewLinks: false,
+        transition: 'slide', // default/cube/page/concave/zoom/linear/fade/none
+        width: 1600,
+        height: 900,
+        minScale: 0.2,
+        maxScale: 1.0,
+        slideNumber: false,
+
+        keyboard: {
+          13: function () {
+            var curSlide = Reveal.getCurrentSlide();
+
+            els = curSlide.querySelectorAll(':scope > a.follow-link, :scope > h1 > a.follow-link, :scope > h2 > a.follow-link, .fragment.visible > a.follow-link');
+
+            if (els && els.length) {
+              var el = els[els.length - 1];
+              var evObj = document.createEvent('Events');
+              evObj.initEvent('click', true, false);
+              el.dispatchEvent(evObj);
+            }
+          }
+        },
+
+				// Optional reveal.js plugins
+        dependencies: [
+          { src: '../lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: '../plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: '../plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+			});
+
+		</script>
+
+	</body>
+</html>
