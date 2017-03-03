@@ -1,23 +1,16 @@
 
+- finish second preso and run through it
+- do third preso and run through it
+- run through all one more time
+
 ## Workshop
 
 ### building an app
+- ~ 75 - 90 minutes
 - computed properties?
 
 ### architecture
-
-1. generate component and refactor to use it
-1. generate a controller and re-use the component created above
-1. generate a service and inject it
-1. bind to model and loop through elements
-1. generate another component and refactor to use it
-1. update component integration tests to pass and actually test worthwhile stuff
-1. add more assertions to acceptance test
-
-- Components
-- Services
-- DI
-- DDAU
+- ~ 60 - 75 minutes
 
 ### deployment
 

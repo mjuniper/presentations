@@ -74,6 +74,13 @@
         </section>
 
         <section>
+          <h1>Services</h1>
+          <blockquote cite="https://guides.emberjs.com/v2.11.0/applications/services/">
+            <p>An Ember.Service is an Ember object that lives for the duration of the application, and can be made available in different parts of your application.</p>
+          </blockquote>
+        </section>
+
+        <section>
           <blockquote cite="https://guides.emberjs.com/v2.11.0/applications/services/">
             <p>Services are useful for features that require shared state or persistent connections.</p>
           </blockquote>
@@ -114,7 +121,7 @@ export default Ember.Service.extend({
           <pre><code class="js">
 session: Ember.inject.service()
 
-// available as this.get('session');
+// available in this class as this.get('session');
           </code></pre>
 
           Or
@@ -122,7 +129,7 @@ session: Ember.inject.service()
           <pre><code class="js">
 userSession: Ember.inject.service('session')
 
-// now available in this class as this.get('userSession')
+// now available in this class as this.get('userSession');
           </code></pre>
 
         </section>
@@ -142,7 +149,7 @@ export default {
   initialize: initialize
 };
 
-// now available in all routes as this.get('session')
+// now available in all routes as this.get('session');
           </code></pre>
         </section>
 
@@ -154,6 +161,7 @@ export default {
         <section>
           <h1>Components</h1>
           <p>Composed of a js file and/or a template</p>
+          Isolated - do not have access to their outer context, get data & actions via attributes
         </section>
 
         <section>
@@ -171,9 +179,13 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
 
-  session: Ember.inject.service();
+  tagName: 'h2',
 
-  greeting: Ember.computed.reads('session.greeting')
+  classNames: [ 'user-profile-component' ],
+
+  greeting: Ember.computed('firstName', 'lastName', function () {
+    return `Hello, ${this.get('firstName')} ${this.get('lastName')}`;
+  })
 
 });
           </code></pre>
@@ -187,7 +199,7 @@ export default Ember.Component.extend({
           <h2>Component usage</h2>
           <pre><code class="hbs">
 {{!-- some template somewhere --}}
-{{user-profile foo="foo" bar=bar}}
+{{user-profile firstName="Mike" lastName="Juniper"}}
           </code></pre>
         </section>
 
@@ -202,7 +214,11 @@ export default Ember.Component.extend({
         </section>
 
         <section>
-          <h2><pre><code class="js">this.$(...)</code></pre></h2>
+          <h2><pre><code class="js">this._super(...arguments);</code></pre></h2>
+        </section>
+
+        <section>
+          <h2><pre><code class="js">this.$(...);</code></pre></h2>
         </section>
 
         <section>
