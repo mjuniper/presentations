@@ -2,24 +2,7 @@
 ## Workshop
 
 ### building an app
-
-1. scaffold app
-1. set to use pods
-1. generate some routes
-1. add some handlebars
-1. generate a controller
-1. generate an acceptance test
-
-- ember basics
-  - ember object, set, get
-  - handlebars/templating
-  - data binding
-  - actions
-  - generators
-- es2015
-- pods and the future - the resolver
-- routes, controllers, templates, and their lifecycle hooks
-
+- computed properties?
 
 ### architecture
 
@@ -29,7 +12,10 @@
 1. bind to model and loop through elements
 1. generate another component and refactor to use it
 1. update component integration tests to pass and actually test worthwhile stuff
+1. add more assertions to acceptance test
 
+- Components
+- Services
 - DI
 - DDAU
 
