@@ -69,12 +69,18 @@
           <h1>ArcGIS Open Data</h1>
 
           <aside class="notes">
-            <h3>Make your authoritative data:</h3>
+            <h4>Make your authoritative data:</h4>
             <ul>
               <li>Discoverable</li>
               <li>Explorable</li>
               <li>Accessible</li>
             </ul>
+            <h4>the high level flow is</h4>
+            <ol>
+              <li>enable OD on your org</li>
+              <li>share data to OD groups</li>
+              <li>create an OD site</li>
+            </ol>
           </aside>
         </section>
 
@@ -95,10 +101,26 @@
         </section>
 
         <section data-transition="fade">
+          <img src="../images/summit.png">
+        </section>
+
+        <section data-transition="fade">
+          <img src="../images/brampton.png">
+        </section>
+
+        <section data-transition="fade">
+          <img src="../images/loudoun.png">
+        </section>
+
+        <section data-transition="fade">
+          <img src="../images/raleigh.png">
+        </section>
+
+        <section data-transition="fade">
           <img src="../images/umbrella.png">
 
           <aside class="notes">
-            <h3>but what if...</h3>
+            <h4>but what if...</h4>
             <ul>
               <li>site customization capabilities insufficient</li>
               <li>bring AGO OD into existing website</li>
@@ -117,7 +139,10 @@
               <a href="http://www.w3.org/TR/vocab-dcat/">DCAT</a>
             </li>
             <li class="fragment">
-              OpenData API
+              <a href="https://opendata.arcgis.com/api/v2/">Open Data API</a>
+            </li>
+            <li class="fragment">
+              <a href="https://github.com/esridc/opendata-search-component">Open Data Search web component</a>
             </li>
             <li class="fragment">
               <a href="https://github.com/mjuniper/OpenData-Backbone">Building</a> an <a href="https://github.com/mjuniper/opendata-ember">app</a> against the API
@@ -486,7 +511,17 @@
         </section>
 
         <section>
-          <h1>What can you do with it?</h1>
+          <h1>Embedded Open Data</h1>
+          <div class="fragment">
+            <a href="http://esridc.github.io/opendata-search-component/examples/">Open Data Search Web Component</a>
+          </div>
+          <div class="fragment">
+            <a href="https://github.com/esridc/opendata-search-component">github.com/esridc/opendata-search-component</a>
+          </div>
+        </section>
+
+        <section>
+          <h1>What can you do with the Open Data API?</h1>
 
           <div id="build-an-app" class="fragment">
             <h2>Build an app!</h2>
@@ -557,11 +592,13 @@ $.getJSON('http://my.api.url')
         </section>
 
         <section>
+          <img class="framework-logo" src="../images/0cf15665a9146ba852bf042b0652780a.png">
+          <img class="framework-logo" src="../images/vue.png">
+          <img class="framework-logo" src="../images/react-logo-1000-transparent.png">
+
+          <img class="framework-logo" src="../images/angularjs-for-header-only.svg">
           <img class="framework-logo" src="../images/backbone.png">
           <img class="framework-logo" src="../images/marionette.svg">
-          <img class="framework-logo" src="../images/0cf15665a9146ba852bf042b0652780a.png">
-          <img class="framework-logo" src="../images/angularjs-for-header-only.svg">
-          <img class="framework-logo" src="../images/react-logo-1000-transparent.png">
 
           <aside class="notes">
             <ul>
@@ -706,7 +743,7 @@ $.getJSON('http://my.api.url')
 
         <section>
           <img class="screen-shot" src="../images/opendata-backbone.png">
-          <h2><a class="follow-link" href="http://mjuniper.github.io/OpenData-Backbone" target="_blank">mjuniper.github.io/OpenData-Backbone</a></h2>
+          <h2><a class="follow-link" href="http://esridc.github.io/OpenData-Backbone" target="_blank">esridc.github.io/OpenData-Backbone</a></h2>
         </section>
 
         <section>
@@ -727,13 +764,13 @@ $.getJSON('http://my.api.url')
           <h1>Ok,... how?</h1>
 
           <div class="fragment">
-            Fork it: <a class="follow-link" href="https://github.com/mjuniper/OpenData-Backbone" target="_blank">github.com/mjuniper/OpenData-Backbone</a>
+            Fork it: <a class="follow-link" href="https://github.com/esridc/OpenData-Backbone" target="_blank">github.com/esridc/OpenData-Backbone</a>
             <div>then:</div>
           </div>
           <div class="fragment">
             <pre class="code">
               <code class="hljs">
-$ git clone
+$ git clone https://github.com/esridc/OpenData-Backbone.git
 $ cd opendata-backbone
 $ npm install
 $ bower install
@@ -780,7 +817,7 @@ DatasetModel = Backbone.Model.extend({
 
 				<section>
           <img class="screen-shot" src="../images/opendata-backbone.png">
-          <h2><a class="follow-link" href="http://mjuniper.github.io/opendata-ember" target="_blank">mjuniper.github.io/opendata-ember</a></h2>
+          <h2><a class="follow-link" href="http://esridc.github.io/opendata-ember" target="_blank">esridc.github.io/opendata-ember</a></h2>
         </section>
 
         <section>
@@ -798,14 +835,14 @@ DatasetModel = Backbone.Model.extend({
 
 				<section>
           <div>
-            Fork it: <a class="follow-link" href="https://github.com/mjuniper/opendata-ember" target="_blank">github.com/mjuniper/opendata-ember</a>
+            Fork it: <a class="follow-link" href="https://github.com/esridc/opendata-ember" target="_blank">github.com/esridc/opendata-ember</a>
             <div>then:</div>
           </div>
           <div class="fragment">
             <pre class="code">
               <code class="hljs">
 $ npm install -g ember-cli
-$ git clone
+$ git clone https://github.com/esridc/opendata-ember.git
 $ cd opendata-ember
 $ npm install
 $ bower install
@@ -873,18 +910,19 @@ export default DS.JSONAPISerializer.extend({
 
         <section>
           <h1>More to come?</h1>
-          <img class="framework-logo" src="../images/angularjs-for-header-only.svg">
+          <img class="framework-logo" src="../images/vue.png">
           <img class="framework-logo" src="../images/react-logo-1000-transparent.png">
+          <img class="framework-logo" src="../images/angularjs-for-header-only.svg">
         </section>
 
         <section>
           <ul>
             <li><a href="http://mjuniper.github.io/presentations/ds2017/integrating-opendata.html">mjuniper.github.io/presentations/ds2017/integrating-opendata.html</a></li>
-            <li><a href="http://koopjs.github.io">koopjs.github.io/</a></li>
+            <li><a href="http://koopjs.github.io">koopjs.github.io</a></li>
             <li><a href="http://jsonapi.org">jsonapi.org</a></li>
-            <li><a href="http://akharris.github.io/ember-arc-swag">akharris.github.io/ember-arc-swag/</a> (not API feature-complete but still useful)</li>
-            <li><a href="http://emberjs.com">emberjs.com/</a></li>
-            <li><a href="http://backbonejs.org">backbonejs.org/</a></li>
+            <li><a href="http://akharris.github.io/ember-arc-swag">akharris.github.io/ember-arc-swag</a> (not API feature-complete but still useful)</li>
+            <li><a href="http://emberjs.com">emberjs.com</a></li>
+            <li><a href="http://backbonejs.org">backbonejs.org</a></li>
           </ul>
         </section>
 
