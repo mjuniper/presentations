@@ -25,9 +25,9 @@ body {
   color: #FFFFFF; }
 
 ::selection {
-  color: #fff;
-  background: rgba(0, 0, 0, 0.99);
-  text-shadow: none; }
+  /*background: #ffb7b7;*/
+  background: fuchsia;
+}
 
 .reveal .slides > section,
 .reveal .slides > section > section {
@@ -208,16 +208,17 @@ body {
  * LINKS
  *********************************************/
 .reveal a {
-  color: #21AEDB;
+  color: #77cfeb;
   text-decoration: none;
   -webkit-transition: color .15s ease;
   -moz-transition: color .15s ease;
   transition: color .15s ease; }
 
 .reveal a:hover {
-  color: #77cfeb;
+  color: #21AEDB;
   text-shadow: none;
-  border: none; }
+  border: none;
+}
 
 .reveal .roll span:after {
   color: #fff;

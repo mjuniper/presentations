@@ -12,8 +12,7 @@
 
 ## Audacious Enterprise GIS Apps with ember
 
-* [preso](http://mjuniper.github.io/presentations/ds2017/audacious-ember)
-
+* No slide deck, just live coding: https://github.com/mjuniper/audacious-app
 
 # 2016 Developer Summit
 
