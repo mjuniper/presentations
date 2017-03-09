@@ -615,17 +615,9 @@ $.getJSON('http://my.api.url')
           </div>
 
           <div class="fragment">
-            <pre><code class="hljs">$.getJSON(MyApiUrl + '/api/v2/datasets?q=water&page[number]=1');</code></pre>
-          </div>
-
-          <div class="fragment">
             <div>and</div>
             <pre><code class="hljs">/api/v2/datasets/&lt;id&gt;</code></pre>
             <a class="follow-link" href="http://opendata.arcgis.com/api/v2/datasets/354b5206149c4863abf3d77710063489_2" target="_blank"></a>
-          </div>
-
-          <div class="fragment">
-            <pre><code class="hljs">$.getJSON(MyApiUrl + '/api/v2/datasets/abc123');</code></pre>
           </div>
 
           <aside class="notes">
@@ -653,18 +645,11 @@ $.getJSON('http://my.api.url')
           </div>
 
           <div class="fragment">
-            <pre><code class="hljs javascript">$.getJSON(MyApiUrl + '/api/v2/datasets/abc123/related');</code></pre>
-          </div>
-
-          <div class="fragment">
             <div>And:</div>
             <pre><code class="hljs">/datasets/autocomplete?query=&lt;search string&gt;</code></pre>
             <a class="follow-link" href="http://opendata.arcgis.com/datasets/autocomplete.json?query=wate" target="_blank"></a>
           </div>
 
-          <div class="fragment">
-            <pre><code class="hljs">$.getJSON(MyApiUrl + '/datasets/autocomplete?query=wat');</code></pre>
-          </div>
         </section>
 
         <section>
@@ -801,6 +786,13 @@ DatasetCollection = Backbone.Collection.extend({
           <a class="follow-link" target="_blank" href="https://github.com/mjuniper/OpenData-Backbone/blob/master/app/scripts/entities/dataset-collection.js#L13"></a>
         </section>
 
+        <section>
+          <pre><code class="hljs">
+var datasetCollection = new DatasetCollection();
+datasetCollection.fetch({ ... });
+          </code></pre>
+        </section>
+
 				<section>
           <pre><code class="hljs">
 DatasetModel = Backbone.Model.extend({
@@ -814,6 +806,13 @@ DatasetModel = Backbone.Model.extend({
 });
           </code></pre>
 				</section>
+
+        <section>
+          <pre><code class="hljs">
+var datasetModel = new DatasetModel();
+datasetModel.fetch({ id: myId });
+          </code></pre>
+        </section>
 
 				<section>
           <img class="screen-shot" src="../images/opendata-backbone.png">
