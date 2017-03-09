@@ -133,7 +133,7 @@
           <h1>Interoperability</h1>
           <ul>
             <li class="fragment">
-              <a href="http://koopjs.github.io/">koop</a>
+              <a href="http://koopjs.github.io/">Koop</a>
             </li>
             <li class="fragment">
               <a href="http://www.w3.org/TR/vocab-dcat/">DCAT</a>
@@ -153,7 +153,7 @@
         <section>
           <h1>koop</h1>
 					<h3>Alex Harris</h3>
-          <h3 class="fragment">Feature Services from APIs</h3>
+          <h3 class="fragment">Connect APIs to ArcGIS</h3>
           <ul>
             <li class="fragment">
               Open Source (<a href="https://github.com/Esri/koop">github.com/Esri/koop</a>) R &amp; D
@@ -162,10 +162,7 @@
               <a href="http://nodejs.org">node js</a>
             </li>
             <li class="fragment">
-              geojson (&amp; others) &nbsp;&nbsp;&nbsp;==&gt;&nbsp;&nbsp;&nbsp; feature services
-            </li>
-            <li class="fragment">
-              feature services &nbsp;&nbsp;&nbsp;==&gt;&nbsp;&nbsp;&nbsp; geojson
+              Converts third-party APIs into Feature Services
             </li>
             <li class="fragment">
               export as kml, csv, shp
@@ -178,56 +175,108 @@
         </section>
 
         <section>
-          <h1>Socrata</h1>
+          <h1>Koop Providers</h1>
+          <ul>
+            <li class="fragment">
+              Responsible for translating API into GeoJSON
+            </li>
+            <li class="fragment">
+              Koop handles GeoJSON to Geoservices transformation
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>Koop Providers</h1>
+          <h3>Example: Socrata Provider</h3>
 
           <div class="fragment">
             <a class="follow-link" href="https://data.seattle.gov/Community/Schools/pmap-kbvr" target="_blank">data.seattle.gov/Community/Schools/pmap-kbvr</a>
           </div>
 
           <div class="fragment">
-            <a class="follow-link" href="http://data.seattle.gov/resource/2tje-83f6.json" target="_blank">data.seattle.gov/resource/2tje-83f6.json</a>
+            <a class="follow-link" href="http://data.seattle.gov/resource/2tje-83f6.json" target="_blank">data.seattle.gov/resource/pmap-kbvr.json</a>
           </div>
 
           <div class="fragment">
             <h3>Via koop:</h3>
-            <a class="follow-link" href="http://koop.dc.esri.com/socrata/seattle/2tje-83f6/FeatureServer/0" target="_blank">koop.dc.esri.com/socrata/seattle/2tje-83f6/FeatureServer/0</a>
+            <a class="follow-link" href="http://koop.dc.esri.com/socrata/seattle/2tje-83f6/FeatureServer/0" target="_blank">koop.dc.esri.com/socrata/seattle/pmap-kbvr/FeatureServer/0</a>
           </div>
 
           <div class="fragment">
             <h3>Registered as an item in ArcGIS Online:</h3>
-            <a class="follow-link" href="http://dcdev.maps.arcgis.com/home/item.html?id=ebf151a0feda4c57ac7422dcd48d87dc" target="_blank">dcdev.maps.arcgis.com/home/item.html?id=ebf151a0feda4c57ac7422dcd48d87dc</a>
+            <a class="follow-link" href="http://dcdev.maps.arcgis.com/home/item.html?id=8b6ecc9845944908a77a197eed908838" target="_blank">dcdev.maps.arcgis.com/home/item.html?id=8b6ecc9845944908a77a197eed908838</a>
           </div>
 
           <div class="fragment">
             <h3>Shared through Open Data:</h3>
-            <a class="follow-link" href="http://jupe.dc.opendatadev.arcgis.com/datasets/75892e4ebf134c8fab2d72c84f529545_0" target="_blank">jupe.dc.opendatadev.arcgis.com/datasets/75892e4ebf134c8fab2d72c84f529545_0</a>
+            <a class="follow-link" href="https://opendata.arcgis.com/datasets/dcdev::seattle-socrata-2tje-83f6" target="_blank">opendata.arcgis.com/datasets/dcdev::seattle-socrata-pmap-kbvr</a>
           </div>
         </section>
 
         <section>
-          <h1>DCAT</h1>
-          <h3>Alex Harris</h3>
+          <h1>Koop Providers (for Koop >= 3.0)</h1>
+          <h3>Requirements</h3>
+          <ul>
+            <li class="fragment">
+              Docs are found at <a class='follow-link' href='https://koopjs.github.io/docs/specs/provider/' target='_blank'>koopjs.github.io/docs/specs/provider/</a>
+            </li>
+            <li class="fragment">
+              Implement a single function
+            </li>
+            <li class="fragment">
+              That function fetches data from remote API and translates it into GeoJSON
+            </li>
+            <li class="fragment">
+              Koop handles the rest
+            </li>
+          </ul>
+        </section>
 
-					<a href="http://opendata.arcgis.com/data.json">opendata.arcgis.com/data.json</a>
+        <section>
+          <h1>Koop demo</h1>
+
+          <ul>
+            <li class="fragment">Using the following</li>
+            <li class="fragment">Open Data from <a class='follow-link' href="http://opendata.dc.gov" target="_blank">City of DC</a></li>
+            <li class="fragment">Koop Providers for Zillow, Craigslist, and Yelp</li>
+            <li class="fragment"><a class='follow-link' href="http://dcdev.maps.arcgis.com/home/webmap/viewer.html?webmap=5473e98c05194a3fae37e11723047af1" target="_blank">Quick Demo</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>DCAT</h1>
+
+					<a href="http://geohub.lacity.org/data.json">geohub.lacity.org/data.json</a>
 					<div>
 						<div>
 							or:
 						</div>
 						&lt;your site&gt;-&lt;your organization&gt;.opendata.arcgis.com/data.json
-					</div>
+          </div>
+
+          <div class="fragment">
+            DCAT enables integration with CKAN portals such as data.gov
+          </div>
         </section>
 
         <section>
           <h1>Open Data API</h1>
-          <h3>Alex Harris</h3>
         </section>
 
         <section>
-          <h1>What is an API?</h1>
+          <h1>What is the Open Data API?</h1>
 
           <div class="fragment">
-            A contract for accessing and modifying data from an authoritative source.
+            It is not the Portal API
           </div>
+          <div class="fragment">
+            It is not the GeoServices API
+          </div>
+          <div class="fragment">
+            It is used for finding Open Data Datasets &amp; managing Open Data Sites
+          </div>
+
         </section>
 
         <section>
@@ -242,12 +291,12 @@
 		        	<code class="hljs">/datasets</code>
 	        	</pre>
 					<pre class="fragment">
-			      <code class="hljs">?q=water&amp;page[size]=5&amp;page[number]=3</code>
+			      <code class="hljs">?q=crime&amp;page[size]=5&amp;page[number]=3</code>
         	</pre>
 
 					<aside class="notes">
 						Breakdown an URL into it component parts.
-						Domain, URI, file type/format, and Query string.
+						Domain, URI, some resource, and Query string.
 						This should look familar to anyone that's used.
 					</aside>
 
@@ -262,37 +311,14 @@
 
         <section>
           <h1>An Aside on the V1 API</h1>
-          <ol>
-            <div class="fragment">Unsupported</div>
-            <div class="fragment">Undocumented</div>
-            <div class="fragment">Not long for this world -- will soon be deprecated</div>
-          </ol>
+          <div>
+            Don't Use It
+          </div>
         </section>
 
         <section>
-          <h1>OpenData V1 API</h1>
-          <div class="fragment">HTTP protocol (GET, POST, PUT, DELETE)</div>
-          <div class="fragment">
-            <h3>opendata.arcgis.com</h3>
-          </div>
-
-          <div class="fragment">
-            <h4>OR</h4>
-            <h3>imap.maryland.opendata.arcgis.com</h3>
-          </div>
-          <div class="fragment">Available resources /datasets</div>
-          <div class="fragment">JSON format</div>
-          <!--
-            Standard HTTP.
-            API URL is based on either umbrella or the custom site.
-            Custom site API will only surface data include by that site.
-          -->
-        </section>
-
-        <section>
-          <h1>Who consumes the OpenData API?</h1>
+          <h1>What uses the OpenData API?</h1>
           <div class="fragment">OpenData "Umbrella" (Ember)</div>
-          <div class="fragment">OpenData Custom Sites 1.X (Backbone)</div>
           <div class="fragment">OpenData Custom Sites 2.X (Ember)</div>
           <div class="fragment">OpenData Admin 2.0 (Ember)</div>
         </section>
@@ -311,9 +337,10 @@
         </section>
 
         <section>
-          <h1>Why choose the JSONAPI standard?</h1>
+          <h1>Why JSONAPI?</h1>
           <div class="fragment">Standardizes JSON responses</div>
           <div class="fragment">Supports features like side-loading</div>
+          <div class="fragment">Supports client-defined payloads</div>
           <div class="fragment">Has many client and server implementations</div>
 
           <div class="fragment">Go to <a href="http://jsonapi.org/implementations/">http://jsonapi.org/implementations/</a> for client and server libraries</div>
@@ -359,7 +386,7 @@
           <div class="fragment">How are side-loaded resources returned?</div>
 <pre class="fragment"><code class="hljs json">
 {
-  "data": [datasets...],
+  "data": [...],
   "included": [
     {
       "id": "afd7refdr",
@@ -380,7 +407,7 @@
 
           <pre class="fragment"><code class="hljs json">
 {
-  "data": [collection-of-resources...],
+  "data": [...],
   "meta": {
     "apiRoot": "https://opendata.arcgis.com/api/v2/",
     "resourceRoot": "https://opendata.arcgis.com/api/v2/datasets/",
@@ -455,6 +482,25 @@
         </section>
 
         <section>
+          <h1>OpenData V2 API: Pagination</h1>
+          <h3>Zoom In On the Paging Parameters</h3>
+          <div class="fragment">/api/v2/datasets?q=population&filter[content]=spatial%20dataset&page[size]=25</div>
+
+          <pre class="fragment"><code class="hljs json">
+{
+  "data": [...],
+  "meta": {...},
+  "links": {
+    "first": "...?page[number]=1&page[size]=25&q=population&filter[content]=spatial%20dataset",
+    "next": "...?page[number]=2&page[size]=25&q=population&filter[content]=spatial%20dataset",
+    "last": "...?page[number]=8&page[size]=25&q=population&filter[content]=spatial%20dataset"
+  }
+}
+          </code></pre>
+        </section>
+
+
+        <section>
           <h1>OpenData V2 API: Standardized Errors</h1>
         	<div class="fragment">/api/v2/datasets?foo=bar</div>
 					<pre class="fragment"><code class="hljs json">
@@ -465,7 +511,6 @@
       "detail": "'foo' is not a recognized parameter for this request.",
       "status": 400,
       "source": { "parameter": "foo=bar" },
-      "links": { "about": "coming-soon: link-to-help-docs" },
       "meta": { detailed-information-to-debug-the-request }
     }
   ]
@@ -485,7 +530,6 @@
       "detail": "'foo' is not a recognized parameter for this request.",
       "status": 400,
       "source": { "parameter": "foo=bar" },
-      "links": { "about": "coming-soon: link-to-help-docs" },
       "meta": { detailed-information-to-help-debug-the-request }
     },
     {
@@ -493,7 +537,6 @@
       "detail": "'filter[pizza]' is not a valid filter key",
       "status": 400,
       "source": { "parameter": "filter[pizza]" },
-      "links": { "about": "coming-soon: link-to-help-docs" },
       "meta": { detailed-information-to-help-debug-the-request }
     }
   ]
@@ -504,10 +547,9 @@
 
 
         <section>
-          <h1>OpenData V2 API: Support</h1>
-          <div class="fragment">Spike on an ArcGIS Open Data API Sandbox at </div>
+          <h1>OpenData V2 API Sandbox</h1>
+          <div class="fragment">Unoffical ArcGIS Open Data API Sandbox at </div>
           <div class="fragment"><a href="http://akharris.github.io/ember-arc-swag/">http://akharris.github.io/ember-arc-swag/</a></div>
-          <div class="fragment">API is being finalized. Expect documentation and an API console once the API is out of beta</div>
         </section>
 
         <section>
