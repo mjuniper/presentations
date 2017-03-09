@@ -909,6 +909,35 @@ export default DS.JSONAPISerializer.extend({
 				</section>
 
         <section>
+          <h1>Or:</h1>
+          <pre class="code">
+            <code class="hljs">
+$ ember install ember-arcgis-opendata-services
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <pre class="code">
+            <code class="hljs">
+// datasets route
+model: function (params) {
+  const qryParams = ...
+  return this.store.query('dataset', qryParams);
+},
+            </code>
+          </pre>
+          <pre class="code">
+            <code class="hljs">
+// datasets.dataset route
+model: function (params) {
+  return this.store.findRecord('dataset', params.id);
+},
+            </code>
+          </pre>
+        </section>
+
+        <section>
           <h1>More to come?</h1>
           <img class="framework-logo" src="../images/vue.png">
           <img class="framework-logo" src="../images/react-logo-1000-transparent.png">
@@ -972,9 +1001,7 @@ export default DS.JSONAPISerializer.extend({
 
             if (els && els.length) {
               var el = els[els.length - 1];
-              var evObj = document.createEvent('Events');
-              evObj.initEvent('click', true, false);
-              el.dispatchEvent(evObj);
+              window.open(el.getAttribute('href'));
             }
           }
         },

@@ -52,11 +52,9 @@ section img#architecture {
 }
 
 .reveal section pre.code-lots, .reveal section pre.code-lots code {
-  padding-top: 0;
-  padding-bottom: 0;
   max-height: inherit;
-  font-size: 0.75em;
-  line-height: 1.3em;
+  font-size: 0.8em;
+  line-height: 1.2em;
 }
 
 .reveal section.code-only, .reveal section.code-only pre, .reveal section.code-only pre code {
