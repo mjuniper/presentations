@@ -151,7 +151,7 @@
         </section>
 
         <section>
-          <h1>koop</h1>
+          <h1>Koop</h1>
 					<h3>Alex Harris</h3>
           <h3 class="fragment">Connect APIs to ArcGIS</h3>
           <ul>
@@ -231,7 +231,7 @@
               Koop handles the rest
             </li>
             <li class="fragment">
-              Slides for Koop Presentation: https://www.slideshare.net/DanielFenton2/koop-using-3rd-party-services-in-arcgis
+              Slides for Koop Presentation: <a href="https://www.slideshare.net/DanielFenton2/koop-using-3rd-party-services-in-arcgis" target="_blank">www.slideshare.net/DanielFenton2/koop-using-3rd-party-services-in-arcgis</a>
             </li>
           </ul>
         </section>
@@ -490,14 +490,10 @@
           <div class="fragment">/api/v2/datasets?q=population&filter[content]=spatial%20dataset&page[size]=25</div>
 
           <pre class="fragment"><code class="hljs json">
-{
-  "data": [...],
-  "meta": {...},
-  "links": {
-    "first": "...?page[number]=1&page[size]=25&q=population&filter[content]=spatial%20dataset",
-    "next": "...?page[number]=2&page[size]=25&q=population&filter[content]=spatial%20dataset",
-    "last": "...?page[number]=8&page[size]=25&q=population&filter[content]=spatial%20dataset"
-  }
+"links": {
+  "first": "?page[number]=1&page[size]=25&q=population&filter[content]=spatial%20dataset",
+  "next": "?page[number]=2&page[size]=25&q=population&filter[content]=spatial%20dataset",
+  "last": "?page[number]=8&page[size]=25&q=population&filter[content]=spatial%20dataset"
 }
           </code></pre>
         </section>
