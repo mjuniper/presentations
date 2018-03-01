@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="shortcut icon" href="../favicon.ico">
+
+		<title>reveal.js</title>
+
+    <meta name="description" content="">
+		<meta name="author" content="Mike Juniper">
+
+		<link rel="stylesheet" href="../styles/reveal-2018.css">
+		<link rel="stylesheet" href="../styles/theme/esri-dev-summit-2018.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="../lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../styles/print/pdf.css' : '../styles/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-background="../images/ds2018/bg-1.png" data-background-size="cover" style="padding-left: 80px;">
+					<h1 style="text-align: left; font-size: 80px;">Presentation Title</h1>
+					<p style="text-align: left; font-size: 30px; text-transform: uppercase;">Presenter Names</p>
+				</section>
+				<section data-markdown data-background="../images/ds2018/bg-2.png">
+					<textarea data-template>
+						## Headline Here 2
+
+						* Bullet [points here](http://hakim.se).
+					</textarea>
+				</section>
+
+				<section data-markdown data-background="../images/ds2018/bg-3.png">
+					<textarea data-template>
+						## Headline Here 3
+
+						* Bullet [points here](http://hakim.se).
+					</textarea>
+				</section>
+
+				<section data-markdown data-background="../images/ds2018/bg-4.png">
+					<textarea data-template>
+						## Headline Here 4
+
+						* Bullet [points here](http://hakim.se).
+					</textarea>
+				</section>
+
+				<section data-markdown data-background="../images/ds2018/bg-5.png">
+					<textarea data-template>
+						## Headline Here 5
+
+						* Bullet [points here](http://hakim.se).
+					</textarea>
+				</section>
+
+				<section data-markdown data-background="../images/ds2018/bg-6.png">
+					<textarea data-template>
+						## Headline Here 6
+
+						* Bullet [points here](http://hakim.se).
+					</textarea>
+				</section>
+
+
+				<section data-markdown data-background="../images/ds2018/bg-7.png">
+					<textarea data-template>
+						## Headline Here 7
+
+						* Bullet [points here](http://hakim.se).
+					</textarea>
+				</section>
+
+				<section data-markdown data-background="../images/ds2018/bg-8.png">
+					<textarea data-template>
+						## Section Header
+					</textarea>
+				</section>
+
+				<section data-markdown data-background="../images/ds2018/bg-9.png">
+					<textarea data-template>
+						## Headline Here 9
+
+						* Bullet [points here](http://hakim.se).
+					</textarea>
+				</section>
+
+				<section data-markdown data-background="../images/ds2018/bg-final.jpg">
+					<textarea data-template>
+						<img src="../images/ds2018/esri-science-logo-white.png" style="margin: 0; background: none; border: 0px; box-shadow: none;" />
+					</textarea>
+				</section>
+			</div>
+		</div>
+
+		<script src="../lib/js/head.min.js"></script>
+		<script src="../scripts/reveal-2018.js"></script>
+
+		<script>
+			Reveal.initialize({
+        controls: false,
+				history: true,
+
+				// This height and width are here for the left-aligned title slide.
+				// If you do not want that, you can remove these two settings and
+				// the presentation will be closer to OOTB-Reveal.js:
+				// width: '100%',
+				// height: '100%',
+        // width: 1600,
+        // height: 900,
+
+        // margin: 0.2,
+
+        // minScale: 0.2,
+        // maxScale: 1.0,
+
+				history: true,
+				dependencies: [
+					{ src: '../plugin/markdown/marked.js' },
+					{ src: '../plugin/markdown/markdown.js' },
+					{ src: '../plugin/notes/notes.js', async: true },
+					{ src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
