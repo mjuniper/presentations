@@ -16,12 +16,8 @@
 
     <style media="screen">
       .reveal .slides section.title {
-        font-size: 80%;
         padding-left: 80px;
         text-align: left;
-      }
-      .reveal .slides section .topmargin {
-        margin-top: 5rem;
       }
     </style>
 
@@ -49,118 +45,52 @@
 
         <section data-background="images/ds2018/bg-2.png">
           <h3><a href="http://mjuniper.github.io/presentations/jupes-laws.html">mjuniper.github.io/presentations/jupes-laws.html</a></h3>
-          <p class="topmargin">
+          <p>
             <a href="https://github.com/mjuniper/presentations">github.com/mjuniper/presentations</a>
           </p>
 				</section>
 
         <section data-background="images/ds2018/bg-4.png">
-          <h2>Jupe's Law of Web Development</h2>
-          <dl>
-            <dt class="fragment"><h3>If it's hard...</h3></dt>
-            <dd class="fragment"><h2><strong>you're doing it wrong!</strong></h2></dd>
-          </dl>
+          <h1>1. If it's hard...</h1>
+          <h2 class="fragment">...you're doing it wrong.</h2>
         </section>
 
         <section data-background="images/ds2018/bg-5.png">
-          <h2>And the Ember corollaries:</h2>
-          <dl>
-            <dt class="fragment"><h3>If you find yourself thinking, "#$*@$ Ember!"</h3></dt>
-            <dd class="fragment"><h2><strong>you're probably doing it wrong!</strong></h2></dd>
-
-            <dt class="fragment"><h3>If you find yourself thinking, "wouldn't it be great if ember did X?"</h3></dt>
-            <dd class="fragment"><h2><strong>It probably does.</strong></h2></dd>
-          </dl>
+          <h1>2. RTFEM</h1>
+          <h2 class="fragment">(Read the F-ing Error Message)</h2>
+          <h3 class="fragment">2a. Believe it!</h3>
         </section>
 
 				<section data-background="images/ds2018/bg-6.png">
-          <h2>Refer to the docs: <a href="http://emberjs.com/api">emberjs.com/api</a></h2>
-          <h2 class="fragment">And the guides: <a href="http://guides.emberjs.com">guides.emberjs.com</a></h2>
-					<h2 class="fragment">Ask in the Slack channel: <a href="https://embercommunity.slack.com">embercommunity.slack.com</a></h2>
+          <h1>3. Don't jump to conclusions.</h1>
 				</section>
 
 				<section data-background="images/ds2018/bg-7.png">
-          <h1>ember new my-app</h1>
-          <ul>
-            <li class="fragment">A working (bare-bones) app.</li>
-            <li class="fragment">A development server with live reload.</li>
-            <li class="fragment">A build pipeline (template compilation, js &amp; css minification, etc).</li>
-            <li class="fragment">ESNext features via Babel.</li>
-            <li class="fragment">A testing framework.</li>
-          </ul>
+          <h1>4. Lean on the platform...</h1>
+          <h2 class="fragment">(http, html, dom, css, your js & css framework)</h2>
+          <h2 class="fragment">... to not write code you don't have to.</h2>
+          <h3 class="fragment">4a. Use the right tool for the job</h3>
 				</section>
 
 				<section data-background="images/ds2018/bg-8.png">
-          <h2>Core Ember Concepts</h2>
-          <dl>
-            <dt class="fragment">Router</dt>
-            <dd class="fragment">Maps URLs to routes</dd>
-
-            <dt class="fragment">Route</dt>
-            <dd class="fragment">Loads models and renders templates</dd>
-
-            <dt class="fragment">Controller</dt>
-            <dd class="fragment">Presents model/state to the template</dd>
-
-            <dt class="fragment">Model</dt>
-            <dd class="fragment">Represents/persists data</dd>
-
-            <dt class="fragment">Template</dt>
-            <dd class="fragment">Presents data / loads components</dd>
-
-            <dt class="fragment">Components</dt>
-            <dd class="fragment">Reusable UI/behavior</dd>
-          </dl>
+          <h1>5. Remember, it's not magic.</h1>
 				</section>
 
-        <section data-markdown data-background="images/ds2018/bg-9.png">
-					<textarea data-template>
-            # Ember Object
-            * get/set <!-- .element: class="fragment" -->
-            * extend/create <!-- .element: class="fragment" -->
-            * computed properties <!-- .element: class="fragment" -->
+        <!-- <section data-markdown data-background="images/ds2018/bg-9.png">
 
-            [Ember Twiddle](https://ember-twiddle.com/38e642b4a4f9b5ea748965f0bd9152ab?numColumns=2&openFiles=routes.application.js%2Ccontrollers.application.js) <!-- .element: class="fragment" -->
-					</textarea>
 				</section>
 
         <section data-markdown data-background="images/ds2018/bg-2.png">
-					<textarea data-template>
-            # Ember Route
-            ## Lifecycle hooks
-            * model <!-- .element: class="fragment" -->
-            * beforeModel/afterModel <!-- .element: class="fragment" -->
-            * redirect <!-- .element: class="fragment" -->
-            * setupController/resetController <!-- .element: class="fragment" -->
-            * others <!-- .element: class="fragment" -->
-					</textarea>
+
 				</section>
 
         <section data-background="images/ds2018/bg-3.png">
-					<h1>Templates & Data Binding</h1>
 
-          <pre><code class="js">
-            import Controller from '@ember/controller';
-
-            export default Controller.extend({
-              name: 'jupe'
-            });
-          </code></pre>
-
-          <pre><code class="hbs">
-            <h1>Hello, {{name}}!</h1>
-          </code></pre>
 				</section>
 
 				<section data-markdown data-background="images/ds2018/bg-4.png">
-					<textarea data-template>
-            # Resources
-            * [ember-cli](https://ember-cli.com)
-            * [emberjs.com](http://emberjs.com)
-            * [Ember Twiddle](https://ember-twiddle.com)
-            * [Ember Igniter](https://emberigniter.com)
-					</textarea>
-				</section>
+
+				</section> -->
 
 				<section data-markdown data-background="images/ds2018/bg-final.jpg">
 					<textarea data-template>
