@@ -99,7 +99,7 @@ $ ember g service session
           <pre><code class="js">
             session: service()
 
-            // available in this class as this.get('session');
+            // available in this class as this.session;
           </code></pre>
 
           Or
@@ -167,7 +167,7 @@ $ ember g service session
               classNames: [ 'user-profile-component' ],
 
               greeting: computed('firstName', 'lastName', function () {
-                return `Hello, ${this.get('firstName')} ${this.get('lastName')}!`;
+                return `Hello, ${this.firstName} ${this.lastName}!`;
               })
 
             });
