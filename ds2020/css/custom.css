@@ -1,4 +1,4 @@
-.reveal .slides .title-slide {
+/* .reveal .slides .title-slide {
   padding-top: 0;
 }
 
@@ -8,7 +8,7 @@
 
 .title-slide p {
   margin: 5px 0;
-}
+} */
 
 section img#rest-js-logo {
   border: none;
@@ -16,4 +16,17 @@ section img#rest-js-logo {
   background: none;
   width: 300px;
   /* margin-left: 200px; */
+}
+
+#react-logo {
+  background: none;
+  height: 400px;
+}
+
+.reveal pre {
+  width: 60%
+}
+
+.red {
+  color: red;
 }
