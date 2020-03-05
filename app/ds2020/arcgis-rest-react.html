@@ -6,11 +6,11 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Using the ArcGIS REST API</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
     <link rel="stylesheet" href="css/theme/dev-summit-2020.css">
-    <!-- <link rel="stylesheet" href="css/custom.css"> -->
+    <link rel="stylesheet" href="css/custom.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -28,39 +28,155 @@
 		<div class="reveal">
 			<div class="slides">
 				<section data-background="img/2020/devsummit/bg-1.png" data-background-size="cover" style="padding-left: 80px;">
-					<h1 style="text-align: left; font-size: 80px;">Presentation Title</h1>
-					<p style="text-align: left; font-size: 30px;">Name(s)</p>
-					<p style="text-align: left; font-size: 30px;"><a href="https://github.com/handle">@handle</a></p>
-					<p style="text-align: left; font-size: 30px;">slides: <a href="http://bit.ly/abc123"><code>http://bit.ly/abc123</code></a></p>
+					<h1 style="text-align: left; font-size: 80px;">Using the ArcGIS REST API</h1>
+					<p style="text-align: left; font-size: 30px;">Mike Juniper</p>
+					<p style="text-align: left; font-size: 30px;"><a href="https://github.com/mjuniper">@mjuniper</a></p>
+					<p style="text-align: left; font-size: 30px;">slides: <a href="http://mjuniper.github.io/presentations/ds2020/arcgis-rest-react.html"><code>mjuniper.github.io/presentations/ds2020/arcgis-rest-react.html</code></a></p>
 
 					<!-- Add these rows to push your text up so it is not interfering with the event name. Test on your actual projector! -->
+					<p>&nbsp;</p>
 					<p>&nbsp;</p>
 					<p>&nbsp;</p>
 					<!-- /end spacer rows -->
 				</section>
 				<section data-markdown data-background="img/2020/devsummit/bg-2.png">
 					<textarea data-template>
-						## Headline Here 2
-
-						* Bullet [points here](http://hakim.se).
+						## Who are you?
 					</textarea>
 				</section>
 
 				<section data-markdown data-background="img/2020/devsummit/bg-3.png">
 					<textarea data-template>
-						## Headline Here 3
-
-						* Bullet [points here](http://hakim.se).
+						## What are we building?
 					</textarea>
+        </section>
+
+        <section data-background="img/2020/devsummit/bg-2.png">
+          <img id="rest-js-logo" data-src="img/rest-js.png" alt="rest-js">
+					<h2>ArcGIS REST JS</h2>
 				</section>
 
-				<section data-markdown data-background="img/2020/devsummit/bg-4.png">
-					<textarea data-template>
-						## Headline Here 4
+				<section data-background="img/2020/devsummit/bg-3.png">
+					<h3>
+            Simplifies making requests to ArcGIS Online and Enterprise
+          </h3>
+          <h4 class="fragment">For node & browser applications</h4>
+        </section>
 
-						* Bullet [points here](http://hakim.se).
-					</textarea>
+        <section data-background="img/2020/devsummit/bg-4.png">
+					<h3>Used in production (Hub, Storymaps, others)</h3>
+          <h4 class="fragment">But not an official product</h4>
+          <h4 class="fragment">Open source (PRs welcome :))</h4>
+          <h4 class="fragment"><a href="https://github.com/Esri/arcgis-rest-js">https://github.com/Esri/arcgis-rest-js</a></h4>
 				</section>
+
+				<section data-background="img/2020/devsummit/bg-3.png">
+					<h3>Handles:</h3>
+          <ul>
+            <li>Auth</li>
+            <li>Working with ArcGIS Online/Enterprise content and users</li>
+            <li>Querying and editing features in hosted feature layers</li>
+            <li>Administering hosted services</li>
+            <li>Geocoding</li>
+            <li>Routing</li>
+          </ul>
+        </section>
+
+        <section data-background="img/2020/devsummit/bg-4.png">
+					<h3>Features & Benefits:</h3>
+          <ul>
+            <li>Ala carte / lightweight (worst case 14.7kb)</li>
+            <li>Use with any/no framework</li>
+            <li>Hides API idiosyncrasies</li>
+            <li>Provides informative error codes</li>
+            <li>Parameter encoding</li>
+            <li><a href="https://esri.github.io/arcgis-rest-js/">Documentation</a></li>
+          </ul>
+        </section>
+
+        <section data-background="img/2020/devsummit/bg-3.png">
+          <h3>Lots more details on Wednesday:</h3>
+          <h4><a href="https://developersummit2020.schedule.esri.com/schedule/295712319">ArcGIS REST JS: Universal, Isomorphic Tasty JavaScript for Much Win</a></h4>
+        </section>
+
+				<section data-background="img/2020/devsummit/bg-2.png">
+					<img id="react-logo" class="plain" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xMS41IC0xMC4yMzE3NCAyMyAyMC40NjM0OCI+CiAgPHRpdGxlPlJlYWN0IExvZ288L3RpdGxlPgogIDxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIyLjA1IiBmaWxsPSIjNjFkYWZiIi8+CiAgPGcgc3Ryb2tlPSIjNjFkYWZiIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIi8+CiAgICA8ZWxsaXBzZSByeD0iMTEiIHJ5PSI0LjIiIHRyYW5zZm9ybT0icm90YXRlKDYwKSIvPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjApIi8+CiAgPC9nPgo8L3N2Zz4K" alt="react">
+        </section>
+
+        <section data-background="img/2020/devsummit/bg-3.png">
+          <h2>Why react?</h2>
+          <h3 class="fragment">ArcGIS Rest JS + create-react-app (webpack, really) make it <em>easy</em></h3>
+          <pre class="fragment"><code class="hljs bash">$ npm install --save @esri/arcgis-rest-*</code></pre>
+          <pre class="fragment"><code class="hljs javascript">import { someModule } from '@esri/arcgis-rest-*';</code></pre>
+          <pre class="fragment"><code class="hljs javascript">someModule(someArguments).then(...)</code></pre>
+        </section>
+
+        <section data-background="img/2020/devsummit/bg-4.png">
+          <h2>Zen of React</h2>
+          <h3 class="fragment">A javascript library for building user interfaces</h3>
+          <!-- just give them the high level so they are not tripping over react when trying to use rest-js -->
+        </section>
+
+        <section data-background="img/2020/devsummit/bg-3.png">
+          <h3>Everything is a component</h3>
+          <h4 class="fragment">Components can be ES6 classes or functions</h4>
+        </section>
+
+        <section data-background="img/2020/devsummit/bg-4.png">
+          <h3>JSX</h3>
+          <h4>Allows you to write your component's markup and javascript in the same file</h4>
+          <pre class="fragment"><code data-trim data-line-numbers="2" class="hljs jsx">
+const name = 'Josh Perez';
+const element = &lt;h1 className="name"&gt;Hello, {name}&lt;/h1&gt;;
+return element;
+          </code></pre>
+          <h5 class="fragment">Things to note:</h5>
+          <ul>
+            <li class="fragment">Any javascript expression can go inside the curlies</li>
+            <li class="fragment">Attributes must be camelCased</li>
+          </ul>
+        </section>
+
+        <section data-background="img/2020/devsummit/bg-3.png">
+          <h3>Everything is a component</h3>
+          <h4 class="fragment">Components can be ES6 classes or functions</h4>
+          <h4 class="fragment">React enforces unidirectional data flow.</h4>
+          <ul>
+            <li class="fragment">Components can maintain their own <code>state</code> which only they can mutate</li>
+            <li class="fragment">Data is passed to components as <code>props</code> which they cannot mutate</li>
+          </ul>
+        </section>
+
+        <section data-background="img/2020/devsummit/bg-4.png">
+          <h3>Demo</h3>
+          <h4><a href="https://codesandbox.io/s/react-demo-3jmm3">https://codesandbox.io/s/react-demo-3jmm3</a></h4>
+        </section>
+
+        <section data-background="img/2020/devsummit/bg-3.png">
+          <h2>What does create-react-app bring to the party?</h2>
+          <h3 class="fragment">One command to get an app up and running:</h3>
+          <pre class="fragment"><code class="hljs bash">$ npx create-react-app my-app</code></pre>
+          <h4 class="fragment">Now you've got:</h4>
+          <ul>
+            <li class="fragment">Build pipeline with CSS optimization and support for ES6 & beyond</li>
+            <li class="fragment">Development server with live reload</li>
+            <li class="fragment">Testing framework</li>
+            <li class="fragment">Production optimized build</li>
+          </ul>
+        </section>
+
+        <section data-background="img/2020/devsummit/bg-4.png">
+          <h2>Zen of Auth</h2>
+          <ol>
+            <li class="fragment">Open popup:<div>https://www.arcgis.com/…/authorize​?<span class="red">client_id=</span>ABC​&<span class="red">redirect_uri=</span>yourapp.com/redir.html​</div></li>
+            <li class="fragment">User enters creds</li>
+            <li class="fragment">ArcGIS Online validates creds, client_id, & redirect_uri</li>
+            <li class="fragment">Returns a 302 redirect to the URI specified on redirect_uri with a hash containing a token and other info</li>
+            <li class="fragment">Popup loads that page</li>
+            <li class="fragment">The redirect page grabs the token and other info off the hash and passes it to the app</li>
+            <li class="fragment">App stashes token, etc in memory and maybe also in cookie or localStorage</li>
+          </ol>
+        </section>
 
 				<!-- ESRI LOGO SLIDE: -->
 				<section data-background="img/2020/devsummit/bg-3.png">
@@ -70,8 +186,6 @@
 				<!-- SURVEY SLIDE: -->
 				<section data-markdown data-background="img/2020/devsummit/bg-rating.png">
 				</section>
-
-
 			</div>
 		</div>
 
