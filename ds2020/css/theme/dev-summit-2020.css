@@ -280,11 +280,3 @@ body {
 @media print {
   .backgrounds {
     background-color: #fff; } }
-
-
-.title-slide p {
-  margin: 5px 0;
-}
-.slides .title-slide h1, .title-slide h2 {
-  margin-bottom: 10px;
-}
