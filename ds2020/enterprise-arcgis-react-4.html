@@ -6,10 +6,11 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Building Enterprise GIS Apps with React: Data</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/dev-summit-2020.css">
+    <link rel="stylesheet" href="css/theme/dev-summit-2020.css">
+    <link rel="stylesheet" href="css/custom.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -24,14 +25,6 @@
 		</script>
   </head>
 
-  <!-- ○ Side effects?
-  ○ useEffect
-  ○ Arcgis-rest.js
-  ○ Auth
-  ○ React-arcgis-hub
-  ○ mocking -->
-
-
 	<body>
 		<div class="reveal">
 			<div class="slides">
@@ -40,36 +33,101 @@
           <h2 style="text-align: left; font-size: 50px;">Exercise 4: Data</h2>
 					<p style="text-align: left; font-size: 30px;">Mike Juniper</p>
 					<p style="text-align: left; font-size: 30px;"><a href="https://github.com/mjuniper">@mjuniper</a></p>
-					<p style="text-align: left; font-size: 30px;">slides: <a href="http://mjuniper.github.io/presentations/ds2020/ambitious-apps-architecture.html"><code>mjuniper.github.io/presentations/ds2020/ambitious-apps-architecture.html</code></a></p>
+					<p style="text-align: left; font-size: 30px;">slides: <a href="http://mjuniper.github.io/presentations/ds2020/enterprise-arcgis-react-4.html"><code>mjuniper.github.io/presentations/ds2020/enterprise-arcgis-react-4.html</code></a></p>
 
 					<!-- Add these rows to push your text up so it is not interfering with the event name. Test on your actual projector! -->
 					<p>&nbsp;</p>
-					<p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
 					<!-- /end spacer rows -->
-				</section>
-				<section data-markdown data-background="img/2020/devsummit/bg-2.png">
-					<textarea data-template>
-						## Headline Here 2
+        </section>
 
-						* Bullet [points here](http://hakim.se).
-					</textarea>
+        <section data-background="img/2020/devsummit/bg-2.png">
+          <img id="rest-js-logo" data-src="img/rest-js.png" alt="rest-js">
+					<h2>ArcGIS REST JS</h2>
 				</section>
 
-				<section data-markdown data-background="img/2020/devsummit/bg-3.png">
-					<textarea data-template>
-						## Headline Here 3
+				<section data-background="img/2020/devsummit/bg-3.png">
+					<h3>
+            Simplifies making requests to ArcGIS Online and Enterprise
+          </h3>
+          <h4 class="fragment">For node & browser applications</h4>
+        </section>
 
-						* Bullet [points here](http://hakim.se).
-					</textarea>
+        <section data-background="img/2020/devsummit/bg-4.png">
+					<h3>
+            Used in production (Hub, Storymaps, others)
+          </h3>
+          <h4 class="fragment">But not an official product</h4>
+          <h4 class="fragment">Open source (PRs welcome :))</h4>
+          <h4 class="fragment"><a href="https://github.com/Esri/arcgis-rest-js">https://github.com/Esri/arcgis-rest-js</a></h4>
 				</section>
 
-				<section data-markdown data-background="img/2020/devsummit/bg-4.png">
-					<textarea data-template>
-						## Headline Here 4
+				<section data-background="img/2020/devsummit/bg-3.png">
+					<h3>Handles:</h3>
+          <ul>
+            <li>Auth</li>
+            <li>Working with ArcGIS Online/Enterprise content and users</li>
+            <li>Querying and editing features in hosted feature layers</li>
+            <li>Administering hosted services</li>
+            <li>Geocoding</li>
+            <li>Routing</li>
+          </ul>
+        </section>
 
-						* Bullet [points here](http://hakim.se).
-					</textarea>
-				</section>
+        <section data-background="img/2020/devsummit/bg-4.png">
+					<h3>Features & Benefits:</h3>
+          <ul>
+            <li>Ala carte / lightweight (worst case 14.7kb)</li>
+            <li>Use with any/no framework</li>
+            <li>Hides API idiosyncrasies</li>
+            <li>Provides informative error codes</li>
+            <li>Parameter encoding</li>
+            <li><a href="https://esri.github.io/arcgis-rest-js/">Documentation</a></li>
+          </ul>
+        </section>
+
+        <section data-background="img/2020/devsummit/bg-3.png">
+          <h3>Lots more details on Wednesday:</h3>
+          <h4><a href="https://developersummit2020.schedule.esri.com/schedule/295712319">ArcGIS REST JS: Universal, Isomorphic Tasty JavaScript for Much Win</a></h4>
+        </section>
+
+        <section data-background="img/2020/devsummit/bg-2.png">
+					<h3>useEffect Hook</h3>
+          <blockquote class="fragment" cite="https://reactjs.org/docs/hooks-effect.html">
+            &ldquo;The Effect Hook lets you perform side effects in function components....&rdquo;
+          </blockquote>
+          <blockquote class="fragment" cite="https://reactjs.org/docs/hooks-effect.html">
+            &ldquo;Data fetching, setting up a subscription, and manually changing the DOM in React components are all examples of side effects.&rdquo;
+          </blockquote>
+        </section>
+
+        <section data-background="img/2020/devsummit/bg-3.png">
+          <h3>Practically:</h3>
+          <h4><em>When you want to run some code any time your function component changes.</em></h4>
+        </section>
+
+        <section data-background="img/2020/devsummit/bg-2.png">
+          <h2>react-arcgis-hub</h2>
+          <h3><a href="https://github.com/tomwayson/react-arcgis-hub">https://github.com/tomwayson/react-arcgis-hub</a></h3>
+        </section>
+
+        <section data-background="img/2020/devsummit/bg-2.png">
+          <h2>Mocking</h2>
+          <h4>Relying on external APIs makes our tests slow and brittle</h4>
+          <h4>We want to test our app, not ArcGIS REST JS, not the REST API, not our internet connection</h4>
+        </section>
+
+        <section data-background="img/2020/devsummit/bg-3.png">
+          <blockquote cite="https://circleci.com/blog/how-to-test-software-part-i-mocking-stubbing-and-contract-testing/">
+            &ldquo;Mocking means creating a fake version of an external or internal service that can stand in for the real one, helping your tests run more quickly and more reliably.&rdquo;
+          </blockquote>
+        </section>
+
+        <section data-background="img/2020/devsummit/bg-4.png">
+          <h3><a href="https://jestjs.io/docs/en/mock-functions.html#mocking-modules">https://jestjs.io/docs/en/mock-functions.html#mocking-modules</a></h3>
+        </section>
 
 				<!-- ESRI LOGO SLIDE: -->
 				<section data-background="img/2020/devsummit/bg-3.png">
