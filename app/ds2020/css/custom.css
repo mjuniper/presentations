@@ -1,0 +1,19 @@
+.reveal .slides .title-slide {
+  padding-top: 0;
+}
+
+.title-slide h1, .title-slide h2 {
+  margin-bottom: 15px;
+}
+
+.title-slide p {
+  margin: 5px 0;
+}
+
+section img#rest-js-logo {
+  border: none;
+  box-shadow: none;
+  background: none;
+  width: 300px;
+  /* margin-left: 200px; */
+}

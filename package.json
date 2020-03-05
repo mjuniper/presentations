@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "dependencies": {},
   "scripts": {
+    "start": "grunt serve",
     "deploy": "grunt gh-pages"
   },
   "devDependencies": {
@@ -18,18 +19,18 @@
     "grunt-contrib-htmlmin": "~0.2.0",
     "grunt-bower-install": "~1.4.0",
     "grunt-contrib-imagemin": "~0.6.0",
-    "grunt-contrib-watch": "~0.6.1",
+    "grunt-contrib-watch": "~1.1.0",
     "grunt-rev": "~0.1.0",
-    "grunt-autoprefixer": "~0.7.2",
+    "grunt-autoprefixer": "~3.0.4",
     "grunt-usemin": "~2.1.0",
     "grunt-mocha": "~0.4.10",
     "grunt-newer": "~0.7.0",
     "grunt-svgmin": "~0.4.0",
     "grunt-concurrent": "~0.5.0",
-    "load-grunt-tasks": "~0.4.0",
+    "load-grunt-tasks": "~4.0.0",
     "time-grunt": "~0.3.1",
     "jshint-stylish": "~0.1.5",
-    "grunt-gh-pages": "~0.9.1"
+    "grunt-gh-pages": "~3.1.0"
   },
   "engines": {
     "node": ">=0.10.0"
