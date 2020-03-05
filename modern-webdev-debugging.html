@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Modern Web Development - Debugging</title>
+
+    <link rel="shortcut icon" href="favicon.ico">
+
+		<meta name="description" content="Modern Web Development - Debugging">
+		<meta name="author" content="Mike Juniper">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="styles/reveal-newer.css">
+		<link rel="stylesheet" href="styles/theme/esri-dev-summit-2016.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/solarized_dark.css">
+
+    <link rel="stylesheet" href="styles/opendata-api-2016.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'styles/print/pdf.css' : 'styles/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+      <div class="slides">
+        <section class="title"  data-background="images/title-2016.png" data-background-size="cover">
+          <h1>Modern Web Development Workshop</h1>
+          <h3>Debugging</h3>
+          <p>
+            <h4><a href="https://github.com/mjuniper">Mike Juniper</a> :: Washington DC R&amp;D Center</h4>
+          </p>
+        </section>
+
+        <section>
+          <div>
+            <h2>
+              <a href="http://mjuniper.github.io/presentations/modern-webdev-debugging">mjuniper.github.io/presentations/modern-webdev-debugging</a>
+            </h2>
+          </div>
+
+          <div class="topmargin">
+            <h4>
+              <a href="https://github.com/mjuniper/presentations">github.com/mjuniper/presentations</a>
+            </h4>
+          </div>
+        </section>
+
+				<section>
+					<h1>TOOLS</h1>
+				</section>
+
+				<section>
+					<h2>Chrome Developer Tools</h2>
+					<ul>
+						<li>elements</li>
+						<li>console</li>
+						<li>sources</li>
+						<li>network</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Fiddler / Charles</h2>
+				</section>
+
+				<section>
+					<h2><a href="https://www.getpostman.com/">Postman</a> / <a href="https://curl.haxx.se/">curl</a> / <a href="https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc?hl=en">JsonView</a></h2>
+				</section>
+
+				<section>
+					<h2>IE?</h2>
+					<h3 class="fragment"><a href="https://dev.windows.com/en-us/microsoft-edge/tools/vms/">dev.windows.com/en-us/microsoft-edge/tools/vms/</a></h3>
+					<h3 class="fragment">+ your VM platform of choice</h3>
+				</section>
+
+				<section>
+					<h1>Techniques</h1>
+				</section>
+
+				<section>
+					<h2>Read the error message (if there is one).</h2>
+					<h3 class="fragment">Believe it!</h3>
+				</section>
+
+				<section>
+					<h2>Breakpoints + console.debug(...)</h2>
+				</section>
+
+				<section>
+					<h2>XHR / AJAX</h2>
+					<h3 class="fragment">Use the network tab</h3>
+					<ol>
+						<li class="fragment">Did the request go out the door?</li>
+						<li class="fragment">Did you get a 200 response?</li>
+						<li class="fragment">Did the the response look how you expected?</li>
+					</ol>
+				</section>
+
+				<section>
+					<h2>For more complicated scenarios:</h2>
+					<h3 class="fragment">Treat it like science</h3>
+					<ol>
+						<li class="fragment">Come up with a hypothesis.</li>
+						<li class="fragment">Imagine ways to test it: If that were true, I should not see the error if I do ...</li>
+						<li class="fragment">Test it</li>
+					</ol>
+				</section>
+
+				<section>
+					<h1>Debugging CSS</h1>
+					<ol>
+						<li class="fragment">Was the file loaded (does the rule exist in the browser)? [network tab]</li>
+						<li class="fragment">Is the selector right? [elements tab, console]</li>
+						<li class="fragment">is it specific enough (is it being overidden)? [elements/styles tab]</li>
+						<li class="fragment">
+							<pre>
+								<code class="hljs">
+outline: solid 2px red !important
+								</code>
+							</pre>
+						</li>
+					</ol>
+				</section>
+
+				<section>
+					<h1>When you are stuck</h1>
+					<h2 class="fragment">Remember it's not magic, it is comprehensible.</h2>
+					<h2 class="fragment">Google &amp; Stackoverflow</h2>
+					<h2 class="fragment">Slack</h2>
+				</section>
+
+				<section>
+					<h1><a href="https://github.com/mjuniper/mwd-debugging">Hands-on</a></h1>
+				</section>
+
+        <section data-background="images/end.png" data-background-size="cover">
+
+        </section>
+
+      </div>
+
+      <div id="slide-footer">
+        <div class="left">
+          Esri Dev Summit 2016 | Modern Web Development - Debugging
+        </div>
+        <div class="right">
+          <a href="http://mjuniper.github.io/presentations/modern-webdev-debugging">mjuniper.github.io/presentations/modern-webdev-debugging</a>
+        </div>
+      </div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="scripts/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+        controls: false,
+				progress: true,
+				history: true,
+				center: true,
+        previewLinks: false,
+        transition: 'linear', // default/cube/page/concave/zoom/linear/fade/none
+        width: 1600,
+        height: 900,
+        minScale: 0.2,
+        maxScale: 1.0,
+        slideNumber: false,
+
+        keyboard: {
+          13: function () {
+            var curSlide = Reveal.getCurrentSlide();
+
+            els = curSlide.querySelectorAll(':scope > a.follow-link, :scope > h1 > a.follow-link, :scope > h2 > a.follow-link, .fragment.visible > a.follow-link');
+
+            if (els && els.length) {
+              var el = els[els.length - 1];
+              var evObj = document.createEvent('Events');
+              evObj.initEvent('click', true, false);
+              el.dispatchEvent(evObj);
+            }
+          }
+        },
+
+				// Optional reveal.js plugins
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+			});
+
+		</script>
+
+	</body>
+</html>

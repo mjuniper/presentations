@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>Accessing and Visualizing Esri GeoServices with ArcGIS API for JavaScript, D3, and Node.js</title>
+
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="styles/reveal.min.css">
+    <link rel="stylesheet" href="styles/theme/esri.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <link rel="stylesheet" href="styles/uc2014.css">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+      if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+      }
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section class="title">
+          <h2>Accessing and Visualizing Esri GeoServices with ArcGIS API for JavaScript, D3, and Node.js</h2>
+          <p>
+            <h4>Mike Juniper :: Washington DC R&amp;D Center</h4>
+          </p>
+        </section>
+
+        <section >
+          <h1><a class="follow-link" href="https://github.com/chelm" target="_blank">github.com/chelm</a></h1>
+        </section>
+
+        <section>
+          <h1>koop</h1>
+          <ul>
+            <li class="fragment">
+              Open Source (<a href="https://github.com/Esri/koop">github.com/Esri/koop</a>) R &amp; D
+            </li>
+            <li class="fragment">
+              <a href="http://nodejs.org">node js</a>
+            </li>
+            <li class="fragment">
+              interoperability
+              <ul>
+                <li class="fragment">
+                  geojson (&amp; others) &nbsp;&nbsp;&nbsp;==&gt;&nbsp;&nbsp;&nbsp; feature services
+                </li>
+                <li class="fragment">
+                  feature services &nbsp;&nbsp;&nbsp;==&gt;&nbsp;&nbsp;&nbsp; geojson
+                </li>
+              </ul>
+            </li>
+            <li class="fragment">
+              export as kml, csv, shp
+            </li>
+            <li class="fragment">
+              tiles for utf grid, png, geojson, &amp; pbf
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <img src="images/arch.jpeg">
+        </section>
+
+        <section>
+          <h1>GeoJSON on github</h1>
+          <a class="follow-link" href="https://github.com/colemanm/hurricanes/blob/master/fl_2004_hurricanes.geojson" target="_blank">github.com/colemanm/hurricanes/blob/master/fl_2004_hurricanes.geojson</a>
+
+          <div class="fragment">
+            <h3>Via koop:</h3>
+            <a class="follow-link" href="http://koop.dc.esri.com/github/colemanm/hurricanes/fl_2004_hurricanes/FeatureServer" target="_blank">koop.dc.esri.com/github/colemanm/hurricanes/fl_2004_hurricanes/FeatureServer</a>
+          </div>
+
+          <div class="fragment">
+            <h3>In ArcGIS Online map viewer:</h3>
+            <a class="follow-link" href="http://www.arcgis.com/home/webmap/viewer.html?url=http://koop.dc.esri.com/github/colemanm/hurricanes/fl_2004_hurricanes/FeatureServer/0" target="_blank">www.arcgis.com/home/webmap/viewer.html?url=http://koop.dc.esri.com/github/colemanm/hurricanes/fl_2004_hurricanes/FeatureServer/0</a>
+          </div>
+
+          <div class="fragment">
+            <h3>Tiles (koop-url/{z}/{x}/{y}.png):</h3>
+            <a class="follow-link" href="http://koop.dc.esri.com/github/colemanm/hurricanes/fl_2004_hurricanes/tiles/5/12/14.png" target="_blank">koop.dc.esri.com/github/colemanm/hurricanes/fl_2004_hurricanes/tiles/5/12/14.png</a>
+          </div>
+
+          <div class="fragment">
+            <h3>.png Tiles in Leaflet.js:</h3>
+            <a class="follow-link" href="http://mjuniper.github.io/koop-leaflet/tiles.html" target="_blank">mjuniper.github.io/koop-leaflet/tiles.html</a>
+          </div>
+
+          <aside class="notes">
+            <ul>
+              <li>query</li>
+              <li>zip, kml, csv</li>
+              <li>thumbnail</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h1>Socrata?</h1>
+          <a href="http://data.seattle.gov/resource/2tje-83f6.json"></a>
+          <a class="follow-link" href="http://data.seattle.gov/resource/2tje-83f6.json" target="_blank">data.seattle.gov/resource/2tje-83f6.json</a>
+
+          <div class="fragment">
+            <h3>Via koop:</h3>
+            <a class="follow-link" href="http://koop.dc.esri.com/socrata/seattle/2tje-83f6" target="_blank">koop.dc.esri.com/socrata/seattle/2tje-83f6</a>
+          </div>
+
+          <div class="fragment">
+            <h3>In ArcGIS Online map viewer:</h3>
+            <a class="follow-link" href="http://www.arcgis.com/home/webmap/viewer.html?url=http://koop.dc.esri.com/socrata/seattle/2tje-83f6/FeatureServer/0" target="_blank">www.arcgis.com/home/webmap/viewer.html?url=http://koop.dc.esri.com/socrata/seattle/2tje-83f6/FeatureServer/0</a>
+          </div>
+
+          <div class="fragment">
+            <h3>Registered as an item in ArcGIS Online:</h3>
+            <a class="follow-link" href="http://dcdev.maps.arcgis.com/home/item.html?id=ebf151a0feda4c57ac7422dcd48d87dc" target="_blank">dcdev.maps.arcgis.com/home/item.html?id=ebf151a0feda4c57ac7422dcd48d87dc</a>
+          </div>
+
+          <div class="fragment">
+            <h3>Analysis in ArcGIS Online:</h3>
+            <a class="follow-link" href="http://dcdev.maps.arcgis.com/home/webmap/viewer.html?webmap=0dc8c9ecb6be4a329579710cad65440c" target="_blank">dcdev.maps.arcgis.com/home/webmap/viewer.html?webmap=0dc8c9ecb6be4a329579710cad65440c</a>
+          </div>
+        </section>
+
+        <section>
+          <h1>ArcGIS Online Item</h1>
+          <a class="follow-link" href="http://dcdev.maps.arcgis.com/home/item.html?id=1dd1c8ccd54347f1bbd966337bde45f7" target="_blank">dcdev.maps.arcgis.com/home/item.html?id=1dd1c8ccd54347f1bbd966337bde45f7</a>
+          
+          <div class="fragment">
+            <h3>Via koop:</h3>
+            <a class="follow-link" href="http://koop.dc.esri.com/agol/arcgis/1dd1c8ccd54347f1bbd966337bde45f7" target="_blank">koop.dc.esri.com/agol/arcgis/1dd1c8ccd54347f1bbd966337bde45f7</a>
+          </div>
+
+          <div class="fragment">
+            <h3>GeoJSON Tiles In Leaflet.js:</h3>
+            <a class="follow-link" href="http://mjuniper.github.io/koop-leaflet/" target="_blank">mjuniper.github.io/koop-leaflet/</a>
+          </div>
+        </section>
+
+        <section>
+          <h1>Wind.js <small>*</small></h1>
+          <a href="http://github.com/esri/wind-js" target="_blank">github.com/esri/wind-js</a>
+          <br>
+          <br>
+          <a href="http://esri.github.io/wind-js" class="follow-link" target="_blank">esri.github.io/wind-js/</a>
+          <p>
+            <br>
+            <br>
+            <small>* based on <a href="https://github.com/cambecc/earth">github.com/cambecc/earth</a></small>
+          </p>
+
+          <aside class="notes">
+            <ul>
+              <li>Based on work by Cameron Beccario</li>
+              <li>Global grid of temperature data from Global Forecast System converted to geojson</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h1>Gridded data...</h1>
+          <a class="follow-link" href="https://github.com/chelm/geodata/blob/master/gfs_temps.geojson" target="_blank">github.com/chelm/geodata/blob/master/gfs_temps.geojson</a>
+          
+          <div class="fragment">
+            <h3>GeoJSON tiles:</h3>
+            <a class="follow-link" href="http://chelm.github.io/koop-viz-experiments/map.html" target="_blank">chelm.github.io/koop-viz-experiments/map.html</a>
+          </div>
+
+          <div class="fragment">
+            <h3>Getting Fancy-er:</h3>
+            <a class="follow-link" href="http://chelm.github.io/koop-viz-experiments/esri/" target="_blank">chelm.github.io/koop-viz-experiments/esri/</a>
+          </div>
+        </section>
+
+        <section>
+          <h1>Protocol Buffer (.pbf) vector tiles...</h1>
+          
+          <div class="fragment">
+            <a class="follow-link" href="http://arcgis.github.io/mbgl-koop/" target="_blank">arcgis.github.io/mbgl-koop/</a>
+          </div>
+
+          <div class="fragment">
+            <h3>Zip Codes <small>(30,000+ complex polygons)</small></h3>
+              <a class="follow-link" href="http://mjuniper.github.io/zip-code-demo/" target="_blank">mjuniper.github.io/zip-code-demo/</a>
+            <div class="fragment">
+              <a class="follow-link" href="http://mjuniper.github.io/koop-viz-experiments/mapbox-gl/" target="_blank">mjuniper.github.io/koop-viz-experiments/mapbox-gl/</a>
+            </div>
+
+            <aside class="notes">
+              <ul>
+                <li>Structure similar to geojson but binary</li>
+                <li>Like image tiles - easy to cache and serve rapidly</li>
+                <li>Same addressing scheme as image tiles</li>
+                <li>Contain data/attributes</li>
+                <li>Style-able</li>
+                <li>multiple layers in one file</li>
+                <li>Very compact</li>
+                <li>Fast to parse on client and server</li>
+              </ul>
+            </aside>
+          </div>
+        </section>
+
+        <section>
+          <h1>Bonus:</h1>
+          <a class="follow-link" href="http://benheb.github.io/explore-open-data" target="_blank">benheb.github.io/explore-open-data</a>
+        </section>
+
+        <section>
+          <h1>Thank you...</h1>
+          <h3>Please fill out the session survey:</h3>
+          <h4>Offering ID: 1461</h4>
+          <h5>Online – <a href="http://www.esri.com/ucsessionsurveys">www.esri.com/ucsessionsurveys</a></h5>
+        </section>
+
+      </div>
+
+      <div id="slide-footer">
+        <div class="left">
+          Esri UC 2014 | Demo Theater | Accessing and Visualizing Esri GeoServices with ArcGIS API for JavaScript, D3, and Node.js
+        </div>
+        <div class="right">
+          <a href="http://mjuniper.github.io/presentations/UC2014.html">mjuniper.github.io/presentations/UC2014.html</a>
+        </div>
+      </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="scripts/reveal.min.js"></script>
+
+    <script>
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'fade', // default/cube/page/concave/zoom/linear/fade/none
+        transitionSpeed: 'slow',
+
+        width: 1600,
+        height: 900,
+        minScale: 0.2,
+        maxScale: 1.0,
+
+        keyboard: {
+          13: function () {
+            var curSlide = Reveal.getCurrentSlide();
+
+            els = curSlide.querySelectorAll(':scope > a.follow-link, :scope > h1 > a.follow-link, .fragment.visible > a.follow-link')
+
+            if (els && els.length) {
+              var el = els[els.length - 1];
+              var evObj = document.createEvent('Events');
+              evObj.initEvent('click', true, false);
+              el.dispatchEvent(evObj);
+            } 
+          }
+        },
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+    </script>
+
+  </body>
+</html>

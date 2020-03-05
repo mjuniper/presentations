@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="shortcut icon" href="favicon.ico">
+
+		<title>Jupe's Laws</title>
+
+    <meta name="description" content="Jupe's Laws / Debugging">
+		<meta name="author" content="Mike Juniper">
+
+		<link rel="stylesheet" href="styles/reveal-2018.css">
+		<link rel="stylesheet" href="styles/theme/esri-dev-summit-2018.css">
+
+    <style media="screen">
+      .reveal .slides section.title {
+        padding-left: 80px;
+        text-align: left;
+      }
+    </style>
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'styles/print/pdf.css' : '../styles/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+        <section class="title" data-markdown data-background="images/ds2018/bg-1.png" data-background-size="cover" >
+          <textarea data-template>
+            # Jupe's Laws / Debugging
+            ### [Mike Juniper](https://github.com/mjuniper) :: Washington DC R&amp;D Center
+					</textarea>
+				</section>
+
+        <section data-background="images/ds2018/bg-2.png">
+          <h3><a href="http://mjuniper.github.io/presentations/jupes-laws.html">mjuniper.github.io/presentations/jupes-laws.html</a></h3>
+          <p>
+            <a href="https://github.com/mjuniper/presentations">github.com/mjuniper/presentations</a>
+          </p>
+				</section>
+
+        <section data-background="images/ds2018/bg-4.png">
+          <h1>1. If it's hard...</h1>
+          <h2 class="fragment">...you're doing it wrong.</h2>
+
+          <aside data-markdown class="notes">
+            software is hard but...
+          </aside>
+        </section>
+
+        <section data-background="images/ds2018/bg-5.png">
+          <h1>2. RTFEM</h1>
+          <h2 class="fragment">(Read the F-ing Error Message)</h2>
+          <h3 class="fragment">2a. Believe it!</h3>
+        </section>
+
+				<section data-background="images/ds2018/bg-6.png">
+          <h1>3. Don't jump to conclusions.</h1>
+
+          <aside data-markdown class="notes">
+            take a scientific approach, test your theories
+          </aside>
+				</section>
+
+				<section data-background="images/ds2018/bg-7.png">
+          <h1>4. Lean on the platform...</h1>
+          <h2 class="fragment">(http, html, dom, css, your js & css framework)</h2>
+          <h2 class="fragment">... to not write code you don't have to.</h2>
+          <h3 class="fragment">4a. Use the right tool for the job</h3>
+
+          <aside data-markdown class="notes">
+            this implies learning the platform
+          </aside>
+				</section>
+
+				<section data-background="images/ds2018/bg-8.png">
+          <h1>5. Remember, it's not magic.</h1>
+
+          <aside data-markdown class="notes">
+            it is comprehensible
+          </aside>
+				</section>
+
+        <section data-background="images/ds2018/bg-9.png">
+          <h1>debugging;</h1>
+
+          <aside class="notes">
+        		<h1>Intuition based on experience</h1>
+            <p>But you can make your intuition stronger by learning how things are supposed to work & how they fit together:</p>
+              <ul>
+                <li>http</li>
+                <li>html</li>
+                <li>dom</li>
+                <li>js</li>
+                <li>css</li>
+                <li>ember</li>
+                <li>bootstrap</li>
+                <li>our app architecture</li>
+              </ul>
+        	</aside>
+				</section>
+
+        <section data-background="images/ds2018/bg-2.png">
+          <h1>The process:</h1>
+          <ul>
+            <li class="fragment">Reproduce it</li>
+            <li class="fragment"><strong>Find the broken code & understand the problem</strong></li>
+            <li class="fragment">Write a test</li>
+            <li class="fragment">Fix it</li>
+          </ul>
+
+          <aside data-markdown class="notes">
+            - Point the app at the env where the bug occurs
+            - Are the title, STR, browser it happens in, etc correct
+              - sometimes users violated jupe's 3rd law and what they think they see is not what they actually see
+              - sometimes they are (mis)diagnosing the problem for us instead of simply describing the problem
+          </aside>
+				</section>
+
+        <section data-background="images/ds2018/bg-3.png">
+          <h1>The tools (chrome dev tools):</h1>
+          <ul>
+            <li class="fragment">elements</li>
+            <li class="fragment">network</li>
+            <li class="fragment">console</li>
+            <li class="fragment">sources</li>
+            <li class="fragment">ember inspector</li>
+          </ul>
+
+          <aside data-markdown class="notes">
+            - 95%/5%
+            - cmd-opt-j
+            - network (filter by type, filter by string, show/hide columns, preserve log)
+            - console (sidebar, watch, preserve log)
+            - sources (keyboard setup, f8, f10, fll, watch, manually add breakpoints, conditional breakpoints)
+            - ember inspector (view tree, container)
+          </aside>
+				</section>
+
+				<section data-background="images/ds2018/bg-4.png">
+          <h1>Tips & Techniques</h1>
+          <h2 class="fragment">Find the code that's busted</h2>
+          <h2 class="fragment">Inspect its state at various points</h2>
+				</section>
+
+        <section data-background="images/ds2018/bg-5.png">
+          <h2>Find the code that's busted</h2>
+          <ul>
+            <li class="fragment">elements pane</li>
+            <li class="fragment">ember inspector => view tree</li>
+            <li class="fragment">dom & xhr breakpoints</li>
+            <li class="fragment">binary search</li>
+          </ul>
+				</section>
+
+        <section data-background="images/ds2018/bg-6.png">
+          <h2>Inspect its state at various points</h2>
+          <ul>
+            <li class="fragment">debugger;</li>
+            <li class="fragment">console.log|info|debug|warn</li>
+            <li class="fragment">alert</li>
+            <li class="fragment">ember inspector => container</li>
+            <li class="fragment">isolate it into a twiddle or a codepen</li>
+          </ul>
+
+          <aside data-markdown class="notes">
+            - debuggers can be conditional
+            - you can put debuggers in 3rd party code
+          </aside>
+				</section>
+
+        <section data-background="images/ds2018/bg-7.png">
+          <h2>Add an init or didRecieveAttrs method</h2>
+          <pre><code class="js">
+            init () {
+              this._super(...arguments);
+              debugger;
+            }
+          </code></pre>
+				</section>
+
+        <section data-background="images/ds2018/bg-8.png">
+          <h2>Add intermediate variables</h2>
+          <pre class="fragment"><code class="js">
+            myArray.filter(...).map(...).forEach(...);
+          </code></pre>
+
+          <pre class="fragment"><code class="js">
+            const filtered = myArray.filter(...);
+            debugger;
+            const mapped = filtered.map(...);
+            mapped.forEach(item => {
+              console.log(item);
+              debugger;
+            });
+          </code></pre>
+				</section>
+
+        <section data-background="images/ds2018/bg-9.png">
+          <h2>Add catch block</h2>
+          <pre class="fragment"><code class="js">
+            this.doSomething()
+            .then(...)
+            .then(...)
+            .then(...);
+          </code></pre>
+
+          <pre class="fragment"><code class="js">
+            this.doSomething()
+            .then(...)
+            .then(...)
+            .then(...)
+            .catch(err => {
+              console.debug(err);
+              debugger;
+            });
+          </code></pre>
+				</section>
+
+        <section data-markdown data-background="images/ds2018/bg-2.png">
+          ## If it involved an http request
+          - was the request made?
+          - was the request made to the right url (look carefully)
+          - did it use the right method?
+          - was the right payload sent? the right token?
+          - did we get a 200 response?
+          - was the response payload what we expected?
+          - were the response headers what we expected?
+          - what happened after that?
+				</section>
+
+        <section data-background="images/ds2018/bg-2.png">
+          <h2>Bonus CSS debugging tricks</h2>
+          <pre><code class="css">
+            /* an element whose bounds i want to be obvious */
+            .whatever {
+              outline: solid 2px fuchsia;
+            }
+
+            /* does this selector work? */
+            .whatever {
+              /* don't jump to conclusions */
+              background: red !important;
+              color: green !important;
+            }
+          </code></pre>
+				</section>
+
+				<section data-background="images/ds2018/bg-final.jpg">
+					<img src="images/ds2018/esri-science-logo-white.png" style="margin: 0; background: none; border: 0px; box-shadow: none;" />
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="scripts/reveal-2018.js"></script>
+
+		<script>
+			Reveal.initialize({
+        controls: false,
+				history: true,
+
+				// This height and width are here for the left-aligned title slide.
+				// If you do not want that, you can remove these two settings and
+				// the presentation will be closer to OOTB-Reveal.js:
+				width: '100%',
+				height: '100%',
+        // width: 1366,
+        // height: 768,
+
+        // margin: 0.2,
+
+        // minScale: 0.2,
+        // maxScale: 1.0,
+
+				history: true,
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

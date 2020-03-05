@@ -1,0 +1,158 @@
+
+div.backgrounds > .present {
+  background-image: url(../images/bg-6.png);
+}
+
+.title h1 {
+  margin-bottom: 0.5em;
+}
+
+li.fragment {
+  line-height: 2em;
+}
+
+.reveal section img {
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+.reveal section div.topmargin {
+  margin-top: 2em;
+}
+
+section img.framework-logo {
+  height: 250px;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  margin: 5%;
+}
+
+section img#architecture {
+  width: 50%;
+  margin: 0;
+}
+
+/*pre.code code {
+  background-color: #3F3F3F;
+  font-size: 2em;
+}*/
+
+.reveal pre {
+  box-shadow: none;
+}
+
+.reveal section pre code {
+  padding: 5px 20px;
+  max-height: inherit;
+  font-size: 2em;
+  line-height: 1.2em;
+}
+
+.reveal section pre.code-lots, .reveal section pre.code-lots code {
+  padding-top: 0;
+  padding-bottom: 0;
+  max-height: inherit;
+  font-size: 0.75em;
+  line-height: 1.3em;
+}
+
+.reveal section.code-only, .reveal section.code-only pre, .reveal section.code-only pre code {
+  padding-top: 0;
+  margin-top: 0;
+}
+
+#mvc span {
+  font-size: 2.7em;
+  line-height: 0.01em;
+  vertical-align: bottom;
+}
+
+#slide-footer {
+  color: gray;
+  position: absolute;
+  bottom: 0;
+  z-index: 9;
+  font-size: 0.4em;
+  padding: 0 10px 10px 15px;
+  left: 0;
+  right: 0;
+}
+
+div.fragment {
+  margin-top: 30px;
+}
+
+div.fragment h3 {
+  margin-bottom: 5px;
+}
+
+section.strikethrough {
+  text-decoration: line-through;
+}
+
+
+.reveal .slide-number {
+  color: #13daec; }
+
+
+.right{
+  float: right;
+}
+.left {
+  float: left;
+}
+
+#heart {
+    position: relative;
+    width: 300px;
+    height: 540px;
+}
+#heart:before,
+#heart:after {
+    position: absolute;
+    content: "";
+    left: 800px;
+    top: 0;
+    width: 300px;
+    height: 480px;
+    background: red;
+    -moz-border-radius: 300px 300px 0 0;
+    border-radius: 300px 300px 0 0;
+    -webkit-transform: rotate(-45deg);
+       -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+         -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+    -webkit-transform-origin: 0 100%;
+       -moz-transform-origin: 0 100%;
+        -ms-transform-origin: 0 100%;
+         -o-transform-origin: 0 100%;
+            transform-origin: 0 100%;
+}
+#heart:after {
+    left: 500px;
+    -webkit-transform: rotate(45deg);
+       -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+         -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+    -webkit-transform-origin: 100% 100%;
+       -moz-transform-origin: 100% 100%;
+        -ms-transform-origin: 100% 100%;
+         -o-transform-origin: 100% 100%;
+            transform-origin :100% 100%;
+}
+
+#heart-text {
+  color: pink;
+  position: absolute;
+  top: 100px;
+  left: 600px;
+  font-size: 3em;
+}
+
+small {
+  vertical-align: baseline !important;
+}
