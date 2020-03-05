@@ -22,18 +22,28 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
-	</head>
+  </head>
+
+  <!-- ○ Side effects?
+  ○ useEffect
+  ○ Arcgis-rest.js
+  ○ Auth
+  ○ React-arcgis-hub
+  ○ mocking -->
+
+
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section data-background="img/2020/devsummit/bg-1.png" data-background-size="cover" style="padding-left: 80px;">
-					<h1 style="text-align: left; font-size: 80px;">Presentation Title</h1>
-					<p style="text-align: left; font-size: 30px;">Name(s)</p>
-					<p style="text-align: left; font-size: 30px;"><a href="https://github.com/handle">@handle</a></p>
-					<p style="text-align: left; font-size: 30px;">slides: <a href="http://bit.ly/abc123"><code>http://bit.ly/abc123</code></a></p>
-					
+				<section class="title-slide" data-background="img/2020/devsummit/bg-1.png" data-background-size="cover" style="padding-left: 80px;">
+          <h1 style="text-align: left; font-size: 80px;">Building Enterprise GIS Apps with React</h1>
+          <h2 style="text-align: left; font-size: 50px;">Exercise 4: Data</h2>
+					<p style="text-align: left; font-size: 30px;">Mike Juniper</p>
+					<p style="text-align: left; font-size: 30px;"><a href="https://github.com/mjuniper">@mjuniper</a></p>
+					<p style="text-align: left; font-size: 30px;">slides: <a href="http://mjuniper.github.io/presentations/ds2020/ambitious-apps-architecture.html"><code>mjuniper.github.io/presentations/ds2020/ambitious-apps-architecture.html</code></a></p>
+
 					<!-- Add these rows to push your text up so it is not interfering with the event name. Test on your actual projector! -->
-					<p>&nbsp;</p> 
+					<p>&nbsp;</p>
 					<p>&nbsp;</p>
 					<!-- /end spacer rows -->
 				</section>

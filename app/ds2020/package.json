@@ -6,7 +6,8 @@
   "scripts": {
     "test": "grunt test",
     "start": "grunt serve",
-    "build": "grunt"
+    "build": "grunt",
+    "deploy": "grunt gh-pages"
   },
   "author": {
     "name": "John Gravois",
@@ -39,5 +40,8 @@
     "mustache": "^2.3.0",
     "socket.io": "^2.2.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "build": "^0.1.4"
+  }
 }
